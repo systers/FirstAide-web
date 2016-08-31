@@ -42,8 +42,8 @@
     <div class="popup-content">
       <span id="close-cnt" class="close"><img src="images/close-button.png" style="height: 15px;width: 15px;"></span>
       <h3 class="text">Contact PC Saves Anonymous Helpline via</h3>
-      <button id="call" class="popup-button" onclick="make_call('0014088444357')">Voice Call</button>
-      <button id="msg" class="popup-button" onclick="send_sms('0014088444357')">Send Message</button>
+      <button id="call" class="popup-button" onclick="make_call('+14088444357')">Voice Call</button>
+      <button id="msg" class="popup-button" onclick="send_sms('+14088444357')">Send Message</button>
     </div>
   </div>
 
