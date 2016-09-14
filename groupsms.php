@@ -44,8 +44,9 @@
     //Loop over all comrades. $number is a phone number above, and 
     // $name is the name next to it
     try {
-      foreach ($toNos as $number) {
-
+        $sent = 0;
+        foreach ($toNos as $number) {
+           
          $sms = $client->account->messages->sendMessage(
          // Change the 'From' number below to be a valid Twilio number 
          // that you've purchased, or the (deprecated) Sandbox number
@@ -55,14 +56,10 @@
             // the sms body
             $msg
          );
-         // Send a valid response back to circleOfTrustMessage.js
-         $success = 1;
-         if($empty==6)
-            $success==0;
-         else
-            $success == $filled;
-         echo $success;
+         
+        $sent = $sent + 1;
       }
+      echo $sent;//count of messages successfull is sent to circleOfTrustMessage.js 
     }
     catch(\Services_Twilio_RestException $e){
         $error = $e->getMessage();
