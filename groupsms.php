@@ -30,8 +30,8 @@
     }
 
     //set AccountSid and AuthToken from www.twilio.com/user/account
-    $AccountSid = "";
-    $AuthToken = "";
+    $AccountSid = "AC352153773dfb04678b4a875f509169ee";
+    $AuthToken = "5d310051fdd83757fa6bbb157dbdc90a";
 
     // avoid tinyhttp exception
     $http = new Services_Twilio_TinyHttp('https://api.twilio.com', array('curlopts' => array(
@@ -44,25 +44,22 @@
     //Loop over all comrades. $number is a phone number above, and 
     // $name is the name next to it
     try {
-      foreach ($toNos as $number) {
-
+        $sent = 0;
+        foreach ($toNos as $number) {
+           
          $sms = $client->account->messages->sendMessage(
          // Change the 'From' number below to be a valid Twilio number 
          // that you've purchased, or the (deprecated) Sandbox number
-            "", 
+            "+12056240076", 
             // the number we are sending to - Any phone number
             $number,
             // the sms body
             $msg
          );
-         // Send a valid response back to circleOfTrustMessage.js
-         $success = 1;
-         if($empty==6)
-            $success==0;
-         else
-            $success == $filled;
-         echo $success;
+         
+        $sent = $sent + 1;
       }
+      echo $sent;//count of messages successfull is sent to circleOfTrustMessage.js 
     }
     catch(\Services_Twilio_RestException $e){
         $error = $e->getMessage();
