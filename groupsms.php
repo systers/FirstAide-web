@@ -5,18 +5,13 @@
     require "Services/Twilio.php";
     include 'loadComradeNumbers.php';
     $toNos = array();//comrade numbers will be added here
-    $empty = 0;
-    $filled = 0;
 
     foreach ($dbphnos as $num)//$dbphnos come from loadComradeNumbers.php
     {
       if($num!=NULL)
       {
          array_push($toNos,$num);
-         $filled++;
       }
-      else
-        $empty++;
     }
 
     foreach ($toNos as &$value) {
