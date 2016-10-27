@@ -15,6 +15,8 @@
 <head>
   <title>FirstAide</title>
   <link rel="stylesheet" type="text/css" href="css files/gethelpnow-style.css"/>
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 <body>
 <?php
@@ -69,8 +71,8 @@
     <div class="popup-content">
       <span id="close-PCMO" class="close"><img src="images/close-button.png" style="height: 15px;width: 15px;"></span>
       <h3 class="text">Contact PCMO via</h3>
-     <button id="PCMO-call" class="popup-button" onclick="setnum(this.id)">Voice Call</button>
-      <button id="PCMO-msg" class="popup-button" onclick="setnum(this.id)">Send Message</button>
+     <button id="PCMO-call" class="popup-button" onclick="setnum(this.id)">Voice Call <i class="w3-margin-left fa fa-phone"></i></button>
+      <button id="PCMO-msg" class="popup-button" onclick="setnum(this.id)">Send Message<i class="w3-margin-left fa fa-envelope"></i></button>
     </div>
   </div>
 
@@ -79,8 +81,9 @@
     <div class="popup-content">
       <span id="close-SSM" class="close"><img src="images/close-button.png" style="height: 15px;width: 15px;"></span>
       <h3 class="text">Contact SSM via</h3>
-      <button id="SSM-call" class="popup-button" onclick="setnum(this.id)">Voice Call</button>
-      <button id="SSM-msg" class="popup-button" onclick="setnum(this.id)">Send Message</button>
+     
+      <button id="SSM-call" class="popup-button" onclick="setnum(this.id)">Voice Call <i class="w3-margin-left fa fa-phone"></i></button>
+      <button id="SSM-msg" class="popup-button" onclick="setnum(this.id)">Send Message<i class="w3-margin-left fa fa-envelope"></i></button>
     </div>
   </div>
 
@@ -89,8 +92,8 @@
     <div class="popup-content">
       <span id="close-SARL" class="close"><img src="images/close-button.png" style="height: 15px;width:px;"></span>
       <h3 class="text">Contact SARL via</h3>
-      <button id="SARL-call" class="popup-button" onclick="setnum(this.id)">Voice Call</button>
-      <button id="SARL-msg" class="popup-button" onclick="setnum(this.id)">Send Message</button>
+      <button id="SARL-call" class="popup-button" onclick="setnum(this.id)">Voice Call  <i class="w3-margin-left fa fa-phone"></i></button>
+      <button id="SARL-msg" class="popup-button" onclick="setnum(this.id)">Send Message<i class="w3-margin-left fa fa-envelope"></i></button>
     </div>
   </div>
 
