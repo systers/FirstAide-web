@@ -104,7 +104,10 @@ If you want to contribute to PCSA-Web, subscribe to our [systers-dev](http://sys
 If you find an issue yourself you can report it, a community member will get back to you and approve the issue. Then you can fix it and submit a PR. Please go through our issue list first and make sure the issues you are reporting  do not replicate the issues already reported. If you have issues on multiple pages, report them separately. Do not combine them into a single issue.
 
 ### Rules for Contributing
-1. Fix a new issue and submit a PR without reporting and getting it approved at first.
-2. Fix an issue assigned to somebody else and submit a PR before the assignee does. 
-3. Report issues which are previously reported by others. (Please check the closed issues too before you report an issue). 
-4. Suggest completely new developments in the issue list. (Please use the mailing list for this kind of suggestions. Use issue list to suggest bugs/features in the already implemented sections.)
+1. Do not fix a new issue and submit a PR without reporting and getting it approved at first.
+2. Do not fix an issue assigned to somebody else and submit a PR before the assignee does. 
+3. Do not report issues which are previously reported by others. (Please check the closed issues too before you report an issue). 
+4. Do not suggest completely new developments in the issue list. (Please use the mailing list for this kind of suggestions. Use issue list to suggest bugs/features in the already implemented sections.)
+5. If an issue is reported by a person, it is automatically assigned to that person
+6. Use meaningful commit messages and sqaush all your commits into one
+7. Only pick the issues which are labeled as free
