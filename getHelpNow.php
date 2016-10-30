@@ -15,6 +15,7 @@
 <head>
   <title>FirstAide</title>
   <link rel="stylesheet" type="text/css" href="css files/gethelpnow-style.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 <body>
 <?php
@@ -64,13 +65,13 @@
   	</tr>
   </table>
 
-  <!-- Popup for contact PCMO -->
+  <!-- Popup for contact PCMO --> <style>p.indent{padding-right:3.8em}</style>  
   <div id="popup-PCMO" class="popup">
     <div class="popup-content">
       <span id="close-PCMO" class="close"><img src="images/close-button.png" style="height: 15px;width: 15px;"></span>
       <h3 class="text">Contact PCMO via</h3>
-     <button id="PCMO-call" class="popup-button" onclick="setnum(this.id)">Voice Call</button>
-      <button id="PCMO-msg" class="popup-button" onclick="setnum(this.id)">Send Message</button>
+     <button style="text-indent:center; padding-right:3cm;" id="PCMO-call" class="popup-button" onclick="setnum(this.id)"> <i style="float:left; padding-left:3cm" class="w3-margin-left fa fa-phone fa-lg"></i> Voice Call</button>
+      <button style="text-indent:center; padding-right:3cm;" id="PCMO-msg" class="popup-button" onclick="setnum(this.id)"><i style="float:left; padding-left:3cm" class="w3-margin-left fa fa-envelope fa-lg "></i>Send Message</button>
     </div>
   </div>
 
@@ -79,8 +80,9 @@
     <div class="popup-content">
       <span id="close-SSM" class="close"><img src="images/close-button.png" style="height: 15px;width: 15px;"></span>
       <h3 class="text">Contact SSM via</h3>
-      <button id="SSM-call" class="popup-button" onclick="setnum(this.id)">Voice Call</button>
-      <button id="SSM-msg" class="popup-button" onclick="setnum(this.id)">Send Message</button>
+     
+      <button style="text-indent:center;  padding-right:3cm;" id="SSM-call" class="popup-button" onclick="setnum(this.id)"><i style="float:left; padding-left:3cm" class="w3-margin-left fa fa-phone fa-lg"></i>Voice Call </button>
+      <button style="text-indent:center;  padding-right:3cm;" id="SSM-msg" class="popup-button" onclick="setnum(this.id)"><i  style="float:left; padding-left:3cm" class="w3-margin-left fa fa-envelope fa-lg"></i>Send Message</button>
     </div>
   </div>
 
@@ -89,8 +91,8 @@
     <div class="popup-content">
       <span id="close-SARL" class="close"><img src="images/close-button.png" style="height: 15px;width:px;"></span>
       <h3 class="text">Contact SARL via</h3>
-      <button id="SARL-call" class="popup-button" onclick="setnum(this.id)">Voice Call</button>
-      <button id="SARL-msg" class="popup-button" onclick="setnum(this.id)">Send Message</button>
+      <button style="text-indent:center;  padding-right:3cm;" id="SARL-call" class="popup-button" onclick="setnum(this.id)"><i style="float:left; padding-left:3cm" class="w3-margin-left fa fa-phone fa-lg"></i>Voice Call  </button>
+      <button  style="text-indent:center;  padding-right:3cm;" id="SARL-msg" class="popup-button" onclick="setnum(this.id)"><i style="float:left; padding-left:3cm" class="w3-margin-left fa fa-envelope fa-lg"></i>Send Message</button>
     </div>
   </div>
 
