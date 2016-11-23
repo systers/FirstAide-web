@@ -98,7 +98,7 @@ References :
 [Tutorial for Group SMS](https://www.youtube.com/watch?v=G4oluQf_7S4)
 
 ## Contributing 
-If you want to contribute to PCSA-Web, subscribe to our [systers-dev](http://systers.org/mailman/listinfo/systers-dev) mailing list and shoot an introductory email. Pick an open issue from the [issue list](https://github.com/systers/FirstAide-Web/issues), claim it in the comments and wait for approval, fix the issue and send a pull request. 
+If you want to contribute to FirstAide-Web, subscribe to our [systers-dev](http://systers.org/mailman/listinfo/systers-dev) mailing list and shoot an introductory email. Pick an open issue from the [issue list](https://github.com/systers/FirstAide-Web/issues), claim it in the comments and wait for approval, fix the issue and send a pull request. 
 If you find an issue yourself you can report it, a community member will get back to you and approve the issue. Then you can fix it and submit a PR. Please go through our issue list first and make sure the issues you are reporting  do not replicate the issues already reported. If you have issues on multiple pages, report them separately. Do not combine them into a single issue.
 
 ### Rules for Contributing
