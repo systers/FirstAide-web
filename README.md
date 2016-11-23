@@ -1,10 +1,8 @@
-# PCSA-web
+# FirstAide - Web App
 
-## FirstAide - PCSA(Peace Corps Safety App) Web App
+The project repo of FirstAide-Web : [FirstAide-web repo](https://github.com/systers/FirstAide-web)
 
-The project repo of PCSA-Web : [PCSA-web repo](https://github.com/systers/PCSA-web)
-
-FirstAide is a web application also called PCSA web. Peace Corps provides support to all the volunteers who have been sexually assaulted. The volunteers can get reporting procedures and other relevant information. The initiative is to provide commitment to the volunteers who are victims of sexual assault and also to ensure safety of volunteers.
+FirstAide is a web application being developed for the Peace Corps. Peace Corps aim to provide support to all the volunteers who have been sexually assaulted. The volunteers can get reporting procedures and other relevant information. The initiative is to provide commitment to the volunteers who are victims of sexual assault and also to ensure their safety.
 
 The project is built using the following technologies:
  1. PHP (Backend)
@@ -25,26 +23,26 @@ Download XAMPP from here [XAMPP download](https://www.apachefriends.org/download
 
 Go to your terminal and execute this command
 
-    $ git clone https://github.com/systers/PCSA-web
+    $ git clone https://github.com/systers/FirstAide-web
 
 Or download the ZIP file from above
 
 ###Opening and Running
 1. Launch XAMPP by opening XAMPP control panel
 2. Start 'Apache' and 'MySQL' 
-3. Check if XAMPP had started using the url 'http://localhost:8080/' (Here 8080 is the port number, use the one which you have configured)
-4. Now extract the ZIP file of the project PCSA-web which you have downloaded and paste it in the C:\xampp\htdocs (the path where your xampp is present)
+3. Check if XAMPP has started using the url 'http://localhost:8080/' (Here 8080 is the port number, use the one which you have configured)
+4. Now extract the ZIP file of the project FirstAide-web which you have downloaded and paste it in the C:\xampp\htdocs (the path where your xampp is present)
 5. Open the file which you want to work with using the text editor you have downloaded
-6. Make changes and save the file
-7. Now, run the project using the url http://localhost:8080/directory_name/file_name.extension  Example: 'http://localhost:8080/PCSA-web/login.html'
+6. Make the required changes and save the file
+7. Now, view your changes using the url http://localhost:8080/directory_name/file_name.extension  Example: 'http://localhost:8080/FirstAide-web/login.html'
 
 ###Documentation
 
 The documentation can be found here
 
-1.[project docs](https://github.com/systers/PCSA-web/tree/master/project-docs)
+1.[project docs](https://github.com/systers/FirstAide-web/tree/master/project-docs)
 
-2.[docs of GSOC 16](https://github.com/systers/PCSA-web/tree/master/work-docs)
+2.[docs of GSOC 16](https://github.com/systers/FirstAide-web/tree/master/work-docs)
 
 ###Guide to Naming Convention Used
 [Conventions and rules](https://google.github.io/styleguide/htmlcssguide.xml)
@@ -70,7 +68,7 @@ Read more about Twilio here: [Twilio](https://www.twilio.com/)
 
    Use this as the from number in the files twilioSMS.php, twilioCall.php and groupsms.php
 4. Setting To Numbers :
-   If you are using Twilio Trial Account you can send a SMS or make a Call to a Twilio verified number only. Upgraded accounts may not need to verify a number
+   If you are using Twilio Trial Account you can send a SMS or make a Call to a Twilio verified number only. Upgraded accounts may not   need to verify a number
 
    Procedure to verify a number in Twilio
    1. Go to (https://www.twilio.com/console/phone-numbers/dashboard)
@@ -100,7 +98,7 @@ References :
 [Tutorial for Group SMS](https://www.youtube.com/watch?v=G4oluQf_7S4)
 
 ## Contributing 
-If you want to contribute to PCSA-Web, subscribe to our [systers-dev](http://systers.org/mailman/listinfo/systers-dev) mailing list and shoot an introductory email. Pick an open issue from the [issue list](https://github.com/systers/PCSA-Web/issues), claim it in the comments and wait for approval, fix the issue and send a pull request. 
+If you want to contribute to PCSA-Web, subscribe to our [systers-dev](http://systers.org/mailman/listinfo/systers-dev) mailing list and shoot an introductory email. Pick an open issue from the [issue list](https://github.com/systers/FirstAide-Web/issues), claim it in the comments and wait for approval, fix the issue and send a pull request. 
 If you find an issue yourself you can report it, a community member will get back to you and approve the issue. Then you can fix it and submit a PR. Please go through our issue list first and make sure the issues you are reporting  do not replicate the issues already reported. If you have issues on multiple pages, report them separately. Do not combine them into a single issue.
 
 ### Rules for Contributing
