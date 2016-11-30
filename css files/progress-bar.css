@@ -29,6 +29,11 @@ body {
 .text {
   color: #ffffff;
   font-style: bold;
+   color: #ffffff;
+	font-family: 'Avenir Next LT Pro Regular';
+        font-style: normal;
+        font-weight: normal;
+         src: local('Avenir Next LT Pro Regular'), url('AvenirNextLTPro-Regular.woff') format('woff');
 }
 
 /*custom scrollbar for the app*/
