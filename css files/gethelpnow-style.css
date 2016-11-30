@@ -44,7 +44,8 @@ body {
 	height: 150px;
 	margin-top: 30px;
 	text-align: center;
-	width: 100%;	
+	width: 100%;
+	font-weight:bold;
 }
 
 .button:hover {
@@ -170,6 +171,14 @@ body {
 .text {
 	color: #ffffff;
 	font-style: bold;
+	color: #ffffff;
+	font-family: 'Avenir Next LT Pro Regular';
+        font-style: normal;
+        font-weight: normal;
+         src: local('Avenir Next LT Pro Regular'), url('AvenirNextLTPro-Regular.woff') format('woff');
+
+
+
 }
 
 .window {
