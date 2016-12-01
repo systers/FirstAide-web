@@ -82,6 +82,7 @@ body {
 	padding: 20px;
 	text-align:center;
 	width: 100%;
+font-weight: bold ;
 }
 
 .popup-button:hover {
@@ -122,8 +123,10 @@ body {
 
 .text {
 	color: #ffffff;
-	font-style: bold;
-}
+	font-family: 'Avenir Next LT Pro Regular';
+        font-style: normal;
+        font-weight: normal;
+         src: local('Avenir Next LT Pro Regular'), url('AvenirNextLTPro-Regular.woff') format('woff');}
 
 .window {
 	height: 100%;
