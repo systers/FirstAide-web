@@ -34,6 +34,7 @@ a:hover {
     margin-top: 30px;
     text-align: center;
     width: 25%;
+    font-weight: bold;
 }
 
 .button:hover {
@@ -85,8 +86,11 @@ a:hover {
 /* ===TEXT=== */
 
 .text {
-    color: #ffffff;
-    font-weight: bold;
+  color: #ffffff;
+	font-family: 'Avenir Next LT Pro Regular';
+        font-style: normal;
+        font-weight: normal;
+         src: local('Avenir Next LT Pro Regular'), url('AvenirNextLTPro-Regular.woff') format('woff');
 }
 
 /* ===PLACEHOLDER=== */
