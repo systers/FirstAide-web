@@ -1,7 +1,26 @@
 /* Created by Akanksha
    CSS for login and registration pages
 */
-/*Hyperlink CSS*/
+
+/* ===GLOBAL=== */
+
+/* ===FONT=== */
+@font-face {
+    font-family: 'Avenir Next';
+    src: url('../fonts/AvenirNextLTPro-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Avenir Next Bold';
+    src: url('../fonts/AvenirNextLTPro-Bold.otf');
+}
+
+body {
+    font-family: 'Avenir Next';
+    background-color: #05d197;
+}
+
+/* ===HYPERLINKS=== */
 a:link {
 	color: #ffffff;
 }
@@ -18,16 +37,17 @@ body {
 	background-color: #05d197;
 }
 
-.button {/*Green buttons*/
-	background-color: #2db58f;
-	border-width: 3px;
-	border-color: #ffffff;
-	color: #ffffff;
-	font-size: 20px;
-	height: 60px;
-	margin-top: 30px;
-	text-align: center;
-	width: 25%;	
+/* ===BUTTONS=== */
+.button {
+    background-color: #2db58f;
+    border: 3px #ffffff;
+    color: #ffffff;
+    font-size: 20px;
+    height: 60px;
+    margin-top: 30px;
+    text-align: center;
+    width: 25%;
+    font-family: 'Avenir Next Bold';
 }
 
 .button:hover {
@@ -70,8 +90,7 @@ body {
 }
 
 .text {
-	color: #ffffff;
-	font-style: bold;
+    color: #ffffff;
 }
 
 /*placeholder css*/
