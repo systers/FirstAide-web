@@ -5,12 +5,23 @@
 
 /* ===GLOBAL=== */
 
+/* ===FONT=== */
+@font-face {
+    font-family: 'Avenir Next';
+    src: url('../fonts/AvenirNextLTPro-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Avenir Next Bold';
+    src: url('../fonts/AvenirNextLTPro-Bold.otf');
+}
+
 body {
+    font-family: 'Avenir Next';
     background-color: #05d197;
 }
 
 /* ===HYPERLINKS=== */
-
 a:link {
     color: #ffffff;
 }
@@ -24,7 +35,6 @@ a:hover {
 }
 
 /* ===BUTTONS=== */
-
 .button {
     background-color: #2db58f;
     border: 3px #ffffff;
@@ -34,6 +44,7 @@ a:hover {
     margin-top: 30px;
     text-align: center;
     width: 25%;
+    font-family: 'Avenir Next Bold';
 }
 
 .button:hover {
@@ -86,7 +97,6 @@ a:hover {
 
 .text {
     color: #ffffff;
-    font-weight: bold;
 }
 
 /* ===PLACEHOLDER=== */

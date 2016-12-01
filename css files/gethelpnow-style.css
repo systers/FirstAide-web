@@ -10,7 +10,20 @@
    twilioSMS
    twilioCall
  */
+
+/* ===FONT=== */
+@font-face {
+	font-family: 'Avenir Next';
+	src: url('../fonts/AvenirNextLTPro-Regular.otf');
+}
+
+@font-face {
+	font-family: 'Avenir Next Bold';
+	src: url('../fonts/AvenirNextLTPro-Bold.otf');
+}
+
 body {
+	font-family: 'Avenir Next';
 	background-color: #05d197;
 	margin: 0;
 }
@@ -44,7 +57,8 @@ body {
 	height: 150px;
 	margin-top: 30px;
 	text-align: center;
-	width: 100%;	
+	width: 100%;
+	font-family: 'Avenir Next Bold';
 }
 
 .button:hover {
@@ -61,7 +75,7 @@ body {
     color: #ffffff;
     float: right;
     font-size: 28px;
-    font-weight: bold;
+    font-family: 'Avenir Next Bold';
 }
 
 .close:hover,.close:focus {
@@ -124,6 +138,7 @@ body {
 	padding: 20px;
 	text-align:center;
 	width: 100%;
+	font-family: 'Avenir Next Bold';
 }
 
 .popup-button:hover {
@@ -148,7 +163,8 @@ body {
 	height: 50px;
 	margin-top: 20px;
 	text-align: center;
-	width: 30%;	
+	width: 30%;
+	font-family: 'Avenir Next Bold';
 }
 
 .small-button:hover {
@@ -169,7 +185,6 @@ body {
 
 .text {
 	color: #ffffff;
-	font-style: bold;
 }
 
 .window {
