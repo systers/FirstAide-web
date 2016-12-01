@@ -10,7 +10,15 @@
    twilioSMS
    twilioCall
  */
+
+/* ===FONT=== */
+@font-face {
+	font-family: 'Avenir Next';
+	src: url('../fonts/AvenirNextLTPro-Regular.otf');
+}
+
 body {
+	font-family: 'Avenir Next';
 	background-color: #05d197;
 	margin: 0;
 }
@@ -169,7 +177,7 @@ body {
 
 .text {
 	color: #ffffff;
-	font-style: bold;
+	font-weight: bold;
 }
 
 .window {

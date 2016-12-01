@@ -5,8 +5,15 @@
 
 /* ===GLOBAL=== */
 
+/* ===FONT=== */
+@font-face {
+    font-family: 'Avenir Next';
+    src: url('../fonts/AvenirNextLTPro-Regular.otf');
+}
+
 body {
     background-color: #05d197;
+    font-family: 'Avenir Next';
 }
 
 /* ===HYPERLINKS=== */
