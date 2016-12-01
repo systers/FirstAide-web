@@ -4,7 +4,10 @@
 */
 
 /* ===GLOBAL=== */
-
+@font-face {
+	font-family: 'avenir next';
+	src: url(../fonts/AvenirNextLTPro-Regular.otf)
+}
 body {
     background-color: #05d197;
 }
@@ -34,6 +37,7 @@ a:hover {
     margin-top: 30px;
     text-align: center;
     width: 25%;
+    font-weight: bold;
 }
 
 .button:hover {
@@ -87,6 +91,7 @@ a:hover {
 .text {
     color: #ffffff;
     font-weight: bold;
+    font-family: 'avenir next';
 }
 
 /* ===PLACEHOLDER=== */

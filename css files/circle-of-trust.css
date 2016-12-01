@@ -4,6 +4,10 @@
    editComrades
    circleOfTrust
 */
+ @font-face {
+ 	 font-family: 'avenir next';
+	src: url(../fonts/AvenirNextLTPro-Regular.otf)
+}
 body {
 	background-color: #05d197;
 	margin: 0;
@@ -106,7 +110,8 @@ body {
 	height: 50px;
 	margin-top: 20px;
 	text-align: center;
-	width: 30%;	
+	width: 30%;
+	font-weight: bold;
 }
 
 .small-button:hover {
@@ -123,6 +128,7 @@ body {
 .text {
 	color: #ffffff;
 	font-style: bold;
+	font-family: 'avenir next'; 
 }
 
 .window {

@@ -1,6 +1,10 @@
 /* Created by Akanksha
    Desc: CSS for index page
 */
+@font-face {
+	font-family: 'avenir next';
+	src: url(../fonts/AvenirNextLTPro-Regular.otf)
+}
 body {
 	background-color: #05d197;
 	height: 240px;
