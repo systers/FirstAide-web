@@ -1,6 +1,13 @@
 /* Created by Akanksha
    CSS for progress bar
-*/ 
+*/
+
+/* ===FONT=== */
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../fonts/AvenirNextLTPro-Regular.otf');
+}
+
 #bar {
   background-color: #fbc469;
   height: 100%;
@@ -9,6 +16,7 @@
 }
 
 body {
+  font-family: 'Avenir Next';
   background-color: #05d197;
   margin: 0;
 }
@@ -28,7 +36,6 @@ body {
 
 .text {
   color: #ffffff;
-  font-style: bold;
 }
 
 /*custom scrollbar for the app*/
