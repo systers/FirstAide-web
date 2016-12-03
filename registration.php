@@ -24,9 +24,21 @@
          <td><input class="input-box" type="text" id="uname" name="uname" placeholder="xyz123" required/></td>
        </tr>
         <tr>
-         <th class="text">Password:</th>
-         <td><input class="input-box" type="password" id="password" name="password" required/></td>
-       </tr>
+         <th class="text" style="vertical-align: top">Password:</th>
+         <td>
+           <input class="input-box" type="password" id="password" name="password" required/>
+           <div id="password-validation">
+               <meter max="4" id="password-strength-meter"></meter>
+               <p id="password-strength-text" class="text">Password Strength: Very Weak</p>
+               <ul id="suggestion">
+                   <li>at least one upper case letter</li>
+                   <li>at least one number</li>
+                   <li>at least one special character</li>
+                   <li>minimum 6 characters long</li>
+               </ul>
+           </div>
+
+         </td>
         <tr>
          <th class="text">Host Country:</th>
          <td><input class="input-box" type="text" id="host_country" name="host_country" placeholder="India" required/></td>
@@ -45,25 +57,25 @@
     <a href="#">This is a secure portal</a>
   </div>
 </center>
+  <script src="javascripts/passwordStrengthChecker.js"></script>
   <script type="text/javascript" src="javascripts/validation-v12.js"></script>
   <script src="javascripts/sweetalert.min.js"></script>
   <script src="javascripts/sweetalert.js"></script>
 </body>
 </html>
 <?php
-   
+
    if(!isset($_SESSION))
      session_start();
    if(isset($_SESSION['email']))
-   {  
-      header("location: welcome.php"); 
+   {
+      header("location: welcome.php");
    }
-   
+
    require 'dbconnect.php';
-   
+
    if(isset($_POST['email'])&&isset($_POST['uname'])&&isset($_POST['password'])&&isset($_POST['host_country']))
    {
-    
       $sql="CALL dupemail('$_POST[email]')";
       $result = mysqli_query($connection,$sql);
       $connection -> next_result(); //used when there are multiple procedure calls, use after ecah procedure call
@@ -94,7 +106,7 @@
         else
           echo "<script type='text/javascript'>salert('Oops','Error in adding user','error');</script>";
       }
-      mysqli_close($connection); 
+      mysqli_close($connection);
    }
-   
+
 ?>
