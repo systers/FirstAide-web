@@ -13,8 +13,8 @@ function validate()
 	var regexname = /^[a-zA-Z ]+\d*$/;
 	var regexcountry = /^[a-zA-Z]{2,}$/;
 	var regexemail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-    
-    
+
+
     if (!regexname.test(uname.value)) //validate name
      {
         invalid++;
@@ -28,7 +28,7 @@ function validate()
     	invalid++;
     	document.getElementById('host_country').style.borderColor = "red";
     }
-    else 
+    else
       document.getElementById('host_country').style.borderColor = "white";
 
     if (!regexemail.test(email.value))//validate email id
@@ -41,6 +41,14 @@ function validate()
 
     if(invalid>0)
     	return false;
-    else
-    	return true;
-}
+      if (score < 3) {
+         invalid++;
+          document.getElementById('password').style.borderColor = "red";
+          document.getElementById('password').focus();
+      }
+       else
+     	return true;
+          document.getElementById('password').style.borderColor = "white";
+
+      return invalid <= 0;
+   }
