@@ -1,6 +1,10 @@
 /*Created by Akanksha
   Desc: CSS for welcome.php
 */
+@font-face {
+	font-family: 'avenir next';
+	src: url(../fonts/AvenirNextLTPro-Regular.otf)
+}
 body {
 	background-color: #05d197;
 	margin: 0;
@@ -16,7 +20,8 @@ body {
 	height: 150px;
 	margin-top: 30px;
 	text-align: center;
-	width: 100%;	
+	width: 100%;
+	font-weight: bold;
 }
 
 .button:hover {
@@ -56,6 +61,7 @@ body {
 .text {
 	color: #ffffff;
 	font-style: bold;
+	font-family: 'avenir next';
 }
 
 .window {
