@@ -1,15 +1,9 @@
-/* Created by Akanksha
-   Desc: Style for Get Help Now module and it's submodules
-   Use in the following php files
-   getHelpNow
-   getHelpNow2
-   PCSaves
-   OfficeOfVictimAdvocacy
-   OfficeOfCivilRightsAndDiversity
-   OfficeOfInspectorGeneral
-   twilioSMS
-   twilioCall
- */
+/* DOCUMENT INFORMATION
+    - Created by : Akanksha
+    - Desc: Style for Get Help Now module and it's submodules
+    - Files : getHelpNow.php, getHelpNow2.php, PCSaves.php, OfficeOfVictimAdvocacy.php, OfficeOfCivilRightsAndDiversity.php,
+              OfficeOfInspectorGeneral.php, twilioSMS.php, twilioCall.php
+*/
 
 /* ===FONT=== */
 @font-face {
@@ -22,6 +16,7 @@
 	src: url('../fonts/AvenirNextLTPro-Bold.otf');
 }
 
+/* ==PRIMARY LAYOUT STRUCTURE== */
 body {
 	font-family: 'Avenir Next';
 	background-color: #05d197;
@@ -40,6 +35,9 @@ body {
 	width: 400px;	
 }
 
+/* ===BUTTONS=== */
+
+/* Buttonf for each sub-feature */
 #btn-table {
     border-collapse: separate;
     border-spacing: 50px 50px;
@@ -47,7 +45,8 @@ body {
     height: 200px;
 }
 
-.button {  /*The big green buttons*/ 
+/*The big green buttons*/
+.button {   
     background-color: #2db58f;
 	border-width: 3px;
 	border-color: #ffffff;
@@ -90,6 +89,7 @@ body {
 	margin-top: 0px;
 }
 
+/* ===INPUTS=== */
 #input {
 	background-color: #2db58f;
 	border: 3px solid #ffffff;
@@ -101,18 +101,20 @@ body {
 	width: 400px;	
 }
 
+/* ===HORIZONTAL LINE=== */
 .line {
 	color: white;
     width: 50%;
 }
 
+/* Location Dropdown*/
 #location{
 	background-color: #2db58f;
 	border: 1px solid #ffffff;
 	color: #ffffff;
 }
 
-/*popup css*/
+/* Popup Css */
 .popup {
 	background-color: #2db58f; 
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -127,7 +129,8 @@ body {
     z-index: 1; /*On top of screen*/
 }
 
-.popup-button { /*buttons in contact popup*/
+/* buttons in contact popup */
+.popup-button { 
 	background-color: #2db58f;
 	border-width: 3px;
 	color: #ffffff;
@@ -153,7 +156,8 @@ body {
     width: 30%;
 }
 
-.small-button {/*used in sub-modules present at getHelpNow2.php*/
+/* used in sub-modules present at getHelpNow2.php */
+.small-button {
 	background-color: #2db58f;
 	border-width: 3px;
 	border-color: #ffffff;
@@ -171,6 +175,7 @@ body {
     background-color: #02845f;
 }
 
+/* ===TEXT=== */
 #SMS-body {
 	background-color: #2db58f;
 	border: 3px solid #ffffff;
@@ -187,35 +192,44 @@ body {
 	color: #ffffff;
 }
 
+/* ===WINDOW=== */
 .window {
 	height: 100%;
 	margin-left: 25%;
 	padding: 1px 16px;
 }
 
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+/* ===PLACEHOLDER=== */
+
+/* WebKit, Blink, Edge */
+::-webkit-input-placeholder { 
     color: #d3d3d3;
     font-size: 15px;
 }
 
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+/* Mozilla Firefox 4 to 18 */
+:-moz-placeholder { 
    color: #d3d3d3;
    font-size: 15px;
    opacity:  1;
 }
 
-::-moz-placeholder { /* Mozilla Firefox 19+ */
+/* Mozilla Firefox 19+ */
+::-moz-placeholder { 
    color: #d3d3d3;
    font-size: 15px;
    opacity:  1;
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
+/* Internet Explorer 10-11 */
+:-ms-input-placeholder { 
    color: #d3d3d3;
    font-size: 15px;
 }
 
-/*custom scrollbar for the app*/
+/* ===SCROLLBAR=== */
+
+/* custom scrollbar for the app */
 ::-webkit-scrollbar {
 	background-color: #f5f5f5;
     width: 12px;
