@@ -87,7 +87,9 @@
       else
       {
         $email = $_POST['email'];
-        $newUser="CALL registration('$_POST[email]','$_POST[uname]','$_POST[password]','$_POST[host_country]')"; //inserts into the user table
+        $password = $_POST['password'];
+        $password = md5($email.$password);
+        $newUser="CALL registration('$_POST[email]','$_POST[uname]','$password','$_POST[host_country]')"; //inserts into the user table
 
         if(mysqli_query($connection,$newUser))
         {//if successfully added user then add comrades of user with null phone numbers
