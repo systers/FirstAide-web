@@ -87,6 +87,7 @@
       else
       {
         $email = $_POST['email'];
+        $password = md5($password); // md5 encryption
         $newUser="CALL registration('$_POST[email]','$_POST[uname]','$_POST[password]','$_POST[host_country]')"; //inserts into the user table
 
         if(mysqli_query($connection,$newUser))
