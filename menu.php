@@ -8,6 +8,15 @@
   {
     header("location:login.php");
   }
+  else
+  {
+    $email=$_SESSION['email'];
+    require 'dbconnect.php'; 
+    $query = mysqli_query($connection,"CALL nameemail('$email')");
+    $row = mysqli_fetch_row($query);
+    $username=$row[0];
+    mysqli_close($connection); 
+  }
   
 ?>
 <!DOCTYPE html>
@@ -75,7 +84,7 @@
         </h3>
        <h3>
          <a href="#">
-           Logged in as:<img src="images/secure.png" style="width: 20px;height: 20px; float:right;padding:5px;" />
+           Logged in as <?php echo $username ?><img src="images/secure.png" style="width: 20px;height: 20px; float:right;padding:5px;" />
          </a>
        </h3>
        <h3>
