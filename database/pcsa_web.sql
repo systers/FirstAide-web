@@ -31,7 +31,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `dupemail` (IN `mail` VARCHAR(100)) 
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getcomradenum` (IN `inemail` VARCHAR(100), IN `incomradeid` INT(1))  select phonenumber from comrade where email = inemail and comradeid = incomradeid$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `pass` VARCHAR(100), IN `mail` VARCHAR(100))  SELECT * from user where password = pass AND email = mail$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `pass` VARCHAR(100), IN `mail` VARCHAR(100))  SELECT * FROM user WHERE password = pass AND (email = mail OR username = mail)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registration` (IN `mail` VARCHAR(100), IN `uname` VARCHAR(100), IN `pass` VARCHAR(100), IN `country` VARCHAR(100))  INSERT INTO user VALUES(mail,uname,pass,country)$$
 
