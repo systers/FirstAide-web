@@ -2,23 +2,27 @@
   Desc: CSS for welcome.php
 */
 
-/* ===FONT=== */
+
+/* ===font=== */
 @font-face {
 	font-family: 'Avenir Next';
 	src: url('../fonts/AvenirNextLTPro-Regular.otf');
 }
+
 
 @font-face {
 	font-family: 'Avenir Next Bold';
 	src: url('../fonts/AvenirNextLTPro-Bold.otf');
 }
 
+/* ===primary===*/
 body {
 	font-family: 'Avenir Next';
 	background-color: #05d197;
 	margin: 0;
 }
 
+/*===buttons===*/
 .button { /*The green buttons css*/
 	background-color: #2db58f;
 	border-width: 3px;
@@ -33,7 +37,7 @@ body {
 	font-family: 'Avenir Next Bold';
 }
 
-.button:hover {
+.button:hover {/*different shade of green*/
     background-color: #02845f;
 }
 
@@ -51,14 +55,9 @@ body {
 	font-family: 'Avenir Next Bold';
 }
 
-.button-org:hover {
+.button-org:hover { /*different shade of orange */
     background-color: #ffffff;
     color: #ffd590;
-}
-
-.line {
-	color: white;
-    width: 50%;
 }
 
 #buttons-table {/*table containing buttons*/
@@ -68,10 +67,18 @@ body {
     height: 200px;
 }
 
+/*===lines=== */
+.line {
+    color: white;
+    width: 50%;
+}
+
+/*===text===*/
 .text {
 	color: #ffffff;
 }
 
+/*===global===*/
 .window {
 	height: 100%;
 	margin-left: 25%;
