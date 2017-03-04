@@ -37,7 +37,7 @@ body {
 	font-family: 'Avenir Next Bold';
 }
 
-.button:hover {
+.button:hover {/*different shade of green*/
     background-color: #02845f;
 }
 
@@ -55,7 +55,7 @@ body {
 	font-family: 'Avenir Next Bold';
 }
 
-.button-org:hover {
+.button-org:hover { /*different shade of orange */
     background-color: #ffffff;
     color: #ffd590;
 }
@@ -69,7 +69,7 @@ body {
 
 /*===lines=== */
 .line {
-	color: white;
+    color: white;
     width: 50%;
 }
 
