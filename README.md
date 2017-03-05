@@ -29,12 +29,28 @@ Or download the ZIP file from above
 
 ###Opening and Running
 1. Launch XAMPP by opening XAMPP control panel
-2. Start 'Apache' and 'MySQL' 
+2. Start 'Apache' and 'MySQL'
+![Start Apache and MySQL](images/installation/1.png)
 3. Check if XAMPP has started using the url 'http://localhost:8080/' (Here 8080 is the port number, use the one which you have configured)
 4. Now extract the ZIP file of the project FirstAide-web which you have downloaded and paste it in the C:\xampp\htdocs (the path where your xampp is present)
 5. Open the file which you want to work with using the text editor you have downloaded
 6. Make the required changes and save the file
 7. Now, view your changes using the url http://localhost:8080/directory_name/file_name.extension  Example: 'http://localhost:8080/FirstAide-web/login.html'
+
+###Database Setup
+1. Go to 'http://localhost/phpmyadmin', on the left panel click on the new option to create a new database. Set the name of the database as 'pcsa_web' and click on create.
+
+![create databse](images/installation/3.png)
+2. In the top menu bar of the phpMyAdmin panel, click on Import. Now, click on 'Choose the file'. Select the pcsa_web.sql file present in database folder of this project.
+
+![select file](images/installation/6.png)
+3. Click import to successfully import the file.
+
+![import](images/installation/7.png)
+4. Reload the http://localhost:8080/FirstAide-web/login.html webpage and signup as a new user. Check the table 'user' in the database 'pcsa_web' and confirm that a new record has been created.
+
+
+![new record](images/installation/8.png)
 
 ###Documentation
 
