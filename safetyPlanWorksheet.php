@@ -50,9 +50,9 @@
           <div class="wrap"><!--wrap used to expand content when heading clicked-->
             <p class="heading">Concerns</p>
               <div class="content">
-                Have you anticipated where and in which ways you might come into contact with the perpetrator and perpetrator’s friends/family?
+                Have you anticipated where and in which ways you might come into contact with the perpetrator and perpetrator&#x27;s friends/family?
                 <br>
-                If you were to come into contact with the perpetrator and perpetrator’s family/friends, what specific things could you do that might help you feel safe in that situation?
+                If you were to come into contact with the perpetrator and perpetrator&#x27;s family/friends, what specific things could you do that might help you feel safe in that situation?
                 <br>
                 Have you thought about making a plan in case of emergencies of who you could call, where you could go, and how you could get there? How can Peace Corps assist you in developing this plan?
               </div>
@@ -60,7 +60,7 @@
               <div class="content">
                 <ul>
                   <li> Know where to go for help</li>
-                  <li> Have a way to alert neighbors/counterparts if there’s a problem</li>
+                  <li> Have a way to alert neighbors/counterparts if there&#x27;s a problem</li>
                   <li> Help develop a phone list of people to call in an emergency</li>
                   <li> Ensure you have readily accessible emergency contact numbers for local authorities and PC </li>
                   <li> If requested, establish contacts between PC and counterpart, neighbors, local police and community leaders so they know how to contact PC </li>
@@ -74,13 +74,13 @@
           <div class="wrap">
             <p class="heading">Concerns</p>
               <div class="content">
-                Do you suspect the perpetrator or the perpetrator’s family/friends know where you live? If so, do you believe the perpetrator may have access to your housing? 
+                Do you suspect the perpetrator or the perpetrator&#x27;s family/friends know where you live? If so, do you believe the perpetrator may have access to your housing? 
                 <br><br>
                 Do you feel safe inside your home? What can Peace Corps do to help you feel safe inside your home (e.g., working locks on door/windows, etc.)? 
                 <br><br>
                 If you live with a host family or on a family compound, does anyone know about the incident? If not, would they be supportive if they were to learn of the incident?
                 <br><br>
-                If the perpetrator or the perpetrator’s family/friends were to show up at your home are there people you can turn to for assistance?
+                If the perpetrator or the perpetrator&#x27;s family/friends were to show up at your home are there people you can turn to for assistance?
                 <br><br>
                 In the unlikely event of a non-medical emergency, are there local friends, community members, or other Volunteers nearby who you can stay with or contact for assistance? If not, can Peace Corps help you identify individuals and establish those contacts? 
                 <br><br>
@@ -107,13 +107,13 @@
           <div class="wrap">
             <p class="heading">Concerns</p>
               <div class="content">
-                Does the perpetrator know your cell phone number? Your email address? Have you thought about what you would do if the perpetrator or perpetrator’s friends/family attempts to contact you or posts things about you online?  What can Peace Corps do to help you?
+                Does the perpetrator know your cell phone number? Your email address? Have you thought about what you would do if the perpetrator or perpetrator&#x27;s friends/family attempts to contact you or posts things about you online?  What can Peace Corps do to help you?
                 <br><br>
                 Does the perpetrator know any of your passwords? If so, have you considered changing your passwords?
                 <br><br>
-                Do you have any social media accounts (e.g., Facebook, Google, Twitter, Linked In, blogs)? Are you “friends” with the perpetrator or perpetrator’s friends/family? If so, do you know how to block the perpetrator or perpetrator’s family or friends?
+                Do you have any social media accounts (e.g. Facebook, Google, Twitter, LinkedIn, blogs)? Are you &quot;friends&quot; with the perpetrator or perpetrator&#x27;s friends/family? If so, do you know how to block the perpetrator or perpetrator&#x27;s family or friends?
                 <br><br>
-                Are you concerned that the perpetrator or perpetrator’s family/friends will contact you on the Internet?  If they do, have you thought about what you will do?
+                Are you concerned that the perpetrator or perpetrator&#x27;s family/friends will contact you on the Internet?  If they do, have you thought about what you will do?
               </div>
             <p class="heading">Actions</p>
               <div class="content">
@@ -134,7 +134,7 @@
           <div class="wrap">
             <p class="heading">Concerns</p>
               <div class="content">
-                Does the perpetrator or perpetrator’s family/friends know where you work? 
+                Does the perpetrator or perpetrator&#x27;s family/friends know where you work? 
                 <br><br>
                 Does anyone else at work know about the incident?
                 <br><br>
@@ -165,11 +165,11 @@
               <div class="content">
                Do you anticipate that you will see the perpetrator when you are out in public? If yes, where?
                <br><br>
-               Do you see the perpetrator’s family/friends when you are out in public? If yes, where?
+               Do you see the perpetrator&#x27;s family/friends when you are out in public? If yes, where?
                <br><br>
                If needed, is there someone you trust who can accompany you to the places you need to go?
                <br><br>
-               If you were approached by the perpetrator or perpetrator’s friends/family in a public place, do you know where you could go to be safe?
+               If you were approached by the perpetrator or perpetrator&#x27;s friends/family in a public place, do you know where you could go to be safe?
                <br><br>
                Do you have any concerns about rumors related to the incident that are mentioned by community members or other Volunteers? How might you respond to these? How might these rumors impact you? How can Peace Corps assist you in dealing with rumors?
                <br><br>
@@ -180,7 +180,7 @@
                 <ul>
                   <li>  Establish regular check-in plan with PCMO and other PC staff</li>
                   <li> Find out what support services are available to you, including Volunteer Support Network and PCVLs</li>
-                  <li> Trust your instincts; don’t worry about appearing to over-react (over-reacting is okay)</li>
+                  <li> Trust your instincts; don&#x27;t worry about appearing to over-react (over-reacting is okay)</li>
                   <li> Be aware of unhealthy coping mechanisms such as self-medicating, isolating oneself, hurting oneself, etc. and seek help from PC</li>
                   <li> Ask Peace Corps for help before stress becomes overwhelming.</li>
                 </ul>
@@ -206,7 +206,7 @@
                  <li>  Assist with identifying a safe taxi/moto-taxi or bus services</li>
                  <li> Ensure that the Volunteer has readily accessible emergency contact numbers for local authorities and PC</li>
                  <li> Notify Peace Corps as soon as possible of safety and security concerns</li>
-                 <li> Trust your instincts; don’t worry about appearing to over-react </li>
+                 <li> Trust your instincts; don&#x27;t worry about appearing to over-react </li>
                  <li> Modify daily routines, change times and routes to frequent locations if possible</li>
                  <li> Keep personal belongings secure at all times</li>
                 </ul>
