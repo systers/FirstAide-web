@@ -29,12 +29,28 @@ Or download the ZIP file from above
 
 ###Opening and Running
 1. Launch XAMPP by opening XAMPP control panel
-2. Start 'Apache' and 'MySQL' 
+2. Start 'Apache' and 'MySQL'
+![Start Apache and MySQL](images/installation/1.png)
 3. Check if XAMPP has started using the url 'http://localhost:8080/' (Here 8080 is the port number, use the one which you have configured)
 4. Now extract the ZIP file of the project FirstAide-web which you have downloaded and paste it in the C:\xampp\htdocs (the path where your xampp is present)
 5. Open the file which you want to work with using the text editor you have downloaded
 6. Make the required changes and save the file
 7. Now, view your changes using the url http://localhost:8080/directory_name/file_name.extension  Example: 'http://localhost:8080/FirstAide-web/login.html'
+
+###Database Setup
+1. Go to 'http://localhost/phpmyadmin', on the left panel click on the new option to create a new database. Set the name of the database as 'pcsa_web' and click on create.
+
+![create databse](images/installation/3.png)
+2. In the top menu bar of the phpMyAdmin panel, click on Import. Now, click on 'Choose the file'. Select the pcsa_web.sql file present in database folder of this project.
+
+![select file](images/installation/6.png)
+3. Click import to successfully import the file.
+
+![import](images/installation/7.png)
+4. Reload the http://localhost:8080/FirstAide-web/login.html webpage and signup as a new user. Check the table 'user' in the database 'pcsa_web' and confirm that a new record has been created.
+
+
+![new record](images/installation/8.png)
 
 ###Documentation
 
@@ -98,7 +114,7 @@ References :
 [Tutorial for Group SMS](https://www.youtube.com/watch?v=G4oluQf_7S4)
 
 ## Contributing 
-If you want to contribute to FirstAide-Web, subscribe to our [systers-dev](http://systers.org/mailman/listinfo/systers-dev) mailing list and shoot an introductory email. Pick an open issue from the [issue list](https://github.com/systers/FirstAide-Web/issues), claim it in the comments and wait for approval, fix the issue and send a pull request. 
+If you want to contribute to FirstAide-Web, subscribe to our [systers-dev](http://systers.org/mailman/listinfo/systers-dev) mailing list and shoot an introductory email or you can join our slack channel as well. Pick an open issue from the [issue list](https://github.com/systers/FirstAide-Web/issues), claim it in the comments and wait for approval, fix the issue and send a pull request. 
 If you find an issue yourself you can report it, a community member will get back to you and approve the issue. Then you can fix it and submit a PR. Please go through our issue list first and make sure the issues you are reporting  do not replicate the issues already reported. If you have issues on multiple pages, report them separately. Do not combine them into a single issue.
 
 ### Rules for Contributing

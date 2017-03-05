@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2016 at 02:44 PM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 5.6.19
+-- Generation Time: Mar 04, 2017 at 04:31 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -32,6 +32,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `dupemail` (IN `mail` VARCHAR(100)) 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getcomradenum` (IN `inemail` VARCHAR(100), IN `incomradeid` INT(1))  select phonenumber from comrade where email = inemail and comradeid = incomradeid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `pass` VARCHAR(100), IN `mail` VARCHAR(100))  SELECT * from user where password = pass AND email = mail$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `nameemail` (IN `emailid` VARCHAR(100))  NO SQL
+SELECT username from user where email=emailid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registration` (IN `mail` VARCHAR(100), IN `uname` VARCHAR(100), IN `pass` VARCHAR(100), IN `country` VARCHAR(100))  INSERT INTO user VALUES(mail,uname,pass,country)$$
 

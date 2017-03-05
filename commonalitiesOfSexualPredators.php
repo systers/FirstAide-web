@@ -82,18 +82,18 @@
             <b>Attempt to isolate their potential victim.</b> They may target someone who is already alone. For example, walking alone, or they may try to get their target alone by offering a ride in their car.
           </li>
           <li>
-            <b>Persuasion and confidence.</b>This is the “Smooth Talker” who puts you at ease.  They make you feel comfortable and relaxed so you are not aware of their true intent.  They may try to persuade you to do something you feel uncomfortable about.  They might promise that they won’t try anything with you or reassure you by saying “You can trust me.”
+            <b>Persuasion and confidence.</b>This is the &quot;Smooth Talker&quot; who puts you at ease.  They make you feel comfortable and relaxed so you are not aware of their true intent.  They may try to persuade you to do something you feel uncomfortable about.  They might promise that they won&#x27;t try anything with you or reassure you by saying &quot;You can trust me.&quot;
           </li>
-            <b>Pressure and guilt.</b>Sexual predators may try to coerce you by pressuring you to go farther in a relationship than you are ready or willing to go.  They may try to make you feel guilty if you do not give in to their advances. They might say “You are offending me culturally” or something similar to make Volunteers feel guilty.
+            <b>Pressure and guilt.</b>Sexual predators may try to coerce you by pressuring you to go farther in a relationship than you are ready or willing to go.  They may try to make you feel guilty if you do not give in to their advances. They might say &quot;You are offending me culturally&quot; or something similar to make Volunteers feel guilty.
           <li>
             <b>Threats and intimidation.</b> Sometimes the sexual predator threatens to physically harm the Volunteer or someone they care about.  They might also threaten to blackmail the Volunteer unless they comply.
           </li>
           <li>
-            <b>Force and violence.</b>Force and Violence involves a direct physical attack to overpower a Volunteer.  It is what we frequently see on TV and in movies…like when the assailant jumps out of the bushes with a knife and attacks an unsuspecting jogger.
+            <b>Force and violence.</b>Force and Violence involves a direct physical attack to overpower a Volunteer.  It is what we frequently see on TV and in movies &#x2D;like when the assailant jumps out of the bushes with a knife and attacks an unsuspecting jogger.
           </li>
           <li>
             <b>Drugs, including alcohol</b>
-            Description to be provided....
+            Description to be provided.
           </li>
         </ul>
       </td>
