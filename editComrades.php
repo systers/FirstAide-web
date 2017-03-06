@@ -114,12 +114,12 @@
     $dbphos comes from loadComradeNumbers.php
 -->
   <div class="inputs">
-    <input type="text" value="<?php echo htmlentities($dbphnos[1]); ?>" name="comrade1"  id="comrade1" placeholder="Comrade 1" />
-    <input type="text" value="<?php echo htmlentities($dbphnos[2]); ?>" name="comrade2" id="comrade2" placeholder="Comrade 2"/>
-    <input type="text" value="<?php echo htmlentities($dbphnos[3]); ?>" name="comrade3" id="comrade3" placeholder="Comrade 3"/>
-    <input type="text" value="<?php echo htmlentities($dbphnos[4]); ?>" name="comrade4" id="comrade4" placeholder="Comrade 4"/>
-    <input type="text" value="<?php echo htmlentities($dbphnos[5]); ?>" name="comrade5" id="comrade5" placeholder="Comrade 5"/>
-    <input type="text" value="<?php echo htmlentities($dbphnos[6]); ?>" name="comrade6" id="comrade6" placeholder="Comrade 6"/>
+    <input type="number" value="<?php echo htmlentities($dbphnos[1]); ?>" name="comrade1" id="comrade1" placeholder="Comrade 1" />
+    <input type="number" value="<?php echo htmlentities($dbphnos[2]); ?>" name="comrade2" id="comrade2" placeholder="Comrade 2"/>
+    <input type="number" value="<?php echo htmlentities($dbphnos[3]); ?>" name="comrade3" id="comrade3" placeholder="Comrade 3"/>
+    <input type="number" value="<?php echo htmlentities($dbphnos[4]); ?>" name="comrade4" id="comrade4" placeholder="Comrade 4"/>
+    <input type="number" value="<?php echo htmlentities($dbphnos[5]); ?>" name="comrade5" id="comrade5" placeholder="Comrade 5"/>
+    <input type="number" value="<?php echo htmlentities($dbphnos[6]); ?>" name="comrade6" id="comrade6" placeholder="Comrade 6"/>
   </div>
   <input class="small-button" type="submit" value="SAVE"/>
 </div>
