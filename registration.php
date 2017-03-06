@@ -54,7 +54,7 @@
      <input class="button" type="submit" value="Create Account">
     <br><br>
     <img src="images/secure.png" style="width: 20px; height: 20px;"/>
-    <a href="#">This is a secure portal</a>
+    <div class="text">This is a secure portal</div>
   </div>
 </center>
   <script src="javascripts/passwordStrengthChecker.js"></script>
