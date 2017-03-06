@@ -2,22 +2,24 @@
     Desc: form for entering comrade numbers and code to edit numbers
 -->
 <!DOCTYPE html>
-<html>
+<html  >
 <head>
   <title>FirstAide</title>
   <link rel="stylesheet" type="text/css" href="css files/circle-of-trust.css"/>
   <link rel="stylesheet" href="css files/sweetalert.css"/>
+  <script src="https://code.angularjs.org/1.4.8/angular.js"></script>
   <script src="javascripts/sweetalert.min.js"></script>
   <script src="javascripts/sweetalert.js"></script>
+  <script src="javascripts/countrycode.js"></script>
   <form method="POST"/>
 </head>
-<body>
+<body  >
 <?php
      include('menu.php');
-     include('loadComradeNumbers.php'); 
+     include('loadComradeNumbers.php');
 ?>
 <center>
-<div class="window">
+<div class="window" ng-app="myApp" ng-controller="countryCtrl" >
   <div>
     <h1 class="text">Circle of Trust</h1>
     <hr class="line">
@@ -32,30 +34,26 @@
   </div>
 
   <?php
-   
-   require 'dbconnect.php'; 
-   
-   if(!isset($_SESSION)) 
-     session_start(); 
+   require 'dbconnect.php';
+   if(!isset($_SESSION))
+     session_start();
    if(!isset($_SESSION['email']))
-   {  
-      header("location: login.php"); 
+   {
+      header("location: login.php");
    }
     $useremail = $_SESSION['email'];
     $formphnos = array('p1','p2','p3','p4','p5','p6');//will be used for checking duplicate number
-   
     if(isset($_POST['comrade1'])||isset($_POST['comrade2'])||isset($_POST['comrade3'])||isset($_POST['comrade4'])||isset($_POST['comrade5'])||isset($_POST['comrade6']))
     {
       $invalid = 0;//to check if number consists of anything other than digits
-      for($i=1;$i<=6;$i++) 
+      for($i=1;$i<=6;$i++)
       {
         $id = 'comrade'.$i;
         if(!empty($_POST[$id]))
-          $formphnos[$i] = $_POST[$id]; 
-        if(!preg_match("/^([0-9]*)$/", $_POST[$id]))
+          $formphnos[$i] = $_POST[$id];
+        if(!preg_match("/^\+?([0-9]*)$/", $_POST[$id]))
           $invalid++;
       }
-
       if($invalid>0)
       {
         echo "<script>salert('Invalid data','Please enter valid number and try again!','error');</script>";
@@ -64,33 +62,29 @@
       {
           echo "<script>salert('Duplicate Phone Number','Please enter again!','error');</script>";
       }
-      else 
+      else
       {
           for($i=1;$i<=6;$i++)
           {
             $id = 'comrade'.$i;
             $phno = $_POST[$id];
-            
             if(empty($phno))
             {
               $query = mysqli_query($connection,"CALL updatecomrade($i,'$useremail',NULL)");
             }
-            else 
+            else
             {
               $query = mysqli_query($connection,"CALL updatecomrade($i,'$useremail','$phno')");
             }
-            $connection -> next_result(); 
+            $connection -> next_result();
           }
-
           //Messages to inform state of execution
           $nochange = 0;
           $empty = 0;
-      
           for($i=1;$i<=6;$i++)
           {
             $id = 'comrade'.$i;
             $newphno = $_POST[$id];
-      
             if($newphno==$dbphnos[$i])
               $nochange++;
             if($newphno==NULL)
@@ -103,9 +97,7 @@
             echo "<script>salert('No changes Detected','Data was not updated','error');</script>";
           else
             echo "<script>salert('Success','Data was updated','success');</script>";
-
       }
-      
     }
     mysqli_close($connection);
     include('loadComradeNumbers.php'); //load phonenumbers again after updation
@@ -113,18 +105,29 @@
 <!--must come after executing php (to load latest phone numbers)
     $dbphos comes from loadComradeNumbers.php
 -->
-  <div class="inputs">
-    <input type="text" value="<?php echo htmlentities($dbphnos[1]); ?>" name="comrade1"  id="comrade1" placeholder="Comrade 1" />
-    <input type="text" value="<?php echo htmlentities($dbphnos[2]); ?>" name="comrade2" id="comrade2" placeholder="Comrade 2"/>
-    <input type="text" value="<?php echo htmlentities($dbphnos[3]); ?>" name="comrade3" id="comrade3" placeholder="Comrade 3"/>
-    <input type="text" value="<?php echo htmlentities($dbphnos[4]); ?>" name="comrade4" id="comrade4" placeholder="Comrade 4"/>
-    <input type="text" value="<?php echo htmlentities($dbphnos[5]); ?>" name="comrade5" id="comrade5" placeholder="Comrade 5"/>
-    <input type="text" value="<?php echo htmlentities($dbphnos[6]); ?>" name="comrade6" id="comrade6" placeholder="Comrade 6"/>
-  </div>
-  <input class="small-button" type="submit" value="SAVE"/>
+
+
+<select ng-model="selectedCountry" ng-options="country.name for country in countriesWithPhoneCode">
+   <option value="">Select country</option>
+</select>
+ <br>
+ <div class="inputs"><ul style="list-style-type:none; display:table; margin:0 auto;">
+  <li><input type="text" ng-value="{true:selectedCountry.dialcode,false:''}[focused1]"  ng-focus="focused1=true" ng-blur="focused1=false" value="<?php echo htmlentities($dbphnos[1]); ?>" name="comrade1" id="comrade1" placeholder="Comrade 1" />
+  </li><li><input type="text" ng-value="{true:selectedCountry.dialcode,false:''}[focused2]"  ng-focus="focused2=true" ng-blur="focused2=false" value="<?php echo htmlentities($dbphnos[2]); ?>" name="comrade2" id="comrade2" placeholder="Comrade 2"/>
+  </li><li><input type="text" ng-value="{true:selectedCountry.dialcode,false:''}[focused3]"  ng-focus="focused3=true" ng-blur="focused3=false" value="<?php echo htmlentities($dbphnos[3]); ?>" name="comrade3" id="comrade3" placeholder="Comrade 3"/>
+  </li><li><input type="text" ng-value="{true:selectedCountry.dialcode,false:''}[focused4]"  ng-focus="focused4=true" ng-blur="focused4=false" value="<?php echo htmlentities($dbphnos[4]); ?>" name="comrade4" id="comrade4" placeholder="Comrade 4"/>
+  </li><li><input type="text" ng-value="{true:selectedCountry.dialcode,false:''}[focused5]"  ng-focus="focused5=true" ng-blur="focused5=false" value="<?php echo htmlentities($dbphnos[5]); ?>" name="comrade5" id="comrade5" placeholder="Comrade 5"/>
+  </li><li><input type="text" ng-value="{true:selectedCountry.dialcode,false:''}[focused6]"  ng-focus="focused6=true" ng-blur="focused6=false" value="<?php echo htmlentities($dbphnos[6]); ?>" name="comrade6" id="comrade6" placeholder="Comrade 6"/>
+</li>
+</ul>
+ </div>
+ <input class="small-button" type="submit" value="SAVE"/>
+
 </div>
+
+
+
+
 </center>
 </body>
 </html>
-
-
