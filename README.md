@@ -125,3 +125,4 @@ If you find an issue yourself you can report it, a community member will get bac
 5. If an issue is reported by a person, it is automatically assigned to that person
 6. Use meaningful commit messages and squash all your commits into one
 7. Only pick the issues which are labeled as free
+8. Do not create new issues if unresolved issues created by you are pending
