@@ -61,7 +61,7 @@ The documentation can be found here
 2.[docs of GSOC 16](https://github.com/systers/FirstAide-web/tree/master/work-docs)
 
 ###Guide to Naming Convention Used
-[Conventions and rules](https://google.github.io/styleguide/htmlcssguide.xml)
+[Conventions and rules](https://google.github.io/styleguide/htmlcssguide.html)
 
 ###How to Use CALL and SMS feature
 This project makes use of Twilio for sending SMS and making CALLS. Twilio is a third party platform which provides API in PHP for serving the purpose.
