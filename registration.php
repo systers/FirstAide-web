@@ -21,7 +21,7 @@
     <table class="tables">
        <tr>
          <th class="text">Username:</th>
-         <td><input class="input-box" type="text" id="uname" name="uname" placeholder="xyz123" required/></td>
+         <td><input class="input-box" type="text" id="uname" name="uname" placeholder="Enter your username" required/></td>
        </tr>
         <tr>
          <th class="text" style="vertical-align: top">Password:</th>
@@ -45,7 +45,7 @@
        </tr>
        <tr>
          <th class="text">Email:</th>
-         <td><input class="input-box" type="text" id="email" name="email" placeholder="xyz@gmail.xom" required /></td>
+         <td><input class="input-box" type="text" id="email" name="email" placeholder="Enter your email address" required /></td>
        </tr>
     </table>
   </div>
