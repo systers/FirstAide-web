@@ -84,7 +84,7 @@
         </h3>
        <h3>
          <a href="#">
-           Logged in as <?php echo $username ?><img src="images/secure.png" style="width: 20px;height: 20px; float:right;padding:5px;" />
+           Logged in as <img src="images/secure.png" style="width: 20px;height: 20px; float:right;padding:5px;" /><br><?php echo $username ?>
          </a>
        </h3>
        <h3>
