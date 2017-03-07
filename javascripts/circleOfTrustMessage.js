@@ -11,7 +11,7 @@ $(document).ready(function() {
                       else if(data==0)
                         salert('Error','No comrades registered'+data,'error');
                       else
-                        salert('Error',data,'error');
+                        salert('Error','Service Unavailable.','error');
                     closePopup(); 
                     
                   }
@@ -29,7 +29,7 @@ $(document).ready(function() {
                       else if(data==0)
                         salert('Error','No comrades registered'+data,'error');
                       else
-                        salert('Error',data,'error'); 
+                        salert('Error','Service Unavailable','error'); 
                     closePopup();
                   }
                );
@@ -46,7 +46,7 @@ $(document).ready(function() {
                       else if(data==0)
                         salert('Error','No comrades registered'+data,'error');
                       else
-                        salert('Error',data,'error');
+                        salert('Error','Service Unavailable','error');
                     closePopup();
                   }
                );
