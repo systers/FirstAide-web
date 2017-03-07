@@ -65,7 +65,7 @@
         <li><a href="#">Was it Sexual Assault</a></li>
         <li><a href="#">Sexual Assault Common Questions</a></li>
         <li><a href="#">Impact of Sexual Assault</a></li>
-        <li><a href="#">Sexual Harrasment</a></li>
+        <li><a href="#">Sexual Harassment</a></li>
         <li><a href="#">Helping a Friend or Community Member</a></li>
       </ul>
     </li>

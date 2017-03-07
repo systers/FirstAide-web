@@ -61,7 +61,7 @@ The documentation can be found here
 2.[docs of GSOC 16](https://github.com/systers/FirstAide-web/tree/master/work-docs)
 
 ###Guide to Naming Convention Used
-[Conventions and rules](https://google.github.io/styleguide/htmlcssguide.xml)
+[Conventions and rules](https://google.github.io/styleguide/htmlcssguide.html)
 
 ###How to Use CALL and SMS feature
 This project makes use of Twilio for sending SMS and making CALLS. Twilio is a third party platform which provides API in PHP for serving the purpose.
@@ -125,3 +125,4 @@ If you find an issue yourself you can report it, a community member will get bac
 5. If an issue is reported by a person, it is automatically assigned to that person
 6. Use meaningful commit messages and squash all your commits into one
 7. Only pick the issues which are labeled as free
+8. Do not create new issues if unresolved issues created by you are pending

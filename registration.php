@@ -21,7 +21,7 @@
     <table class="tables">
        <tr>
          <th class="text">Username:</th>
-         <td><input class="input-box" type="text" id="uname" name="uname" placeholder="xyz123" required/></td>
+         <td><input class="input-box" type="text" id="uname" name="uname" placeholder="Enter your username" required/></td>
        </tr>
         <tr>
          <th class="text" style="vertical-align: top">Password:</th>
@@ -45,7 +45,7 @@
        </tr>
        <tr>
          <th class="text">Email:</th>
-         <td><input class="input-box" type="text" id="email" name="email" placeholder="xyz@gmail.xom" required /></td>
+         <td><input class="input-box" type="text" id="email" name="email" placeholder="Enter your email address" required /></td>
        </tr>
     </table>
   </div>
@@ -54,7 +54,7 @@
      <input class="button" type="submit" value="Create Account">
     <br><br>
     <img src="images/secure.png" style="width: 20px; height: 20px;"/>
-    <a href="#">This is a secure portal</a>
+    <div class="text">This is a secure portal</div>
   </div>
 </center>
   <script src="javascripts/passwordStrengthChecker.js"></script>
@@ -87,7 +87,9 @@
       else
       {
         $email = $_POST['email'];
-        $newUser="CALL registration('$_POST[email]','$_POST[uname]','$_POST[password]','$_POST[host_country]')"; //inserts into the user table
+        $password = $_POST['password'];
+        $password = md5($email.$password);
+        $newUser="CALL registration('$_POST[email]','$_POST[uname]','$password','$_POST[host_country]')"; //inserts into the user table
 
         if(mysqli_query($connection,$newUser))
         {//if successfully added user then add comrades of user with null phone numbers
