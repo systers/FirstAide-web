@@ -1,12 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Mar 04, 2017 at 04:31 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.1
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -19,6 +10,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `pcsa_web`
 --
+CREATE DATABASE IF NOT EXISTS pcsa_web;
 
 DELIMITER $$
 --
