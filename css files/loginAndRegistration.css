@@ -45,6 +45,7 @@ a:hover {
     text-align: center;
     width: 25%;
     font-family: 'Avenir Next Bold';
+    cursor: pointer;
 }
 
 .button:hover {
