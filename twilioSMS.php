@@ -22,9 +22,10 @@
   
   if(isset($_POST['getnum']))
     $number = $_POST['getnum'];//get number from twilio-sms.js
-  else 
+  else if(isset($_POST['number'])) 
     $number = $_POST['number'];//get number from the form input 'number'
-
+  else
+    header("location:getHelpNow.php")
 ?>
 <center>
 <div class="window">
