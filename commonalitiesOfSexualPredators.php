@@ -16,7 +16,6 @@
 <head>
   <title>FirstAide</title>
   <link rel="stylesheet" type="text/css" href="css files/safety-tools.css"/>
-  <link rel="stylesheet" type="text/css" href="design.css"/>
 </head>
 <body>
 <?php
