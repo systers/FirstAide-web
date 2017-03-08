@@ -18,12 +18,15 @@
     $value = '+'.$value; //Add + to make it a valid number
    }
    unset($value);
-
-    if( $_REQUEST["msg"] ){ //getting the body of the msg from twilio-sms.js
+    if(isset($_REQUEST["msg"])){
+      if( $_REQUEST["msg"] ){ //getting the body of the msg from twilio-sms.js
 
       $msg = $_REQUEST['msg'];
+      }
     }
-
+    else{
+      header("location:circleOfTrust.php");
+    }
     //set AccountSid and AuthToken from www.twilio.com/user/account
     $AccountSid = "";
     $AuthToken = "";
