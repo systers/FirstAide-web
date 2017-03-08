@@ -11,6 +11,7 @@ function make_call(phonenum)
     input.type = "text";
     input.name = "getnum";
     input.value = phonenum;
+    document.body.appendChild(form);
     form.appendChild(input);
     form.submit();
    };
