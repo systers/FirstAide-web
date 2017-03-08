@@ -39,6 +39,13 @@
            </div>
 
          </td>
+         </tr>
+        <tr>
+         <th class="text" style="vertical-align: top">Confirm Password:</th>
+         <td>
+           <input class="input-box" type="password" id="confirmpassword" name="confirmpassword" required/>
+
+         </td>
         <tr>
          <th class="text">Host Country:</th>
          <td><input class="input-box" type="text" id="host_country" name="host_country" placeholder="India" required/></td>
