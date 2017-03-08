@@ -51,6 +51,7 @@
   </div>
   <!--submit button-->
   <div class="div-reg">
+     <input class="button" type="submit" id="submit" value="Sign in to Account" onclick="location.href='login.php';">
      <input class="button" type="submit" value="Create Account">
     <br><br>
     <img src="images/secure.png" style="width: 20px; height: 20px;"/>
