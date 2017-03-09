@@ -41,7 +41,7 @@
          </td>
         <tr>
          <th class="text">Host Country:</th>
-         <td><input class="input-box" type="text" id="host_country" name="host_country" placeholder="India" required/></td>
+         <td><select id = "host_country" name = "host_country" required></select></td>
        </tr>
        <tr>
          <th class="text">Email:</th>
@@ -61,6 +61,20 @@
   <script type="text/javascript" src="javascripts/validation-v12.js"></script>
   <script src="javascripts/sweetalert.min.js"></script>
   <script src="javascripts/sweetalert.js"></script>
+  <script src="javascripts/jquery-1.12.4.min.js"></script>
+  <script> 
+  $.getJSON("javascripts/country.json", function(json) {
+    
+    var countryElement = $("#host_country");
+    $.each(json,function(index, value){
+    console.log(index,value); 
+    var countryOption = '<option value="' + value + '">'+ value + '</option>';
+    if(value == 'Uganda') {
+       countryOption = '<option value="' + value + '" selected>'+ value + '</option>';
+    }
+    countryElement.append(countryOption);
+  });
+  });</script>
 </body>
 </html>
 <?php
