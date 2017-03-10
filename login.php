@@ -21,11 +21,11 @@
   <table class="tables">
     <tr>
         <th class="text">Email:</th>
-         <td><input class="input-box" type="text" id="email" name="email" required/></td>
+         <td><input class="input-box" type="text" id="email" name="email" placeholder="Enter your email address" required/></td>
        </tr>
         <tr>
          <th class="text">Password:</th>
-         <td><input class="input-box" type="password" id="password" name="password" required/></td>
+         <td><input class="input-box" type="password" id="password" name="password" placeholder="Enter your password" required/></td>
        </tr>
   </table>
   </div>
