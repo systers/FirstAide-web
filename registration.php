@@ -53,6 +53,7 @@
   <div class="div-reg">
      <input class="button" type="submit" value="Create Account">
     <br><br>
+    <p class="text">Already have an account?&nbsp<a href ="login.php">Sign in</a></p><br><br>  
     <img src="images/secure.png" style="width: 20px; height: 20px;"/>
     <div class="text">This is a secure portal</div>
   </div>
