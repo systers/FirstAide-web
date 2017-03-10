@@ -11,6 +11,7 @@ function validate() {
     var uname = document.getElementById('uname');
     var pwd = document.getElementById('password');
     var country = document.getElementById('host_country');
+    var confirmpassword = document.getElementById('confirmpassword');
 
     // regular expressions for validation in registration page
     var regexname = /^[a-zA-Z ]+\d*$/;
@@ -34,6 +35,16 @@ function validate() {
     }
     else
         document.getElementById('host_country').style.borderColor = "white";
+
+    // validate confirm password
+    if (confirmpassword.value != pwd.value)
+    {
+        invalid++;
+        document.getElementById('confirmpassword').style.borderColor = "red";
+    }
+    else
+        document.getElementById('confirmpassword').style.borderColor = "white";
+
 
     // validate email id
     if (!regexemail.test(email.value))
