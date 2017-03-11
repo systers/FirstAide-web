@@ -96,7 +96,7 @@
 
    require 'dbconnect.php';
 
-   if(isset($_POST['email'])&&isset($_POST['uname'])&&isset($_POST['password'])&&isset($_POST['host_country']))
+   if(isset($_POST['email'])&&isset($_POST['uname'])&&isset($_POST['password'])&&isset($_POST['host_country']&&!empty($_POST['email'])&&!empty($_POST['uname'])))
    {
       $sql="CALL dupemail('$_POST[email]')";
       $result = mysqli_query($connection,$sql);
