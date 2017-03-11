@@ -34,7 +34,7 @@
   <table id="buttons-table">
   	<tr>
   	  <td>
-  	    <button class="button" id="bt-safetystg" name="bt-safetystg">Safety Startegies Helpline</button>
+  	    <button class="button" id="bt-safetystg" name="bt-safetystg">Safety Strategies Helpline</button>
   	  </td>
   	  <td>
   	    <button class="button" id="bt-helping" name="bt-helping">Helping a friend or Community member</button>
