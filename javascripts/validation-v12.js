@@ -13,6 +13,14 @@ function validate() {
     var country = document.getElementById('host_country');
     var confirmpassword = document.getElementById('confirmpassword');
 
+    var password_error = document.getElementById('password_error');
+    var email_error = document.getElementById('email_error');
+    var uname_error = document.getElementById('uname_error');
+
+    document.getElementById('password_error').style.display = "none";
+    document.getElementById('email_error').style.display = "none";
+    document.getElementById('uname_error').style.display = "none";	
+
     // regular expressions for validation in registration page
     var regexname = /^[a-zA-Z ]+\d*$/;
     var regexcountry = /^[a-zA-Z]{2,}$/;
@@ -23,6 +31,8 @@ function validate() {
     {
         invalid++;
         document.getElementById('uname').style.borderColor = "red";
+	document.getElementById('uname_error').style.display = "block";
+	document.getElementById('uname_error').innerHTML = "Must be a valid username";
     }
     else
         document.getElementById('uname').style.borderColor = "white";
@@ -41,6 +51,8 @@ function validate() {
     {
         invalid++;
         document.getElementById('confirmpassword').style.borderColor = "red";
+	document.getElementById('password_error').style.display = "block";
+	document.getElementById('password_error').innerHTML = "Passwords do not match";
     }
     else
         document.getElementById('confirmpassword').style.borderColor = "white";
@@ -51,6 +63,8 @@ function validate() {
     {
         invalid++;
         document.getElementById('email').style.borderColor = "red";
+	document.getElementById('email_error').style.display = "block";
+	document.getElementById('email_error').innerHTML = "Must be a valid email address";
     }
     else
         document.getElementById('email').style.borderColor = "white";
