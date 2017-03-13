@@ -1,12 +1,16 @@
 <!--Created by Akanksha
     Desc: Registration form and code to register the user
 -->
+<?php
+  require_once('includes/settings.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <title>FirstAide</title>
   <link rel="stylesheet" type="text/css" href="css files/loginAndRegistration.css">
   <link rel="stylesheet" href="css files/sweetalert.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <form method="POST" onsubmit="return validate()" /><!--validations for form fields entered js file- validation-v12.js-->
 </head>
 <body>
@@ -55,6 +59,7 @@
          <td><input class="input-box" type="text" id="email" name="email" placeholder="Enter your email address" required /></td>
        </tr>
     </table>
+    <div class="g-recaptcha" data-sitekey="<?php echo $_settings['reCaptcha']['client_key']?>"></div> 
   </div>
   <!--submit button-->
   <div class="div-reg">
@@ -98,6 +103,22 @@
 
    if(isset($_POST['email'])&&isset($_POST['uname'])&&isset($_POST['password'])&&isset($_POST['host_country'])&&!empty($_POST['email'])&&!empty($_POST['uname']))
    {
+     $reCaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
+     $ch = curl_init();
+
+     curl_setopt($ch, CURLOPT_URL, $reCaptchaUrl);
+     curl_setopt($ch, CURLOPT_POST, 1);
+     curl_setopt($ch, CURLOPT_POSTFIELDS, "secret=".$_settings['reCaptcha']['server_key']."&response=".$_POST['g-recaptcha-response']);
+     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+     $server_output = curl_exec ($ch);
+     curl_close ($ch);
+     $reCaptchaResponse = json_decode($server_output);
+     if(!$reCaptchaResponse->success)
+     {
+        echo "<script type='text/javascript'>salert('Oops','Captcha not verified','error');</script>";
+     }
+     else
+     {
       $sql="CALL dupemail('$_POST[email]')";
       $result = mysqli_query($connection,$sql);
       $connection -> next_result(); //used when there are multiple procedure calls, use after ecah procedure call
@@ -131,6 +152,6 @@
           echo "<script type='text/javascript'>salert('Oops','Error in adding user','error');</script>";
       }
       mysqli_close($connection);
-   }
-
+     }
+    }
 ?>
