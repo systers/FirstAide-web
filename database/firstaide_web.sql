@@ -1,3 +1,14 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 12, 2017 at 10:38 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.1.1
+CREATE DATABASE IF NOT EXISTS firstaide_web;
+USE firstaide_web;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -8,10 +19,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pcsa_web`
+-- Database: `firstaide_web`
 --
-CREATE DATABASE IF NOT EXISTS pcsa_web;
-USE pcsa_web;
 
 DELIMITER $$
 --
@@ -49,6 +58,7 @@ CREATE TABLE `comrade` (
   `comrade_email` varchar(100) CHARACTER SET latin1 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
 -- --------------------------------------------------------
 
 --
@@ -62,13 +72,7 @@ CREATE TABLE `user` (
   `host_country` varchar(100) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Indexes for dumped tables
---
 
---
--- Indexes for table `comrade`
---
 ALTER TABLE `comrade`
   ADD PRIMARY KEY (`comradeid`,`email`),
   ADD UNIQUE KEY `comrade_email` (`comrade_email`),
