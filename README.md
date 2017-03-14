@@ -27,7 +27,7 @@ Go to your terminal and execute this command
 
 Or download the ZIP file from above
 
-###Opening and Running
+### Opening and Running
 1. Launch XAMPP by opening XAMPP control panel
 2. Start 'Apache' and 'MySQL'
 ![Start Apache and MySQL](images/installation/1.png)
@@ -37,7 +37,23 @@ Or download the ZIP file from above
 6. Make the required changes and save the file
 7. Now, view your changes using the url http://localhost:8080/directory_name/file_name.extension  Example: 'http://localhost:8080/FirstAide-web/login.html'
 
-###Database Setup
+### Setting up reCaptcha
+1. Visit https://www.google.com/recaptcha/intro/ and click on Get reCaptcha. 
+2. Fill the details as shown in the screenshot below and then click to register.
+
+![Register for reCaptcha](images/recaptcha/1.png)
+
+3. Now, copy the client-side key and server-side key temporarily to your clipboard.
+
+![Server and Client key](images/recaptcha/2.jpg)
+
+4. Add the keys to includes/settings.php.
+
+![Adding the keys](images/recaptcha/3.png)
+
+5. Reload the registration page to see the captcha working.
+
+### Database Setup
 1. Go to 'http://localhost/phpmyadmin', on the left panel click on the new option to create a new database. Set the name of the database as 'pcsa_web' and click on create.
 
 ![create databse](images/installation/3.png)
@@ -52,7 +68,7 @@ Or download the ZIP file from above
 
 ![new record](images/installation/8.png)
 
-###Documentation
+### Documentation
 
 The documentation can be found here
 
