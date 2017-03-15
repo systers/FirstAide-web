@@ -35,7 +35,7 @@
     <h3><a href="circleOfTrust.php">Circle of Trust</a></h3>
   </li>
     <li>
-      <h3>Safety Tools</h3>
+      <h3 id="safetyTools">Safety Tools</h3>
       <ul class="ul-menu">
         <li><a href="safetyTools1.php">Safety Tools Main</a></li>
         <li><a href="personalSecurityStrategies.php">Personal Security Strategies</a></li>
@@ -48,7 +48,7 @@
       </ul>
     </li>
     <li>
-      <h3>Support Services</h3><!--Replace # with the php files-->
+      <h3 id="supportServices">Support Services</h3><!--Replace # with the php files-->
       <ul class="ul-menu">
         <li><a href="#">Support Services Main</a></li>
         <li><a href="#">Benefits of Seeking Staff Support</a></li>
@@ -59,7 +59,7 @@
       </ul>
     </li>
     <li>
-      <h3>Sexual Assault Awareness</h3>
+      <h3 id="sexualAssaultAwareness">Sexual Assault Awareness</h3>
       <ul class="ul-menu">
         <li><a href="#">Sexual Assault Main</a></li>
         <li><a href="#">Was it Sexual Assault</a></li>
@@ -70,7 +70,7 @@
       </ul>
     </li>
     <li>
-      <h3>Policies and Glossary</h3>
+      <h3 id="policyAndGlossary">Policies and Glossary</h3>
       <ul class="ul-menu">
         <li><a href="#">PeaceCorps Policy Summary Sheet</a></li>
         <li><a href="#">Glossary</a></li>
@@ -92,6 +92,7 @@
        </h3>
     </li>
 </div>
+  <script type="text/javascript" src="javascripts/js.cookie.js"></script>
   <script type="text/javascript" src="javascripts/jquery-1.12.4.min.js"></script>
   <script type="text/javascript" src="javascripts/menu.js"></script>  
 </body>
