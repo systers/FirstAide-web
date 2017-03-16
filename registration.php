@@ -87,7 +87,6 @@
     
     var countryElement = $("#host_country");
     $.each(json,function(index, value){
-    console.log(index,value); 
     var countryOption = '<option value="' + value + '">'+ value + '</option>';
     if(value == 'Uganda') {
        countryOption = '<option value="' + value + '" selected>'+ value + '</option>';
