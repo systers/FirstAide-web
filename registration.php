@@ -53,7 +53,6 @@
            <input class="input-box" type="password" id="confirmpassword" name="confirmpassword" required/>
 	   <div class="requirements" id="password_error" name="password_error"/>
          </td>
-	</tr>
         <tr>
          <th class="text">Host Country:</th>
          <td><select id = "host_country" name = "host_country" required></select></td>
