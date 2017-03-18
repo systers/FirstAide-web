@@ -19,7 +19,7 @@ function validate() {
 
     document.getElementById('password_error').style.display = "none";
     document.getElementById('email_error').style.display = "none";
-    document.getElementById('uname_error').style.display = "none";	
+    document.getElementById('uname_error').style.display = "none";
 
     // regular expressions for validation in registration page
     var regexname = /^[a-zA-Z ]+\d*$/;
@@ -32,7 +32,7 @@ function validate() {
         invalid++;
         document.getElementById('uname').style.borderColor = "red";
 	document.getElementById('uname_error').style.display = "block";
-	document.getElementById('uname_error').innerHTML = "Must be a valid username";
+	document.getElementById('uname_error').innerHTML = "Must be a valid username.<br/>Example: abcd123, ABCD, ABCD123";
     }
     else
         document.getElementById('uname').style.borderColor = "white";
@@ -64,7 +64,7 @@ function validate() {
         invalid++;
         document.getElementById('email').style.borderColor = "red";
 	document.getElementById('email_error').style.display = "block";
-	document.getElementById('email_error').innerHTML = "Must be a valid email address";
+	document.getElementById('email_error').innerHTML = "Must be a valid email address.<br/>Example: abc@gmail.com ";
     }
     else
         document.getElementById('email').style.borderColor = "white";
