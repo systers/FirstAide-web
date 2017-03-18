@@ -82,6 +82,7 @@ a:hover {
 .requirements {
     display: none;
     color: red;
+    padding-top: 10px;
 }
 
 /* ===HORIZONTAL LINE=== */
