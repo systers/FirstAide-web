@@ -38,16 +38,13 @@ Or download the ZIP file from above
 7. Now, view your changes using the url http://localhost:8080/directory_name/file_name.extension  Example: 'http://localhost:8080/FirstAide-web/login.html'
 
 ###Database Setup
-1. Go to 'http://localhost/phpmyadmin', on the left panel click on the new option to create a new database. Set the name of the database as 'pcsa_web' and click on create.
-
-![create databse](images/installation/3.png)
-2. In the top menu bar of the phpMyAdmin panel, click on Import. Now, click on 'Choose the file'. Select the pcsa_web.sql file present in database folder of this project.
+1. Go to 'http://localhost/phpmyadmin', in the top menu bar of the phpMyAdmin panel, click on Import. Now, click on 'Choose the file'. Select the firstaide_web.sql file present in database folder of this project.
 
 ![select file](images/installation/6.png)
-3. Click import to successfully import the file.
+2. Click import to successfully import the file.
 
 ![import](images/installation/7.png)
-4. Reload the http://localhost:8080/FirstAide-web/login.html webpage and signup as a new user. Check the table 'user' in the database 'pcsa_web' and confirm that a new record has been created.
+3. Reload the http://localhost:8080/FirstAide-web/login.html webpage and signup as a new user. Check the table 'user' in the database 'firstaide_web' and confirm that a new record has been created.
 
 
 ![new record](images/installation/8.png)
