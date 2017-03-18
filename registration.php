@@ -25,10 +25,13 @@
     <table class="tables">
        <tr>
          <th class="text">Username:</th>
-         <td><input class="input-box" type="text" id="uname" name="uname" placeholder="Enter your username" required/></td>
+          <td>
+	    <input class="input-box" type="text" id="uname" name="uname" placeholder="Enter your username" required/>
+	    <div class="requirements" id="uname_error" name="uname_error"/>
+	 </td>
        </tr>
-        <tr>
-         <th class="text" style="vertical-align: top">Password:</th>
+       <tr>
+        <th class="text" style="vertical-align: top">Password:</th>
          <td>
            <input class="input-box" type="password" id="password" name="password" required/>
            <div id="password-validation">
@@ -48,7 +51,7 @@
          <th class="text" style="vertical-align: top">Confirm Password:</th>
          <td>
            <input class="input-box" type="password" id="confirmpassword" name="confirmpassword" required/>
-
+	   <div class="requirements" id="password_error" name="password_error"/>
          </td>
         <tr>
          <th class="text">Host Country:</th>
@@ -56,7 +59,10 @@
        </tr>
        <tr>
          <th class="text">Email:</th>
-         <td><input class="input-box" type="text" id="email" name="email" placeholder="Enter your email address" required /></td>
+         <td>
+	    <input class="input-box" type="text" id="email" name="email" placeholder="Enter your email address" required />
+	    <div class="requirements" id="email_error" name="email_error"/>
+	 </td>
        </tr>
     </table>
     <div class="g-recaptcha" data-sitekey="<?php echo $_settings['reCaptcha']['client_key']?>"></div> 
