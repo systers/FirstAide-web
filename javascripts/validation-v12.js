@@ -31,8 +31,8 @@ function validate() {
     {
         invalid++;
         document.getElementById('uname').style.borderColor = "red";
-	document.getElementById('uname_error').style.display = "block";
-	document.getElementById('uname_error').innerHTML = "Must be a valid username.<br/>Example: abcd123, ABCD, ABCD123";
+	      document.getElementById('uname_error').style.display = "block";
+	      document.getElementById('uname_error').innerHTML = "Must be a valid username.<br/>Example: abcd123, ABCD, ABCD123";
     }
     else
         document.getElementById('uname').style.borderColor = "white";
@@ -51,8 +51,8 @@ function validate() {
     {
         invalid++;
         document.getElementById('confirmpassword').style.borderColor = "red";
-	document.getElementById('password_error').style.display = "block";
-	document.getElementById('password_error').innerHTML = "Passwords do not match";
+	      document.getElementById('password_error').style.display = "block";
+	      document.getElementById('password_error').innerHTML = "Passwords do not match";
     }
     else
         document.getElementById('confirmpassword').style.borderColor = "white";
@@ -63,8 +63,8 @@ function validate() {
     {
         invalid++;
         document.getElementById('email').style.borderColor = "red";
-	document.getElementById('email_error').style.display = "block";
-	document.getElementById('email_error').innerHTML = "Must be a valid email address.<br/>Example: abc@gmail.com ";
+	      document.getElementById('email_error').style.display = "block";
+	      document.getElementById('email_error').innerHTML = "Must be a valid email address.<br/>Example: abc@gmail.com ";
     }
     else
         document.getElementById('email').style.borderColor = "white";
