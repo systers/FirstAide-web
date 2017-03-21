@@ -37,6 +37,23 @@ Or download the ZIP file from above
 6. Make the required changes and save the file
 7. Now, view your changes using the url http://localhost:8080/directory_name/file_name.extension  Example: 'http://localhost:8080/FirstAide-web/login.html'
 
+### Setting up reCaptcha
+1. Visit https://www.google.com/recaptcha/intro/ and click on Get reCaptcha. 
+2. Fill the details as shown in the screenshot below and then click to register.
+
+![Register for reCaptcha](images/recaptcha/1.png)
+
+3. Now, copy the client-side key and server-side key temporarily to your clipboard.
+
+![Server and Client key](images/recaptcha/2.jpg)
+
+4. Add the keys to includes/settings.php.
+
+![Adding the keys](images/recaptcha/3.png)
+
+5. Reload the registration page to see the captcha working.
+
+
 ###Database Setup
 1. Go to 'http://localhost/phpmyadmin', in the top menu bar of the phpMyAdmin panel, click on Import. Now, click on 'Choose the file'. Select the firstaide_web.sql file present in database folder of this project.
 
