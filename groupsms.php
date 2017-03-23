@@ -2,6 +2,7 @@
 /*Created by Akanksha
   Desc: Used to send bulk sms using Twilio API. Use in Circle of Trust
 */   
+    require_once('includes/settings.php');
     require "Services/Twilio.php";
     include 'loadComradeNumbers.php';
     $toNos = array();//comrade numbers will be added here
@@ -27,9 +28,6 @@
     else{
       header("location:circleOfTrust.php");
     }
-    //set AccountSid and AuthToken from www.twilio.com/user/account
-    $AccountSid = "";
-    $AuthToken = "";
 
     // avoid tinyhttp exception
     $http = new Services_Twilio_TinyHttp('https://api.twilio.com', array('curlopts' => array(
@@ -37,7 +35,7 @@
     )));
 
     //instantiate a new Twilio Rest Client
-    $client = new Services_Twilio($AccountSid, $AuthToken, '2010-04-01', $http);
+    $client = new Services_Twilio($_settings['twilio']['account_sid'], $_settings['twilio']['auth_token'], '2010-04-01', $http);
 
     //Loop over all comrades. $number is a phone number above, and 
     // $name is the name next to it
@@ -46,9 +44,7 @@
         foreach ($toNos as $number) {
            
          $sms = $client->account->messages->sendMessage(
-         // Change the 'From' number below to be a valid Twilio number 
-         // that you've purchased, or the (deprecated) Sandbox number
-            "", 
+            $_settings['twilio']['number'],
             // the number we are sending to - Any phone number
             $number,
             // the sms body
