@@ -112,7 +112,7 @@
      $server_output = curl_exec ($ch);
      curl_close ($ch);
      $reCaptchaResponse = json_decode($server_output);
-     if(!$reCaptchaResponse->success)
+     if(!$reCaptchaResponse->success==0)
      {
         echo "<script type='text/javascript'>salert('Oops','Captcha not verified','error');</script>";
      }
