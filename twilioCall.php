@@ -85,6 +85,6 @@
     catch (\Services_Twilio_RestException $e) {
         
         $error = $e->getMessage();
-        echo "<script type='text/javascript'>salert('Error','$error','error');</script>";
+        echo "<script type='text/javascript'>salert('Error','Service Unavailable','error');</script>";
     }
   }
