@@ -27,7 +27,7 @@ Go to your terminal and execute this command
 
 Or download the ZIP file from above
 
-###Opening and Running
+### Opening and Running
 1. Launch XAMPP by opening XAMPP control panel
 2. Start 'Apache' and 'MySQL'
 ![Start Apache and MySQL](images/installation/1.png)
@@ -54,7 +54,7 @@ Or download the ZIP file from above
 5. Reload the registration page to see the captcha working.
 
 
-###Database Setup
+### Database Setup
 1. Go to 'http://localhost/phpmyadmin', in the top menu bar of the phpMyAdmin panel, click on Import. Now, click on 'Choose the file'. Select the firstaide_web.sql file present in database folder of this project.
 
 ![select file](images/installation/6.png)
@@ -66,7 +66,7 @@ Or download the ZIP file from above
 
 ![new record](images/installation/8.png)
 
-###Documentation
+### Documentation
 
 The documentation can be found here
 
@@ -74,10 +74,10 @@ The documentation can be found here
 
 2.[docs of GSOC 16](https://github.com/systers/FirstAide-web/tree/master/work-docs)
 
-###Guide to Naming Convention Used
+### Guide to Naming Convention Used
 [Conventions and rules](https://google.github.io/styleguide/htmlcssguide.html)
 
-###How to Use CALL and SMS feature
+### How to Use CALL and SMS feature
 This project makes use of Twilio for sending SMS and making CALLS. Twilio is a third party platform which provides API in PHP for serving the purpose.
 SMS and Call had been used in:
 Get Help Now module
@@ -86,7 +86,7 @@ Circle of Trust module
 
 Read more about Twilio here: [Twilio](https://www.twilio.com/)
 
-####Steps to enable Twilio in your localhost
+#### Steps to enable Twilio in your localhost
 1. Get started with SMS and Call by creating an Account on Twilio here : [Twilio Register](https://www.twilio.com/try-twilio)
 2. Setting Account SID and Token
    
@@ -107,12 +107,12 @@ Read more about Twilio here: [Twilio](https://www.twilio.com/)
    
    After getting the numbers verified it's time to use this numbers to test the feature
    While adding the numbers make sure you enter the country code as well else, it won't work.
-   #####Use in Get Help Now module
+   ##### Use in Get Help Now module
    1. Go to javascripts/getHelpNowPhNo.js
    2. Replace the sample numbers to your verified numbers
    3. Make Call or Send SMS from the App
   
-   #####Use in Circle of Trust module
+   ##### Use in Circle of Trust module
    1. Open the app
    2. Go to Circle of Trust from the menu
    3. Click edit icon
