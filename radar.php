@@ -14,6 +14,7 @@
 <html>
 <head>
   <title>FirstAide</title>
+  <link rel="shortcut icon" href="favicon.png" > //adding favicon
   <link rel="stylesheet" type="text/css" href="css files/safety-tools.css"/>
   <link rel="stylesheet" href="css files/sweetalert.css">
   <meta charset="ISO-8859-1">
