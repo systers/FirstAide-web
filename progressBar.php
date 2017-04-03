@@ -19,7 +19,7 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="css files/progress-bar.css"/>
-  <link rel="shortcut icon" href="favicon.png" > //adding favicon
+  <link rel="shortcut icon" href="favicon.png" >
 </head>
 <body onload="move()">
 <center>
