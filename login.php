@@ -7,7 +7,9 @@
   <title>FirstAide</title>
   <link rel="stylesheet" type="text/css" href="css files/loginAndRegistration.css">
   <link rel="stylesheet" href="css files/sweetalert.css">
+  <link rel="shortcut icon" href="favicon.png" > //adding favicon
   <form method="POST"/>
+    
 </head>
 <body>
 <center>
