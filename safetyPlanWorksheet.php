@@ -14,6 +14,7 @@
 <html>
 <head>
   <title>FirstAide</title>
+  <link rel="shortcut icon" href="favicon.png" > //adding favicon
   <link rel="stylesheet" type="text/css" href="css files/safety-tools.css"/>
   <!--scripts for this file must be kept at top-->
   <script type="text/javascript" src="javascripts/jquery-1.12.4.min.js"></script>
