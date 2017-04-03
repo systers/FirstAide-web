@@ -17,6 +17,7 @@
 <html>
 <head>
   <title>FirstAide</title>
+   <link rel="shortcut icon" href="favicon.png" > //adding favicon
   <link rel="stylesheet" type="text/css" href="css files/welcome-style.css"/>
 </head>
 <body>
