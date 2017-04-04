@@ -2,6 +2,22 @@
 
 The project repo of FirstAide-Web : [FirstAide-web repo](https://github.com/systers/FirstAide-web)
 
+## Contributing 
+If you want to contribute to FirstAide-Web, subscribe to our [systers-dev](http://systers.org/mailman/listinfo/systers-dev) mailing list and shoot an introductory email or you can join our slack channel as well. Pick an open issue from the [issue list](https://github.com/systers/FirstAide-Web/issues), claim it in the comments and wait for approval, fix the issue and send a pull request. 
+If you find an issue yourself you can report it, a community member will get back to you and approve the issue. Then you can fix it and submit a PR. Please go through our issue list first and make sure the issues you are reporting  do not replicate the issues already reported. If you have issues on multiple pages, report them separately. Do not combine them into a single issue.
+
+### Rules for Contributing
+1. Do not fix a new issue and submit a PR without reporting and getting it approved at first.
+2. Do not fix an issue assigned to somebody else and submit a PR before the assignee does. 
+3. Do not report issues which are previously reported by others. (Please check the closed issues too before you report an issue). 
+4. Do not suggest completely new developments in the issue list. (Please use the mailing list for this kind of suggestions. Use issue list to suggest bugs/features in the already implemented sections.)
+5. If an issue is reported by a person, it is automatically assigned to that person
+6. Use meaningful commit messages and squash all your commits into one
+7. Only pick the issues which are labeled as free
+8. Do not create new issues if unresolved issues created by you are pending
+9. When you create a PR for an issue reference that issue in the comments section of the PR.
+
+
 FirstAide is a web application being developed for the Peace Corps. Peace Corps aim to provide support to all the volunteers who have been sexually assaulted. The volunteers can get reporting procedures and other relevant information. The initiative is to provide commitment to the volunteers who are victims of sexual assault and also to ensure their safety.
 
 The project is built using the following technologies:
@@ -126,18 +142,3 @@ References :
 [Tutorial for SMS](https://www.youtube.com/watch?v=jZPeNfLD5Yc)
 
 [Tutorial for Group SMS](https://www.youtube.com/watch?v=G4oluQf_7S4)
-
-## Contributing 
-If you want to contribute to FirstAide-Web, subscribe to our [systers-dev](http://systers.org/mailman/listinfo/systers-dev) mailing list and shoot an introductory email or you can join our slack channel as well. Pick an open issue from the [issue list](https://github.com/systers/FirstAide-Web/issues), claim it in the comments and wait for approval, fix the issue and send a pull request. 
-If you find an issue yourself you can report it, a community member will get back to you and approve the issue. Then you can fix it and submit a PR. Please go through our issue list first and make sure the issues you are reporting  do not replicate the issues already reported. If you have issues on multiple pages, report them separately. Do not combine them into a single issue.
-
-### Rules for Contributing
-1. Do not fix a new issue and submit a PR without reporting and getting it approved at first.
-2. Do not fix an issue assigned to somebody else and submit a PR before the assignee does. 
-3. Do not report issues which are previously reported by others. (Please check the closed issues too before you report an issue). 
-4. Do not suggest completely new developments in the issue list. (Please use the mailing list for this kind of suggestions. Use issue list to suggest bugs/features in the already implemented sections.)
-5. If an issue is reported by a person, it is automatically assigned to that person
-6. Use meaningful commit messages and squash all your commits into one
-7. Only pick the issues which are labeled as free
-8. Do not create new issues if unresolved issues created by you are pending
-9. When you create a PR for an issue reference that issue in the comments section of the PR.
