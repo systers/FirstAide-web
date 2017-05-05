@@ -8,4 +8,10 @@
 $_settings['reCaptcha'] = array();
 $_settings['reCaptcha']['client_key'] = '';
 $_settings['reCaptcha']['server_key'] = '';
+
+$_settings['twilio'] = array();
+$_settings['twilio']['account_sid'] = '';
+$_settings['twilio']['auth_token'] = '';
+$_settings['twilio']['number'] = '';
+
 ?>
