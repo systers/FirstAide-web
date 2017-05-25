@@ -2,6 +2,22 @@
 
 The project repo of FirstAide-Web : [FirstAide-web repo](https://github.com/systers/FirstAide-web)
 
+## Contributing 
+If you want to contribute to FirstAide-Web, subscribe to our [systers-dev](http://systers.org/mailman/listinfo/systers-dev) mailing list and shoot an introductory email or you can join our slack channel as well. Pick an open issue from the [issue list](https://github.com/systers/FirstAide-Web/issues), claim it in the comments and wait for approval, fix the issue and send a pull request. 
+If you find an issue yourself you can report it, a community member will get back to you and approve the issue. Then you can fix it and submit a PR. Please go through our issue list first and make sure the issues you are reporting  do not replicate the issues already reported. If you have issues on multiple pages, report them separately. Do not combine them into a single issue.
+
+### Rules for Contributing
+1. Do not fix a new issue and submit a PR without reporting and getting it approved at first.
+2. Do not fix an issue assigned to somebody else and submit a PR before the assignee does. 
+3. Do not report issues which are previously reported by others. (Please check the closed issues too before you report an issue). 
+4. Do not suggest completely new developments in the issue list. (Please use the mailing list for this kind of suggestions. Use issue list to suggest bugs/features in the already implemented sections.)
+5. If an issue is reported by a person, it is automatically assigned to that person
+6. Use meaningful commit messages and squash all your commits into one
+7. Only pick the issues which are labeled as free
+8. Do not create new issues if unresolved issues created by you are pending
+9. When you create a PR for an issue reference that issue in the comments section of the PR.
+
+### Abstract
 FirstAide is a web application being developed for the Peace Corps. Peace Corps aim to provide support to all the volunteers who have been sexually assaulted. The volunteers can get reporting procedures and other relevant information. The initiative is to provide commitment to the volunteers who are victims of sexual assault and also to ensure their safety.
 
 The project is built using the following technologies:
@@ -27,7 +43,7 @@ Go to your terminal and execute this command
 
 Or download the ZIP file from above
 
-###Opening and Running
+### Opening and Running
 1. Launch XAMPP by opening XAMPP control panel
 2. Start 'Apache' and 'MySQL'
 ![Start Apache and MySQL](images/installation/1.png)
@@ -37,7 +53,24 @@ Or download the ZIP file from above
 6. Make the required changes and save the file
 7. Now, view your changes using the url http://localhost:8080/directory_name/file_name.extension  Example: 'http://localhost:8080/FirstAide-web/login.html'
 
-###Database Setup
+### Setting up reCaptcha
+1. Visit https://www.google.com/recaptcha/intro/ and click on Get reCaptcha. 
+2. Fill the details as shown in the screenshot below and then click to register.
+
+![Register for reCaptcha](images/recaptcha/1.png)
+
+3. Now, copy the client-side key and server-side key temporarily to your clipboard.
+
+![Server and Client key](images/recaptcha/2.jpg)
+
+4. Add the keys to includes/settings.php.
+
+![Adding the keys](images/recaptcha/3.png)
+
+5. Reload the registration page to see the captcha working.
+
+
+### Database Setup
 1. Go to 'http://localhost/phpmyadmin', in the top menu bar of the phpMyAdmin panel, click on Import. Now, click on 'Choose the file'. Select the firstaide_web.sql file present in database folder of this project.
 
 ![select file](images/installation/6.png)
@@ -49,7 +82,7 @@ Or download the ZIP file from above
 
 ![new record](images/installation/8.png)
 
-###Documentation
+### Documentation
 
 The documentation can be found here
 
@@ -57,10 +90,10 @@ The documentation can be found here
 
 2.[docs of GSOC 16](https://github.com/systers/FirstAide-web/tree/master/work-docs)
 
-###Guide to Naming Convention Used
+### Guide to Naming Convention Used
 [Conventions and rules](https://google.github.io/styleguide/htmlcssguide.html)
 
-###How to Use CALL and SMS feature
+### How to Use CALL and SMS feature
 This project makes use of Twilio for sending SMS and making CALLS. Twilio is a third party platform which provides API in PHP for serving the purpose.
 SMS and Call had been used in:
 Get Help Now module
@@ -69,7 +102,7 @@ Circle of Trust module
 
 Read more about Twilio here: [Twilio](https://www.twilio.com/)
 
-####Steps to enable Twilio in your localhost
+#### Steps to enable Twilio in your localhost
 1. Get started with SMS and Call by creating an Account on Twilio here : [Twilio Register](https://www.twilio.com/try-twilio)
 2. Setting Account SID and Token
    
@@ -90,12 +123,12 @@ Read more about Twilio here: [Twilio](https://www.twilio.com/)
    
    After getting the numbers verified it's time to use this numbers to test the feature
    While adding the numbers make sure you enter the country code as well else, it won't work.
-   #####Use in Get Help Now module
+   ##### Use in Get Help Now module
    1. Go to javascripts/getHelpNowPhNo.js
    2. Replace the sample numbers to your verified numbers
    3. Make Call or Send SMS from the App
   
-   #####Use in Circle of Trust module
+   ##### Use in Circle of Trust module
    1. Open the app
    2. Go to Circle of Trust from the menu
    3. Click edit icon
@@ -109,18 +142,3 @@ References :
 [Tutorial for SMS](https://www.youtube.com/watch?v=jZPeNfLD5Yc)
 
 [Tutorial for Group SMS](https://www.youtube.com/watch?v=G4oluQf_7S4)
-
-## Contributing 
-If you want to contribute to FirstAide-Web, subscribe to our [systers-dev](http://systers.org/mailman/listinfo/systers-dev) mailing list and shoot an introductory email or you can join our slack channel as well. Pick an open issue from the [issue list](https://github.com/systers/FirstAide-Web/issues), claim it in the comments and wait for approval, fix the issue and send a pull request. 
-If you find an issue yourself you can report it, a community member will get back to you and approve the issue. Then you can fix it and submit a PR. Please go through our issue list first and make sure the issues you are reporting  do not replicate the issues already reported. If you have issues on multiple pages, report them separately. Do not combine them into a single issue.
-
-### Rules for Contributing
-1. Do not fix a new issue and submit a PR without reporting and getting it approved at first.
-2. Do not fix an issue assigned to somebody else and submit a PR before the assignee does. 
-3. Do not report issues which are previously reported by others. (Please check the closed issues too before you report an issue). 
-4. Do not suggest completely new developments in the issue list. (Please use the mailing list for this kind of suggestions. Use issue list to suggest bugs/features in the already implemented sections.)
-5. If an issue is reported by a person, it is automatically assigned to that person
-6. Use meaningful commit messages and squash all your commits into one
-7. Only pick the issues which are labeled as free
-8. Do not create new issues if unresolved issues created by you are pending
-9. When you create a PR for an issue reference that issue in the comments section of the PR.

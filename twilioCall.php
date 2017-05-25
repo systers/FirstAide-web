@@ -1,6 +1,9 @@
 <!-- Created by Akanksha
      Desc: Twilio Call API used to make voive call
 -->
+<?php
+  require_once('includes/settings.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,13 +63,6 @@
 
     // Twilio REST API version
     $version = "2010-04-01";
-
-    // Set Account SID and AuthToken - from twilio.com
-    $sid = '';
-    $token = '';
-
-    // A phone number you have previously validated with Twilio
-    $fromphonenumber = '';
     $tophonenumber = $number;
 
      $http = new Services_Twilio_TinyHttp('https://api.twilio.com', array('curlopts' => array(
@@ -74,12 +70,12 @@
     )));
 
     // Instantiate a new Twilio Rest Client
-    $client = new Services_Twilio($sid, $token, $version, $http);
+    $client = new Services_Twilio($_settings['twilio']['account_sid'], $_settings['twilio']['auth_token'], $version, $http);
 
     try {
         // Initiate a new outbound call
         $call = $client->account->calls->create(
-            $fromphonenumber, // The number of the phone initiating the call
+            $_settings['twilio']['number'], // The number of the phone initiating the call
             $tophonenumber, // The number of the phone receiving call
             'http://demo.twilio.com/welcome/voice/' // The URL Twilio will request when the call is answered
         );
@@ -88,6 +84,6 @@
     catch (\Services_Twilio_RestException $e) {
         
         $error = $e->getMessage();
-        echo "<script type='text/javascript'>salert('Error','$error','error');</script>";
+        echo "<script type='text/javascript'>salert('Error','Service Unavailable','error');</script>";
     }
   }

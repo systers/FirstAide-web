@@ -1,6 +1,9 @@
 <!--Created by Akanksha
     Desc: Twilio API to send SMS and form to enter message
 -->
+<?php
+  require_once('includes/settings.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +64,6 @@ if(isset($_POST['SMS-body'])&&!empty($_POST['SMS-body']))
 {
 
   // ==== Control Vars =======
-  $strFromNumber = "";
   $strToNumber = "+".$number;//get number from the twilio-sms.js file
   $strMsg = $_POST['SMS-body']; 
 
@@ -70,25 +72,20 @@ if(isset($_POST['SMS-body'])&&!empty($_POST['SMS-body']))
    //include the Twilio PHP library 
    require_once ("Services/Twilio.php");
  
-    // set AccountSid and AuthToken - from www.twilio.com/user/account
-   $AccountSid = "";
-   $AuthToken = "";
- 
     // avoid tinyhttp exception
     $http = new Services_Twilio_TinyHttp('https://api.twilio.com', array('curlopts' => array(
     CURLOPT_SSL_VERIFYPEER => false
     )));
 
-    $objConnection = new Services_Twilio($AccountSid, $AuthToken, '2010-04-01', $http); 
+    $objConnection = new Services_Twilio($_settings['twilio']['account_sid'], $_settings['twilio']['auth_token'], '2010-04-01', $http);
 
     // Send a new outgoinging SMS by POSTing to the SMS resource */
     try {
         $bSuccess = $objConnection->account->sms_messages->create(
-        
-        $strFromNumber,     
-        $strToNumber,         
-        $strMsg         // the sms body
-       );  
+          $_settings['twilio']['number'],
+          $strToNumber,
+          $strMsg // the sms body
+        );
 
        echo "<script type='text/javascript'>salert('Success!','SMS Sent Successfully','success');</script>";
     }
