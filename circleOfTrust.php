@@ -16,7 +16,6 @@
   <title>FirstAide</title>
   <link rel="stylesheet" type="text/css" href="css files/circle-of-trust.css"/>
   <link rel="stylesheet" href="css files/sweetalert.css">
-  <link rel="stylesheet" href="css files/loader.css">
 </head>
 <body>
 <?php
@@ -63,7 +62,6 @@
       <button id="msg3"  class="popup-button">I need to talk</button>
     </div>
   </div>
-  <div class="modal"></div>
   
 </div>
 </center>
