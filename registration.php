@@ -123,9 +123,14 @@
       $connection -> next_result(); //used when there are multiple procedure calls, use after ecah procedure call
 
       if(mysqli_num_rows($result)>=1) //check if it is a duplicate email
-      {
-         echo "<script type='text/javascript'>salert('Oops','User with this email already exists','error');</script>";
-      }
+      { ?>
+        <script type='text/javascript'>
+                document.getElementById('uname').value = '<?php echo $_POST['uname'];?>';
+                document.getElementById('password').value = '<?php echo $_POST['password'];?>';
+                document.getElementById('host_country').value = '<?php echo $_POST['host_country'];?>';
+                salert('Oops','User with this email already exists','error');</script>
+         
+      <?php } 
       else
       {
         $email = $_POST['email'];
