@@ -10,6 +10,7 @@
   <title>FirstAide</title>
   <link rel="stylesheet" type="text/css" href="css files/gethelpnow-style.css"/>
   <link rel="stylesheet" href="css files/sweetalert.css">  
+  <link rel="stylesheet" href="css files/loader.css">
 </head>
 <body>
 <?php
@@ -46,12 +47,14 @@
   <div>
   <input type="submit" value="Send SMS" class="small-button" id="bt-SMS" name="bt-SMS">
   </div>
+  <div class="modal"></div>
 </form>
 </div>     
 </center>
   <script src="javascripts/sweetalert.min.js"></script>
   <script src="javascripts/sweetalert.js"></script>
   <script src="javascripts/twilio-sms.js"></script>
+  <script src="javascripts/sms-loader.js"></script>
 </body>
 </html>
 <?php
