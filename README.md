@@ -13,7 +13,7 @@ If you find an issue yourself you can report it, a community member will get bac
 4. Do not suggest completely new developments in the issue list. (Please use the mailing list for this kind of suggestions. Use issue list to suggest bugs/features in the already implemented sections.)
 5. If an issue is reported by a person, it is automatically assigned to that person
 6. Use meaningful commit messages and squash all your commits into one
-7. Only pick the issues which are labeled as free
+7. Only pick the issues which are labeled as open.
 8. Do not create new issues if unresolved issues created by you are pending
 9. When you create a PR for an issue reference that issue in the comments section of the PR.
 
