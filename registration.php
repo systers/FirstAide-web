@@ -25,7 +25,7 @@
     <table class="tables">
        <tr>
          <th class="text">Username:</th>
-         <td><input class="input-box" type="text" id="uname" name="uname" placeholder="Enter your username" required/></td>
+         <td><input class="input-box" type="text" id="uname" name="uname" maxlength="25" placeholder="Enter your username" required/></td>
        </tr>
         <tr>
          <th class="text" style="vertical-align: top">Password:</th>
