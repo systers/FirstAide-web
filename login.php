@@ -59,7 +59,7 @@
       $password = mysqli_real_escape_string($connection, $_POST['password']);
       $email = stripslashes($email);
       $password = stripslashes($password);
-      $password = md5($email.$password);
+      //$password = md5($email.$password);
       //Match given password with the saved one in db
       $query = mysqli_query($connection,"CALL login('$password','$email')");
       $rows = mysqli_num_rows($query);

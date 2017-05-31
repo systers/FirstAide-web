@@ -82,6 +82,23 @@ Or download the ZIP file from above
 
 ![new record](images/installation/8.png)
 
+### Installation steps for Linux (Ubuntu)
+1. Download [LAMP](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-14-04). Launch LAMP and check its working using http://localhost.
+
+2. Place the project in your localhost folder (/var/www/html). Go to your terminal and execute this command
+    $ cd /var/www/html
+    $ git clone https://github.com/systers/FirstAide-web
+
+Or download the ZIP file from above
+
+
+### 3. Database Setup
+Go to 'http://localhost/phpmyadmin', in the top menu bar of the phpMyAdmin panel, click on Import. Now, click on 'Choose the file'. Select the firstaide_web.sql file present in database folder of this project and import it. Check the database credentials in dbconnect.php file.
+
+4. Open the http://localhost/FirstAide-web/
+
+5. Setting up the reCaptcha as per steps mentioned in Installation steps for Windows.
+
 ### Documentation
 
 The documentation can be found here
