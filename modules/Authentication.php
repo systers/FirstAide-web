@@ -6,7 +6,6 @@
 			if (!($email && $password)) {
 				return false;
 			}
-			echo "<div>In Authentication constructor</div>";
 			$user = new User();
 		}
 	}
