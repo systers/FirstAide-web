@@ -8,18 +8,21 @@
 				'found' => true
 			);
 			switch($page) {
-				case self::DASHBOARD:	$out['type'] = self::DASHBOARD;
-										$out['title'] = "Home";
-										$out['template'] = "dashboard.html";
-										break;
-				case self::HOME: 	$out['type'] = self::HOME;
-									$out['title'] = "Home";
-									$out['template'] = "index.html";
-									break;
-				default: 	$out['type'] = self::HOME;
-							$out['title'] = "Home";
-							$out['template'] = "index.html";
-							$out['found'] = false;
+				case self::DASHBOARD:
+					$out['type'] = self::DASHBOARD;
+					$out['title'] = "Home";
+					$out['template'] = "dashboard.html";
+					break;
+				case self::HOME:
+					$out['type'] = self::HOME;
+					$out['title'] = "Home";
+					$out['template'] = "index.html";
+					break;
+				default:
+					$out['type'] = self::HOME;
+					$out['title'] = "Home";
+					$out['template'] = "index.html";
+					$out['found'] = false;
 			}
 			return $out;
 		}

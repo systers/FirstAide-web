@@ -1,5 +1,5 @@
 <?php
-	require_once($APPLICATION_DIR.'/application.php');
+	require_once($APPLICATION_DIR.'/includes/application.php');
 	$query = $_GET['query'] ?? Router::HOME;
 	$page = Router::getPage($query);
 	$javascripts = array(

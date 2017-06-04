@@ -9,4 +9,3 @@
 			$user = new User();
 		}
 	}
-?>
