@@ -1,6 +1,4 @@
 <?php
-	$APPLICATION_DIR = str_replace("includes","", dirname(__FILE__));
-
 	spl_autoload_register(function ($class_name) {
 		global $APPLICATION_DIR;
 	    include $APPLICATION_DIR.'/modules/'.$class_name . '.php';
