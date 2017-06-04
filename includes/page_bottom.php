@@ -4,6 +4,7 @@
 			echo '<script type="text/javascript" src="javascripts/'.$j.'"></script>';
 		}
 	}
+	echo '<script>CSRF_TOKEN="'.$csrf_token.'";</script>';
 ?>
 </body>
 </html>
