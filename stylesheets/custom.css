@@ -1,5 +1,72 @@
+.firstaide .fs17 {
+	font-size: 17px;
+}
+.firstaide .mt20 {
+	margin-top: 20px;
+}
+.firstaide .mt30 {
+	margin-top: 30px;
+}
+.firstaide .mb20 {
+	margin-bottom: 20px;
+}
+.firstaide .mb30 {
+	margin-bottom: 30px;
+}
+.firstaide .m20 {
+	padding: 20px;
+}
+.firstaide .tac {
+	text-align: center;
+}
 .firstaide .hide {
 	display: none;
+}
+.firstaide .hin {
+	height: inherit;
+}
+.firstaide .win {
+	width: inherit;
+}
+.firstaide .w100 {
+	width: 100%;
+}
+.firstaide .ui.modal .content {
+	color: #000;
+}
+.firstaide .flex-column {
+	display: flex;
+	flex-direction: column;
+}
+.firstaide .flex-justify-center {
+	display: flex;
+	justify-content: center;
+}
+.firstaide .flex-align-center {
+	display: flex;
+	align-items: center;
+}
+
+.firstaide.home {
+	height: inherit;
+	background: #0ad299
+}
+.firstaide.home *, .firstaide.home .field>label{
+	color: #fff;
+}
+.firstaide.home button {
+	background-color: #29a281;
+	color: #ffffff;
+}
+.firstaide.home button:hover, .firstaide.home button:focus {
+	background-color: #15775c;
+	color: #ffffff;
+}
+.firstaide.home .ui.form .field {
+	margin-bottom: 45px;
+}
+.firstaide.home .ui.pointing.label {
+	position: fixed;
 }
 .firstaide .ui.bottom.attached {
 	margin-bottom: 0px;

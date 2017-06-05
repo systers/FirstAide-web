@@ -6,6 +6,9 @@
 		'jquery-3.2.1.min.js',
 		'semantic.min.js'
 	);
+	if ($page['type'] == Router::HOME) {
+		$javascripts[] = 'home.js';
+	}
 ?>
 <html>
 	<head>
@@ -22,4 +25,4 @@
 		<link rel="stylesheet" type="text/css" class="ui" href="stylesheets/semantic.min.css">
 		<link rel="stylesheet" type="text/css" href="stylesheets/custom.css">
 	</head>
-<body class="firstaide">
+	<body class="firstaide <?php echo $page['type']?>">
