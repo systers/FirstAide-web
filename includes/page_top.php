@@ -7,7 +7,7 @@
 		'semantic.min.js'
 	);
 	if ($page['type'] == Router::INDEX) {
-		$javascripts[] = 'home.js';
+		$javascripts[] = 'index.js';
 	}
 ?>
 <html>
