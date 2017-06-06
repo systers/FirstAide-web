@@ -1,4 +1,4 @@
-# FirstAide-Wb
+# FirstAide-Web
 
 Sexual assault and rape are serious social and public health issues, being one of the major cause of concern.
 FirstAide-Web is a web based application developed to help the PCV(Peace Corps Volunteers), in case of sexual
