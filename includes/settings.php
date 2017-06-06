@@ -7,7 +7,7 @@
  * Note       : Please do not commit your credentials
  */
 
-define("HOST", "http://localhost/FirstAide-web/");
+define("HOST", "http://localhost/");
 
 $_settings = array();
 
