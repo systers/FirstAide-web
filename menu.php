@@ -23,6 +23,7 @@
 <html>
 <head>
     <title>FirstAide</title>
+    <link rel="shortcut icon" href="favicon.png" >
     <link rel="stylesheet" type="text/css" href="css files/menu-css.css"/>
 </head>
 <body>

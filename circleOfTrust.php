@@ -14,6 +14,7 @@
 <html>
 <head>
   <title>FirstAide</title>
+  <link rel="shortcut icon" href="favicon.png" > 
   <link rel="stylesheet" type="text/css" href="css files/circle-of-trust.css"/>
   <link rel="stylesheet" href="css files/sweetalert.css">
   <link rel="stylesheet" href="css files/loader.css">

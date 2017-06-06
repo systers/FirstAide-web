@@ -5,9 +5,12 @@
 <html>
 <head>
   <title>FirstAide</title>
+    <link rel="shortcut icon" href="favicon.png" >
   <link rel="stylesheet" type="text/css" href="css files/loginAndRegistration.css">
   <link rel="stylesheet" href="css files/sweetalert.css">
+  
   <form method="POST"/>
+    
 </head>
 <body>
 <center>

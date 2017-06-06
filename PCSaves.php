@@ -15,6 +15,7 @@
 <head>
   <title>FirstAide</title>
   <link rel="stylesheet" type="text/css" href="css files/gethelpnow-style.css"/>
+  <link rel="shortcut icon" href="favicon.png" > 
 </head>
 <body>
 <?php
