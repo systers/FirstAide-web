@@ -22,5 +22,16 @@
 			}
 			return false;
 		}
+
+		public static function jsonify($response) {
+			ob_clean();
+			header("Content-Type: application/json");
+			echo json_encode($response);
+			exit(0);
+		}
+
+		public static function isValidEmail($email) {
+			return filter_var($email, FILTER_VALIDATE_EMAIL);
+		}
 	}
 ?>

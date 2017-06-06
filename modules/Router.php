@@ -1,6 +1,6 @@
 <?php
 	class Router {
-		const HOME = 'index';
+		const HOME = 'home';
 		const DASHBOARD = 'dashboard';
 		
 		public static function getPage($page) {
