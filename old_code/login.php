@@ -28,6 +28,8 @@
          <td><input class="input-box" type="password" id="password" name="password" placeholder="Enter your password" required/></td>
        </tr>
   </table>
+    <input type="checkbox" name="keep">
+    <label class="text">Keep me logged in</label>
   </div>
 
   <div class="div">
@@ -46,7 +48,7 @@
 
    if(!isset($_SESSION))
      session_start(); 
-   if(isset($_SESSION['email']))
+   if(isset($_SESSION['email']) && isset($_COOKIE['email']))
    {  
      header("location: welcome.php"); 
    }
@@ -60,12 +62,17 @@
       $email = stripslashes($email);
       $password = stripslashes($password);
       $password = md5($email.$password);
+      $check = isset($_POST['keep']);
       //Match given password with the saved one in db
       $query = mysqli_query($connection,"CALL login('$password','$email')");
       $rows = mysqli_num_rows($query);
        if ($rows == 1) //password is correct
        {
-          $_SESSION['email']=$email; 
+          $_SESSION['email']=$email;
+          if ($check == 'on') 
+          {
+            setcookie('email', $email, time()+3600);
+          } 
     
           header("location: progressBar.php"); 
        }
