@@ -1,12 +1,12 @@
 <?php
 	require_once($APPLICATION_DIR.'/includes/application.php');
-	$query = $_GET['query'] ?? Router::HOME;
+	$query = $_GET['query'] ?? Router::INDEX;
 	$page = Router::getPage($query);
 	$javascripts = array(
 		'jquery-3.2.1.min.js',
 		'semantic.min.js'
 	);
-	if ($page['type'] == Router::HOME) {
+	if ($page['type'] == Router::INDEX) {
 		$javascripts[] = 'home.js';
 	}
 ?>
@@ -22,7 +22,7 @@
 		<?php echo isset($_page['description']) ? '<meta name="description" content="'.$_page['description'].'" />' : '' ?>
 		<?php echo isset($_page['keywords']) ? '<meta name="keywords" content="'.$_page['keywords'].'" />' : '' ?>
 
-		<link rel="stylesheet" type="text/css" class="ui" href="stylesheets/semantic.min.css">
-		<link rel="stylesheet" type="text/css" href="stylesheets/custom.css">
+		<link rel="stylesheet" type="text/css" class="ui" href="stylesheets/min/semantic.min.css">
+		<link rel="stylesheet" type="text/css" href="stylesheets/min/custom.min.css">
 	</head>
 	<body class="firstaide <?php echo $page['type']?>">

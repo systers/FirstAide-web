@@ -15,7 +15,7 @@
 
 		public static function getPageProperty($page, $property) {
 			$propertyMenuArray = array(
-				Router::DASHBOARD
+				Router::HOME
 			);
 			if ($property == self::PROPERTY_MENU && in_array($page, $propertyMenuArray)) {
 				return true;
