@@ -1,5 +1,10 @@
   $(document).ready(function() {
   $('.popup-button').click(function() {
+    $body = $("body");
+ +               $.ajaxSetup({'global':true});
+ +               $(document).ajaxStart(function(){
+ +                 $body.addClass("loading");
+ +               });
     var thisElement = this.id;
     var msgDataSet = {
       'msg1': "Come and get me.I need help getting home safely.Call ASAP to get my Location.Message sent through First Aide's Circle of Trust",
