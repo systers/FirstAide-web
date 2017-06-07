@@ -1,0 +1,26 @@
+<div class="ui visible left vertical sidebar menu mustard">
+  {% for i in items %}
+  	{% if i.type and i.type == 'logo' %}
+      <a class="item" href="{{ i.url }}">
+        <img src="{{ i.img_src }}" alt="{{ i.text }}"/>
+      </a>
+  	{% else %}
+  		{% if i.sub_menu %}
+        <div class="sub-menu-item">
+          <div class="item sub-menu-header">{{ i.text }}</div>
+          <div class="menu hide">
+            {% for j in i.sub_menu %}
+              <a class="item" href="{{ j.url }}">
+                {{ j.text }}
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <a class="item" href="{{ i.url }}">
+          {{ i.text }}
+        </a>
+      {% endif %}
+  	{% endif %}
+  {% endfor %}
+</div>
