@@ -8,7 +8,7 @@
 			<div class="four wide column"></div>
 			<div class="eight wide column">
 				<img src="images/firstaide_logo.png" class="w100 mb20"/>
-				<div class="mb30 tac fs17">A Confidentiality Safety Resource for Peace Corps Volunteers</div>
+				<div class="subtitle mb30 tac fs17">A Confidentiality Safety Resource for Peace Corps Volunteers</div>
 				<form class="ui form login-form">
 					<div class="field">
 						<label>Email</label>
@@ -28,8 +28,9 @@
 					</div>
 				</form>
 				<div class="processing hide">
-					<div class="ui yellow progress" data-percent="13">
-						<div class="bar" style="transition-duration: 300ms; width: 36%;"></div>
+					<div class="ui yellow progress" data-percent="30">
+						<div class="bar"></div>
+						<div class="label"></div>
 					</div>
 				</div>
 			</div>
@@ -38,36 +39,65 @@
 			<div class="four wide column"></div>
 				<div class="eight wide column">
 					<img src="images/firstaide_logo.png" class="w100 mb20"/>
-					<div class="mb30 tac fs17">A Confidentiality Safety Resource for Peace Corps Volunteers</div>
-					<form class="ui form login-form">
-						<div class="field">
-							<label>Email</label>
-							<input type="text" name="email" placeholder="Email">
+					<div class="subtitle mb30 tac fs17">A Confidentiality Safety Resource for Peace Corps Volunteers</div>
+					<form class="ui form signup-form">
+						<div class="two fields">
+							<div class="field">
+								<label>Email</label>
+								<input type="text" name="email" id="email" placeholder="Email">
+								<div class="ui basic red pointing prompt label transition hide"></div>
+							</div>
+							<div class="field">
+								<label>Name</label>
+								<input type="text" name="name" id="name" placeholder="Your complete name">
+								<div class="ui basic red pointing prompt label transition hide"></div>
+							</div>
 						</div>
-						<div class="field">
-							<label>Password</label>
-							<input type="password" name="password" placeholder="******">
+						<div class="two fields">
+							<div class="field">
+								<label>Password</label>
+								<input type="password" name="password" id="password" placeholder="******">
+								<div class="ui basic red pointing prompt label transition hide"></div>
+							</div>
+							<div class="field">
+								<label>Confirm Password</label>
+								<input type="password" name="confirm_password" id="confirm_password" placeholder="******">
+								<div class="ui basic red pointing prompt label transition hide"></div>
+							</div>
 						</div>
-						<div class="field">
-							<label>Confirm Password</label>
-							<input type="password" name="confirm_password" placeholder="******">
+						<div class="field password-strength hide">
+							<div id="password-strength-status" class="ui red progress" data-percent="30">
+								<div class="bar"></div>
+								<div class="label"></div>
+							</div>
 						</div>
 						<div class="field">
 							<label>Country</label>
 							<div class="ui fluid search selection dropdown">
-								<input type="hidden" name="country">
+								<input type="hidden" name="country" id="country">
 								<i class="dropdown icon"></i>
 								<div class="default text">Select Country</div>
-								{% include 'partial/country_list.html' %}
+								<div class="menu">
+								{% for country_code, country_name in page.country_list %}
+									<div class="item" data-value="{{ country_code | lower }}"><i class="{{ country_code | lower }} flag"></i>{{ country_name }}</div>
+								{% endfor %}
+								</div>
+								<div class="ui basic red pointing prompt label transition hide"></div>
 							</div>
 						</div>
 						<div class="tac mt30">
-							<button class="ui button center m20" type="submit">Sign Up</button>
+							<button class="ui button center m20 submit">Sign Up</button>
 						</div>
 						<div class="tac mt20">
 							<a href="#" id="login-link">Already Registered? Login</a>
 						</div>
 					</form>
+					<div class="processing hide">
+						<div class="ui yellow progress" data-percent="30">
+							<div class="bar"></div>
+							<div class="label"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -76,7 +106,7 @@
 			<div class="content">
 			</div>
 			<div class="actions">
-			<div class="ui cancel green button">OK</div>
+			<div class="ui cancel green button">Close</div>
 		</div>
 	</div>
 </div>

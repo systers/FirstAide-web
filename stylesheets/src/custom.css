@@ -47,25 +47,30 @@
 	align-items: center;
 }
 
-.firstaide.home {
+.firstaide.index {
 	height: inherit;
 	background: #0ad299
 }
-.firstaide.home *, .firstaide.home .field>label{
+.firstaide.index #sign-up-link,
+.firstaide.index #login-link,
+.firstaide.index .subtitle,
+.firstaide.index .field>label,
+.firstaide.index .ui.progress>.label {
 	color: #fff;
 }
-.firstaide.home button {
+.firstaide.index .ui.basic.red.label {
+	z-index: 999;
+}
+.firstaide.index button {
 	background-color: #29a281;
 	color: #ffffff;
 }
-.firstaide.home button:hover, .firstaide.home button:focus {
+.firstaide.index button:hover,
+.firstaide.index button:focus {
 	background-color: #15775c;
 	color: #ffffff;
 }
-.firstaide.home .ui.form .field {
-	margin-bottom: 45px;
-}
-.firstaide.home .ui.pointing.label {
+.firstaide.index .ui.pointing.label {
 	position: fixed;
 }
 .firstaide .ui.bottom.attached {
@@ -89,4 +94,9 @@
 .firstaide .ui .pusher {
 	background: #0ad299
 }
-
+.firstaide .field.password-strength {
+	margin: 0px 8px;
+}
+.firstaide #password-strength-status {
+	flex: 1;
+}
