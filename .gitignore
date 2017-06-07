@@ -2,3 +2,4 @@
 old_code/
 cache/*
 vendor/*
+node_modules/*
