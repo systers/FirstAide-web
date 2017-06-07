@@ -1,17 +1,20 @@
 <?php
-	class Authentication {
-		public $user;
 
-		public function __construct($email, $password) {
-			if (!$email || !$password) {
-				return NULL;
-			}
+class Authentication
+{
+    private $user;
 
-			$User = new User($email);
-			$validity = $User->validateCredentials($password);
-			if (!$validity) {
-				return NULL;
-			}
-			$this->user = $User;
-		}
-	}
+    public function __construct($email, $password)
+    {
+        if (!$email || !$password) {
+            return null;
+        }
+
+        $User = new User($email);
+        $validity = $User->validateCredentials($password);
+        if (!$validity) {
+            return null;
+        }
+        $this->user = $User;
+    }
+}

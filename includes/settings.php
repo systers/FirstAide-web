@@ -3,7 +3,7 @@
 /*
  * Date       : 9-03-2017
  * Created by : Fatima Rafiqui
- * 
+ *
  * Note       : Please do not commit your credentials
  */
 
@@ -25,4 +25,3 @@ $_settings['db']['hostname']= getenv('db_hostname') ?? '';
 $_settings['db']['database']= getenv('db_name') ?? '';
 $_settings['db']['username']= getenv('db_username') ?? '';
 $_settings['db']['password']= getenv('db_password') ?? '';
-?>
