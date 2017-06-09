@@ -3,11 +3,11 @@
 /*
  * Date       : 9-03-2017
  * Created by : Fatima Rafiqui
- * 
+ *
  * Note       : Please do not commit your credentials
  */
 
-define("HOST", "http://localhost/FirstAide-web/");
+define("HOST", "http://localhost/");
 
 $_settings = array();
 
@@ -25,4 +25,3 @@ $_settings['db']['hostname']= getenv('db_hostname') ?? '';
 $_settings['db']['database']= getenv('db_name') ?? '';
 $_settings['db']['username']= getenv('db_username') ?? '';
 $_settings['db']['password']= getenv('db_password') ?? '';
-?>
