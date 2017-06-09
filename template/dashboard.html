@@ -1,14 +1,14 @@
 <div class="ui bottom attached segment pushable">
-    {% if page.menu %}
-        {% include 'menu.html' with page.menu only %}
-    {% endif %}
     <div class="pusher">
-        <div class="ui basic segment">
-        	{% if page.content.template %}
-        		{% include 'page' ~ page.content.template with page.content.data only %}
-        	{% else %}
-        		<a href="/index.php">Home</a>
-        	{% endif %}
+        <div class="full height">
+            {% if page.menu %}
+                {% include 'menu.html' with page.menu only %}
+            {% endif %}
+            {% if page.content.template %}
+                {% include 'page/' ~ page.content.template with page.content.data only %}
+            {% else %}
+                <a href="/index.php">Home</a>
+            {% endif %}
         </div>
     </div>
 </div>
