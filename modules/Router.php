@@ -16,7 +16,7 @@ class Router
     const PAGE_BYSTANDER_INTERVENTION = 'bystander-intervention';
 
     const COUNTRY_LIST_FILE = '/javascripts/country_list.json';
-    const LOGIN_SUCCESS_URL = HOST.'?query='.self::HOME;
+    const LOGIN_SUCCESS_URL = HOST.'?page_request='.self::HOME;
         
     public static function getPage($page, $query = '')
     {
