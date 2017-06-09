@@ -232,7 +232,6 @@ $(document).ready(function() {
 				country: country,
 				csrf_token: CSRF_TOKEN
 			}
-			console.log(postData);
 			try {                                                                                                               
 				$.ajax({
 					url: 'request/auth.php',
