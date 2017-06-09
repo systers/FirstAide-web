@@ -5,7 +5,6 @@ class Router
     const INDEX = 'index';
     const HOME = 'home';
 
-    const PAGE_SAFETY_TOOL_MENU = 'safety-tool';
     const PAGE_SEEKING_STAFF_SUPPORT = 'seeking-staff-support';
     const PAGE_SERVICES_AFTER_ASSAULT = 'services-after-assault';
     const PAGE_PEACE_CORPS_COMMITMENT = 'peace-corps-commitment';
@@ -213,25 +212,7 @@ class Router
                         $out['javascripts'][] = 'multi_card.js';
                         break;
 
-                    case self::PAGE_SAFETY_TOOL_MENU:
                     default:
-                        $out['content']['template'] = 'full_page_menu.html';
-                        $out['content']['data'] = array(
-                            'title' => 'Safety Tools',
-                            'full_page_menu' => array(
-                                'items' => array(
-                                    0 => array(
-                                        'title' => 'item 1'
-                                    ),
-                                    1 => array(
-                                        'title' => 'item 2'
-                                    ),
-                                    2 => array(
-                                        'title' => 'item 3'
-                                    )
-                                )
-                            )
-                        );
                         break;
                 }
                 break;
