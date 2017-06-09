@@ -1,8 +1,6 @@
 <?php
     require_once(dirname(__FILE__).'/../includes/application.php');
-    $_POST = $_POST ?? $_GET;
-    echo $csrf_token;
-    var_dump($_POST);
+
     $output = array(
         'response' => false,
         'message' => '',
