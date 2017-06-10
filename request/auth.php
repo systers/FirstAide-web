@@ -1,8 +1,6 @@
 <?php
     require_once(dirname(__FILE__).'/../includes/application.php');
-    $_POST = $_POST ?? $_GET;
-    echo $csrf_token;
-    var_dump($_POST);
+
     $output = array(
         'response' => false,
         'message' => '',
@@ -17,7 +15,7 @@
                         if (!empty($_POST['email']) && !empty($_POST['password'])) {
                             if (Utils::isValidEmail($_POST['email'])) {
                                 $Auth = new Authentication($_POST['email'], $_POST['password']);
-                                if ($Auth->user != null) {
+                                if ($Auth->isValid()) {
                                     $output['response'] = true;
                                     $output['message'] = 'Logged In. Redirecting...';
                                     $output['redirect_url'] = Router::LOGIN_SUCCESS_URL;

@@ -17,4 +17,9 @@ class Authentication
         }
         $this->user = $User;
     }
+
+    public function isValid()
+    {
+        return ($this->user != null) ? true : false;
+    }
 }

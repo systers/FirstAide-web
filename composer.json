@@ -2,7 +2,9 @@
   "require" : {
     "php": "^7.0.0",
     "twig/twig": "~2.0",
-    "twilio/sdk": "^5.10",
-    "squizlabs/php_codesniffer": "*"
+    "twilio/sdk": "^5.10"
+  },
+  "require-dev" : {
+    "squizlabs/php_codesniffer": "*"	
   }
 }

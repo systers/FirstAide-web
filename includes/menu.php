@@ -137,5 +137,5 @@ if (Utils::getPageProperty($page['type'], Utils::PROPERTY_MENU)) {
     );
 
     $page['menu'] = $menu;
-    $javascripts[] = 'menu.js';
+    $page['javascripts'][] = 'menu.js';
 }

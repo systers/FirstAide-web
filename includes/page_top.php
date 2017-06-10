@@ -1,14 +1,12 @@
 <?php
-    require_once($APPLICATION_DIR.'/includes/application.php');
-    $query = $_GET['query'] ?? Router::INDEX;
-    $page = Router::getPage($query);
-    $javascripts = array(
-        'jquery-3.2.1.min.js',
-        'semantic.min.js'
-    );
-    if ($page['type'] == Router::INDEX) {
-        $javascripts[] = 'index.js';
-    }
+    require_once $APPLICATION_DIR.'/includes/application.php';
+    $page_request = $_GET['page_request'] ?? \Router::INDEX;
+    $query = $_GET['query'] ?? '';
+    $page = Router::getPage($page_request, $query);
+
+if ($page['type'] == Router::INDEX) {
+    $page['javascripts'][] = 'index.js';
+}
 ?>
 <html>
     <head>
