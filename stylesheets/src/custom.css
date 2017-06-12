@@ -10,6 +10,9 @@
 .firstaide .mt30 {
 	margin-top: 30px;
 }
+.firstaide .mb10 {
+	margin-bottom: 10px;
+}
 .firstaide .mb20 {
 	margin-bottom: 20px;
 }
@@ -39,6 +42,12 @@
 }
 .firstaide .w100 {
 	width: 100%;
+}
+.firstaide .h65 {
+	height: 65%;
+}
+.firstaide .h85 {
+	height: 85%;
 }
 .firstaide .h100 {
 	height: 100%;
@@ -102,6 +111,17 @@
 .firstaide .ui.cards>.custom.card ul li {
 	margin-bottom: 10px;
 }
+.firstaide .ui.button.know-more {
+	color: #fff;
+	background-color: #fbc469;
+}
+.firstaide .ui.multi-segment .segment {
+	background-color: #2DB58F;
+}
+
+.firstaide .ui.raised.segment {
+	overflow-y: scroll; 
+} 
 
 .firstaide.index {
 	height: inherit;
