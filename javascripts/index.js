@@ -25,6 +25,7 @@ function notEmpty(ele) {
 }
 function showResponse(thisElement, response) {
 	if (!response.response) {
+		$('.ui.modal').find('.header').text('Are you lost?');
 		$('.ui.modal').find('.content').text(response.message);
 		$('.ui.modal').modal('show');
 	} else {
@@ -42,6 +43,7 @@ function showResponse(thisElement, response) {
 			}, 500);
 		}
 		setTimeout(function() {
+			$('.ui.modal').find('.header').text('Congrats');
 			$('.ui.modal').find('.content').text(response.message);
 			$('.ui.modal').modal('show');
 		}, 4000);
