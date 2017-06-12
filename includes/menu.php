@@ -25,23 +25,23 @@ if (Utils::getPageProperty($page['type'], Utils::PROPERTY_MENU)) {
         ),
         array(
             'text' => 'RADAR',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_RADAR)
         ),
         array(
             'text' => 'Coping with Unwanted Strategies',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_UNWANTED_ATTENTION)
         ),
         array(
             'text' => 'Commonalities of Sexual Predators',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_SEXUAL_PREDATORS)
         ),
         array(
             'text' => 'Bystander Intervention',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_BYSTANDER_INTERVENTION)
         ),
         array(
             'text' => 'Safety Plan Basics',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_SAFETY_PLAN_BASICS)
         ),
         array(
             'text' => 'Safety Plan Worksheet',
@@ -55,15 +55,15 @@ if (Utils::getPageProperty($page['type'], Utils::PROPERTY_MENU)) {
     'sub_menu' => array(
         array(
             'text' => 'Benefits of Seeking Staff Support',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_SEEKING_STAFF_SUPPORT)
         ),
         array(
             'text' => 'Available Services after a Sexual Assault',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_SERVICES_AFTER_ASSAULT)
         ),
         array(
             'text' => 'Peace Corps Commitment to Victims of Sexual Assualt',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_PEACE_CORPS_COMMITMENT)
         ),
         array(
             'text' => 'What to do After an Assault',
@@ -71,7 +71,7 @@ if (Utils::getPageProperty($page['type'], Utils::PROPERTY_MENU)) {
         ),
         array(
             'text' => 'Confidentiality',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_CONFIDENTIALITY)
         ),
         array(
             'text' => 'Peace Corps Mythbusters',
