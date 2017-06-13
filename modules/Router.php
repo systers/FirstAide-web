@@ -6,7 +6,7 @@ class Router
     const PAGE_CONTENT = 'query';
 
     const INDEX = 'index';
-    const HOME = 'home'; 
+    const HOME = 'home';
 
     const PAGE_SEEKING_STAFF_SUPPORT = 'seeking-staff-support';
     const PAGE_SERVICES_AFTER_ASSAULT = 'services-after-assault';
