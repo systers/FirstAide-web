@@ -1,5 +1,5 @@
 <div class="article">
-  <div class="ui column center grid flex-align-center h100 plr60">
+  <div class="ui column center grid flex-align-center {% if not bottom_button %} h100{% else %} h85 mb10{% endif %} plr60">
     <div class="sixteen wide column">
       <div class="ui dividing header tac mb60">{{ title }}</div>
         <div class="ui raised cards">
@@ -10,4 +10,11 @@
       </div>
     </div>
   </div>
+  {% if bottom_button %}
+  <div class="flex flex-justify-center plr60">
+    <a href="{{ bottom_button.link }}" class="w100">
+      <div class="massive ui button know-more w100">{{ bottom_button.text }}</div>
+    </a>
+  </div>
+  {% endif %}
 </div>
