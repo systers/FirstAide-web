@@ -10,7 +10,7 @@
               <div class="ui raised multi cards{% if count %} hide{% endif %}">
                 {% for j in 0..1 %}
                   {% if cards_content[2*i+j].twig %}
-                    <div class="multi card custom">
+                    <div class="multi card custom p20">
                       {% include 'partial/' ~ cards_content[2*i+j].twig %}
                     </div>
                   {% endif %}
