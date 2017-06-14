@@ -606,12 +606,12 @@ p:last-child {
 --------------------*/
 
 a {
-  color: #4183C4;
+  color: #fbc469;
   text-decoration: none;
 }
 
 a:hover {
-  color: #1e70bf;
+  color: #ffd590;
   text-decoration: none;
 }
 
