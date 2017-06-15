@@ -24,6 +24,10 @@ class Router
     const PAGE_GLOSSARY = 'glossary';
     const PAGE_POLICY_SUMMARY = 'policy-summary';
     const PAGE_FURTHER_RESOURCES = 'further-resources';
+    const PAGE_IMPACT_OF_ASSAULT = 'impact-of-assault';
+    const PAGE_HELP_A_FRIEND = 'help-a-friend';
+    const PAGE_MYTHBUSTERS = 'mythbusters';
+    const PAGE_SEXUAL_HARASSMENT = 'sexual-harassment';
 
     const COUNTRY_LIST_FILE = '/javascripts/country_list.json';
     const LOGIN_SUCCESS_URL = HOST.'?page_request='.self::HOME;
@@ -66,6 +70,16 @@ class Router
                             ),
                             'card_content' => array(
                                 'twig' => 'sexual_assault.html'
+                            )
+                        );
+                        break;
+
+                    case self::PAGE_SEXUAL_HARASSMENT:
+                        $out['content']['template'] = 'full_page_card.html';
+                        $out['content']['data'] = array(
+                            'title' => 'Sexual Harassment',
+                            'card_content' => array(
+                                'twig' => 'sexual_harassment.html'
                             )
                         );
                         break;
@@ -200,6 +214,58 @@ class Router
                         $out['javascripts'][] = 'multi_card.js';
                         break;
 
+                    case self::PAGE_IMPACT_OF_ASSAULT:
+                        $out['content']['template'] = 'multi_cards_page.html';
+                        $out['content']['data'] = array(
+                            'title' => 'Impact Of Sexual Assault',
+                            'show_card_count' => 3,
+                            'class' => 'p0',
+                            'cards_content' => array(
+                                0 => array(
+                                    'twig' => 'impact_of_assault/impact_1.html'
+                                ),
+                                1 => array(
+                                    'twig' => 'impact_of_assault/impact_2.html'
+                                ),
+                                2 => array(
+                                    'twig' => 'impact_of_assault/impact_3.html'
+                                )
+                            )
+                        );
+                        $out['javascripts'][] = 'multi_card.js';
+                        break;
+
+                    case self::PAGE_HELP_A_FRIEND:
+                        $out['content']['template'] = 'multi_cards_page.html';
+                        $out['content']['data'] = array(
+                            'title' => 'Helping a Friend or Community Member',
+                            'show_card_count' => 3,
+                            'class' => 'p0',
+                            'cards_content' => array(
+                                0 => array(
+                                    'twig' => 'helping_a_friend/help_1.html'
+                                ),
+                                1 => array(
+                                    'twig' => 'helping_a_friend/help_2.html'
+                                ),
+                                2 => array(
+                                    'twig' => 'helping_a_friend/help_3.html'
+                                ),
+                                3 => array(
+                                    'twig' => 'helping_a_friend/help_4.html'
+                                ),
+                                4 => array(
+                                    'twig' => 'helping_a_friend/help_5.html'
+                                ),
+                                5 => array(
+                                    'twig' => 'helping_a_friend/help_6.html'
+                                )
+                            )
+                        );
+                        $out['javascripts'][] = 'multi_card.js';
+                        break;
+
+
                     case self::PAGE_SAFETY_PLAN_BASICS:
                         $out['content']['template'] = 'multi_cards_page.html';
                         $out['content']['data'] = array(
@@ -297,6 +363,44 @@ class Router
                                 ),
                                 4 => array(
                                     'twig' => 'common_questions/ques_5.html'
+                                )
+                            )
+                        );
+                        $out['javascripts'][] = 'multi_segment.js';
+                        break;
+
+                    case self::PAGE_MYTHBUSTERS:
+                        $out['content']['template'] = 'multi_segment_vertical.html';
+                        $out['content']['data'] = array(
+                            'title' => 'Peace Corps Mythbusters: Assumptions and Facts',
+                            'show_card_count' => 2,
+                            'cards_content' => array(
+                                0 => array(
+                                    'twig' => 'mythbusters/myth_1.html'
+                                ),
+                                1 => array(
+                                    'twig' => 'mythbusters/myth_2.html'
+                                ),
+                                2 => array(
+                                    'twig' => 'mythbusters/myth_3.html'
+                                ),
+                                3 => array(
+                                    'twig' => 'mythbusters/myth_4.html'
+                                ),
+                                4 => array(
+                                    'twig' => 'mythbusters/myth_5.html'
+                                ),
+                                5 => array(
+                                    'twig' => 'mythbusters/myth_6.html'
+                                ),
+                                6 => array(
+                                    'twig' => 'mythbusters/myth_7.html'
+                                ),
+                                7 => array(
+                                    'twig' => 'mythbusters/myth_8.html'
+                                ),
+                                8 => array(
+                                    'twig' => 'mythbusters/myth_9.html'
                                 )
                             )
                         );
