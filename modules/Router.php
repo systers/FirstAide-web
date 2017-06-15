@@ -20,7 +20,10 @@ class Router
     const PAGE_COMMON_QUESTIONS = 'common-questions';
     const PAGE_SAFETY_PLAN_WORKSHEET = 'safety-plan-worksheet';
     const PAGE_SEXUAL_ASSAULT = 'sexual-assault';
-     const PAGE_SEXUAL_ASSAULT_MORE = 'sexual-assault-more';
+    const PAGE_SEXUAL_ASSAULT_MORE = 'sexual-assault-more';
+    const PAGE_GLOSSARY = 'glossary';
+    const PAGE_POLICY_SUMMARY = 'policy-summary';
+    const PAGE_FURTHER_RESOURCES = 'further-resources';
 
     const COUNTRY_LIST_FILE = '/javascripts/country_list.json';
     const LOGIN_SUCCESS_URL = HOST.'?page_request='.self::HOME;
@@ -73,6 +76,37 @@ class Router
                             'title' => 'What is Sexual Assault?',
                             'card_content' => array(
                                 'twig' => 'sexual_assault_more.html'
+                            )
+                        );
+                        break;
+
+                    case self::PAGE_GLOSSARY:
+                        $out['content']['template'] = 'full_page_card.html';
+                        $out['content']['data'] = array(
+                            'title' => 'Glossary',
+                            'card_content' => array(
+                                'class' => 'p0',
+                                'twig' => 'glossary.html'
+                            )
+                        );
+                        break;
+
+                    case self::PAGE_POLICY_SUMMARY:
+                        $out['content']['template'] = 'full_page_card.html';
+                        $out['content']['data'] = array(
+                            'title' => 'Peace Corps Policy Summary Sheet',
+                            'card_content' => array(
+                                'twig' => 'policy_summary.html'
+                            )
+                        );
+                        break;
+
+                    case self::PAGE_FURTHER_RESOURCES:
+                        $out['content']['template'] = 'full_page_card.html';
+                        $out['content']['data'] = array(
+                            'title' => 'Further Resources',
+                            'card_content' => array(
+                                'twig' => 'further_resources.html'
                             )
                         );
                         break;

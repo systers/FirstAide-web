@@ -22,6 +22,12 @@
 .firstaide .mb60 {
 	margin-bottom: 60px;
 }
+.firstaide .p0 {
+	padding: 0px;
+}
+.firstaide .p20 {
+	padding: 20px;
+}
 .firstaide .plr60 {
 	padding: 0px 60px;
 }
@@ -52,15 +58,33 @@
 .firstaide .h100 {
 	height: 100%;
 }
+.firstaide ul li  {
+	list-style-position:inside
+}
+.firstaide .ui.definition.table.large {
+	border: 0px;
+}
+.firstaide .ui.definition.table.large tr {
+	padding: 0px;
+}
+.firstaide .ui.definition.table.large .dark-orange {
+	color: #333333;
+	background: #fbc469;
+}
+.firstaide .ui.definition.table.large .dark-green {
+	background: #2DB58F;
+    color: #fff;
+}
 .firstaide .ui.modal .content {
-	color: #000;
+    color: #000;
 }
 .firstaide .flex-column {
 	display: flex;
 	flex-direction: column;
 }
 .firstaide .flex-justify-center {
-	display: flex;
+
+    display: flex;
 	justify-content: center;
 }
 .firstaide .flex-align-center {
@@ -91,6 +115,9 @@
 	color: #fff;
 	font-size: 35px;
 }
+.firstaide .ui.cards>.full-page.card.p0 {
+	padding: 0px;
+}
 .firstaide .ui.cards>.full-page.card,
 .firstaide .ui.cards>.custom.card {
 	padding: 20px;
@@ -118,9 +145,11 @@
 .firstaide .ui.multi-segment .segment {
 	background-color: #2DB58F;
 }
-
 .firstaide .ui.raised.segment {
 	overflow-y: scroll; 
+}
+.firstaide .ui.hr.divider {
+	border-top: 1px solid #fff;
 } 
 
 .firstaide.index {

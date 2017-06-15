@@ -3,7 +3,7 @@
     <div class="sixteen wide column">
       <div class="ui dividing header tac mb60">{{ title }}</div>
         <div class="ui raised cards">
-          <div class="card full-page">
+          <div class="card full-page {% if card_content.class %}{{ card_content.class }}{% endif %}">
             {% include 'partial/' ~ card_content.twig %}
           </div>
         </div>
