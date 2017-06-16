@@ -89,20 +89,20 @@
 	color: #000;
 }
 .firstaide .flex-column {
-	display: flex;
 	flex-direction: column;
+	display: flex;
 }
 .firstaide .flex-justify-center {
 	display: flex;
 	justify-content: center;
 }
 .firstaide .flex-align-center {
-	display: flex;
 	align-items: center;
+	display: flex;
 }
 .firstaide .flex-align-start {
-	display: flex;
 	align-items: flex-start;
+	display: flex;
 }
 .firstaide .relative {
 	position: relative;
