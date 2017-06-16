@@ -89,16 +89,16 @@
 	color: #000;
 }
 .firstaide .flex-column {
-	flex-direction: column;
 	display: flex;
+	flex-direction: column;
 }
 .firstaide .flex-justify-center {
-	display: flex;
 	justify-content: center;
+	display: flex;
 }
 .firstaide .flex-align-center {
-	align-items: center;
 	display: flex;
+	align-items: center;
 }
 .firstaide .flex-align-start {
 	align-items: flex-start;
