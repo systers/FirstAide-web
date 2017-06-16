@@ -28,8 +28,12 @@
 .firstaide .p20 {
 	padding: 20px;
 }
+.firstaide .pt30 {
+	padding-top: 30px;
+}
 .firstaide .plr60 {
-	padding: 0px 60px;
+	padding-left: 60px;
+	padding-right: 60px;
 }
 .firstaide .tac {
 	text-align: center;
@@ -49,6 +53,9 @@
 .firstaide .w100 {
 	width: 100%;
 }
+.firstaide .h30 {
+	height: 30%;
+}
 .firstaide .h65 {
 	height: 65%;
 }
@@ -57,6 +64,9 @@
 }
 .firstaide .h100 {
 	height: 100%;
+}
+.firstaide .lh24 {
+	line-height: 24px;
 }
 .firstaide ul li  {
 	list-style-position:inside
@@ -76,20 +86,23 @@
     color: #fff;
 }
 .firstaide .ui.modal .content {
-    color: #000;
+	color: #000;
 }
 .firstaide .flex-column {
 	display: flex;
 	flex-direction: column;
 }
 .firstaide .flex-justify-center {
-
-    display: flex;
 	justify-content: center;
+	display: flex;
 }
 .firstaide .flex-align-center {
 	display: flex;
 	align-items: center;
+}
+.firstaide .flex-align-start {
+	align-items: flex-start;
+	display: flex;
 }
 .firstaide .relative {
 	position: relative;
@@ -115,7 +128,8 @@
 	color: #fff;
 	font-size: 35px;
 }
-.firstaide .ui.cards>.full-page.card.p0 {
+.firstaide .ui.cards>.full-page.card.p0,
+.firstaide .ui.cards>.custom.card.p0 {
 	padding: 0px;
 }
 .firstaide .ui.cards>.full-page.card,
@@ -134,6 +148,10 @@
 .firstaide .ui.cards>.custom.card.hide {
 	display: none;
 }
+.firstaide .ui.raised.segment.dark-orange {
+	background-color: #fbc469;
+	color: #fff;
+}
 .firstaide .ui.cards>.full-page.card ul li,
 .firstaide .ui.cards>.custom.card ul li {
 	margin-bottom: 10px;
@@ -151,7 +169,6 @@
 .firstaide .ui.hr.divider {
 	border-top: 1px solid #fff;
 } 
-
 .firstaide.index {
 	height: inherit;
 	background: #0ad299
