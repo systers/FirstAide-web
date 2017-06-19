@@ -26,6 +26,9 @@
     "web"
   ],
   "author": "Systers",
+  "contributors": [
+      "Fatima Rafiqui (http://fatimarafiqui.com)"
+  ],
   "license": "AGPL-3.0",
   "bugs": {
     "url": "https://github.com/systers/FirstAide-web/issues"
