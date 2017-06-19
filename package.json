@@ -18,17 +18,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fatimarafiqui/FirstAide-web.git"
+    "url": "git+https://github.com/systers/FirstAide-web.git"
   },
   "keywords": [
     "systers",
     "firstaide",
     "web"
   ],
-  "author": "Fatima Rafiqui",
+  "author": "Systers",
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/fatimarafiqui/FirstAide-web/issues"
+    "url": "https://github.com/systers/FirstAide-web/issues"
   },
-  "homepage": "https://github.com/fatimarafiqui/FirstAide-web#readme"
+  "homepage": "https://github.com/systers/FirstAide-web#readme"
 }
