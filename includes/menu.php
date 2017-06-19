@@ -5,15 +5,15 @@ if (Utils::getPageProperty($page['type'], Utils::PROPERTY_MENU)) {
     'type' => 'logo',
     'img_src' => 'images/logo.png',
     'text' => 'Home',
-    'url' => HOST
+    'url' => Router::getPageUrl(Router::HOME, Router::PAGE_ADDED_SOON)
     );
     $menu['items'][] = array(
     'text' => 'Get Help Now',
-    'url' => HOST.'p/get-help-now'
+    'url' => Router::getPageUrl(Router::HOME, Router::PAGE_ADDED_SOON)
     );
     $menu['items'][] = array(
     'text' => 'Circle of Trust',
-    'url' => HOST.'p/circle-of-trust'
+    'url' => Router::getPageUrl(Router::HOME, Router::PAGE_CIRCLE_OF_TRUST)
     );
     $menu['items'][] = array(
     'text' => 'Safety Tools',
@@ -21,7 +21,7 @@ if (Utils::getPageProperty($page['type'], Utils::PROPERTY_MENU)) {
     'sub_menu' => array(
         array(
             'text' => 'Personal Security Strategies',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_ADDED_SOON)
         ),
         array(
             'text' => 'RADAR',
@@ -45,7 +45,7 @@ if (Utils::getPageProperty($page['type'], Utils::PROPERTY_MENU)) {
         ),
         array(
             'text' => 'Safety Plan Worksheet',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_SAFETY_PLAN_WORKSHEET)
         )
     )
     );
@@ -67,7 +67,7 @@ if (Utils::getPageProperty($page['type'], Utils::PROPERTY_MENU)) {
         ),
         array(
             'text' => 'What to do After an Assault',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_ADDED_SOON)
         ),
         array(
             'text' => 'Confidentiality',
@@ -75,7 +75,7 @@ if (Utils::getPageProperty($page['type'], Utils::PROPERTY_MENU)) {
         ),
         array(
             'text' => 'Peace Corps Mythbusters',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_MYTHBUSTERS)
         )
     )
     );
@@ -85,23 +85,23 @@ if (Utils::getPageProperty($page['type'], Utils::PROPERTY_MENU)) {
     'sub_menu' => array(
         array(
             'text' => 'Was it Sexual Assault',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_SEXUAL_ASSAULT)
         ),
         array(
             'text' => 'Sexual Assault Common Questions',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_COMMON_QUESTIONS)
         ),
         array(
             'text' => 'Impact of Sexual Assault',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_IMPACT_OF_ASSAULT)
         ),
         array(
             'text' => 'Sexual Harassment',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_SEXUAL_HARASSMENT)
         ),
         array(
             'text' => 'Helping a Friend or a Community Member',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_HELP_A_FRIEND)
         )
     )
     );
@@ -111,29 +111,29 @@ if (Utils::getPageProperty($page['type'], Utils::PROPERTY_MENU)) {
     'sub_menu' => array(
         array(
             'text' => 'Peace Corps Policy Summary Sheet',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_POLICY_SUMMARY)
         ),
         array(
             'text' => 'Glossary',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_GLOSSARY)
         ),
         array(
             'text' => 'Further Resources',
-            'url' => HOST.'p/xyz'
+            'url' => Router::getPageUrl(Router::HOME, Router::PAGE_FURTHER_RESOURCES)
         )
     )
     );
     $menu['items'][] = array(
     'text' => 'Settings',
-    'url' => HOST.'settings'
+    'url' => Router::getPageUrl(Router::HOME, Router::PAGE_ADDED_SOON)
     );
     $menu['items'][] = array(
     'text' => 'Logged in as: Username',
-    'url' => HOST.'p/settings'
+    'url' => Router::getPageUrl(Router::HOME, Router::PAGE_ADDED_SOON)
     );
     $menu['items'][] = array(
     'text' => 'Logout',
-    'url' => HOST.'logout'
+    'url' => Router::getPageUrl(Router::HOME, Router::PAGE_ADDED_SOON)
     );
 
     $page['menu'] = $menu;
