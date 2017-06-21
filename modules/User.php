@@ -88,8 +88,7 @@ class User
 							`password`,
 							`username`,
 							`country`
-						) VALUES (?, ?, ?, ?, ?)"
-                );
+						) VALUES (?, ?, ?, ?, ?)");
                 $stmt->bind_param(
                     'sssss',
                     $userData['email'],
