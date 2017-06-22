@@ -9,8 +9,7 @@ class Utils
         $twigLoader = new Twig_Loader_Filesystem('template');
         $Twig = new Twig_Environment($twigLoader, array(
             'cache' => 'cache',
-            )
-        );
+            ));
         $template = $Twig->loadTemplate($twigFile);
 
         return $template->render($data);

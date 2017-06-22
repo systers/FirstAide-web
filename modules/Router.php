@@ -8,6 +8,7 @@ class Router
     const INDEX = 'index';
     const HOME = 'home';
 
+    const PAGE_ADDED_SOON = 'added-soon';
     const PAGE_SEEKING_STAFF_SUPPORT = 'seeking-staff-support';
     const PAGE_SERVICES_AFTER_ASSAULT = 'services-after-assault';
     const PAGE_PEACE_CORPS_COMMITMENT = 'peace-corps-commitment';
@@ -434,6 +435,16 @@ class Router
                             )
                         );
                         $out['javascripts'][] = 'multi_segment.js';
+                        break;
+
+                    case self::PAGE_ADDED_SOON:
+                        $out['content']['template'] = 'full_page_card.html';
+                        $out['content']['data'] = array(
+                            'title' => 'To Be Added Soon',
+                            'card_content' => array(
+                                'twig' => 'added_soon.html'
+                            )
+                        );
                         break;
 
                     default:
