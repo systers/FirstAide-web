@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 	$('#get-help-action-section .remove.icon').on('click', function() {
 		var getHelpSection = $('#get-help-section'),
-			getHelpActionSection = $('#get-help-action-section');
+		getHelpActionSection = $('#get-help-action-section');
         getHelpActionSection.fadeOut('slow');
         getHelpSection.delay(500).fadeIn('slow');
         setTimeout(function() {
