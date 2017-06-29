@@ -30,6 +30,7 @@ class Router
     const PAGE_MYTHBUSTERS = 'mythbusters';
     const PAGE_SEXUAL_HARASSMENT = 'sexual-harassment';
     const PAGE_CIRCLE_OF_TRUST = 'circle-of-trust';
+    const PAGE_GET_HELP_NOW = 'get-help-now';
 
     const COUNTRY_LIST_FILE = '/javascripts/country_list.json';
     const LOGIN_SUCCESS_URL = HOST.'?page_request='.self::HOME;
@@ -180,6 +181,64 @@ class Router
                                 'twig' => 'confidentiality.html'
                             )
                         );
+                        break;
+
+                    case self::PAGE_GET_HELP_NOW:
+                        $out['content']['template'] = 'page.html';
+                        $out['content']['data'] = array(
+                            'card_content' => array(
+                                'twig' => 'get_help_now.html',
+                                'data' => array(
+                                    'title' => 'Get Help Now',
+                                    'country_name' => $UserObj->getCurrentPostCountry(),
+                                    'button_list' => array(
+                                        0 => array(
+                                            'title' => 'Contact Post Staff',
+                                            'buttons' => array(
+                                                0 => array(
+                                                    'text' => 'Contact PCMO',
+                                                    'id' => 'pcmo'
+                                                ),
+                                                1 => array(
+                                                    'text' => 'Contact SSM',
+                                                    'id' => 'ssm'
+                                                ),
+                                                2 => array(
+                                                    'text' => 'Contact SARL',
+                                                    'id' => 'sarl'
+                                                )
+                                            )
+                                        ),
+                                        1 => array(
+                                            'title' => 'Contact Other Staff',
+                                            'buttons' => array(
+                                                0 => array(
+                                                    'text' => 'PC Saves Anonymous Helpline',
+                                                    'id' => 'anonymous-helpline',
+                                                    'content_container' => Utils::getTwig('partial/get_help_now/anonymous_helpline.html')
+                                                ),
+                                                1 => array(
+                                                    'text' => 'Office of Victim Advocacy',
+                                                    'id' => 'victim-advocacy',
+                                                    'content_container' => Utils::getTwig('partial/get_help_now/victim_advocacy.html')
+                                                ),
+                                                2 => array(
+                                                    'text' => 'Office of Inspector General',
+                                                    'id' => 'inspector-general',
+                                                    'content_container' => Utils::getTwig('partial/get_help_now/inspector_general.html')
+                                                ),
+                                                3 => array(
+                                                    'text' => 'Office of Civil Rights and Diversity',
+                                                    'id' => 'civil-rights',
+                                                    'content_container' => Utils::getTwig('partial/get_help_now/civil_rights.html')
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        );
+                        $out['javascripts'][] = 'get_help_now.js';
                         break;
 
                     case self::PAGE_RADAR:
