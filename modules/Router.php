@@ -29,13 +29,14 @@ class Router
     const PAGE_HELP_A_FRIEND = 'help-a-friend';
     const PAGE_MYTHBUSTERS = 'mythbusters';
     const PAGE_SEXUAL_HARASSMENT = 'sexual-harassment';
+    const PAGE_CIRCLE_OF_TRUST = 'circle-of-trust';
 
     const COUNTRY_LIST_FILE = '/javascripts/country_list.json';
     const LOGIN_SUCCESS_URL = HOST.'?page_request='.self::HOME;
         
     public static function getPage($page, $query = '')
     {
-        global $APPLICATION_DIR;
+        global $APPLICATION_DIR, $UserObj;
 
         $out = array(
             'found' => true,
@@ -124,6 +125,21 @@ class Router
                                 'twig' => 'further_resources.html'
                             )
                         );
+                        break;
+
+                    case self::PAGE_CIRCLE_OF_TRUST:
+                        $comradesData = $UserObj->getCircleOfTrust() ?? array();
+                        $comradesArray = explode(", ", $comradesData['comrade_details']);
+                        for ($i = count($comradesArray); $i < User::COUNT_CIRCLE_OF_TRUST; $i++) {
+                            $comradesArray[] = '';
+                        }
+                        $comradesArray = array_slice($comradesArray, 0, User::COUNT_CIRCLE_OF_TRUST);
+                        $out['content']['template'] = 'circle_of_trust.html';
+                        $out['content']['data'] = array(
+                            'title' => 'Circle of Trust',
+                            'comrades' => $comradesArray
+                        );
+                        $out['javascripts'][] = 'circle_of_trust.js';
                         break;
 
                     case self::PAGE_SERVICES_AFTER_ASSAULT:

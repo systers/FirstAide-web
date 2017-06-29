@@ -1,4 +1,12 @@
-<div class="ui visible left vertical sidebar menu mustard">
+<div class="ui fixed inverted main menu">
+  <div class="ui container">
+    <a class="launch icon item show-menu-button">
+      <i class="content icon"></i>
+    </a>
+    <div class="item">Firstaide</div>
+  </div>
+</div>
+<div class="ui left vertical sidebar menu mustard">
   {% for i in items %}
   	{% if i.type and i.type == 'logo' %}
       <a class="item" href="{{ i.url }}">

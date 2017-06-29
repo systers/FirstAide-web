@@ -37,7 +37,7 @@ function showResponse(thisElement, response) {
 
 		var val = 15;
 		for(count = 0; count < 4; count++) {
-			var val = Math.floor((Math.random() * (15 + ((count + 1) * 12)) + val));
+			val = Math.floor((Math.random() * (15 + ((count + 1) * 12)) + val));
 			setTimeout(function() {
 				$('.processing .progress').progress({percent: val});
 			}, 500);
@@ -92,6 +92,7 @@ $('.signup-form').find('#password').keyup(function(ele) {
 	var scoreData = passwordScore($(this).val()),
 		element = $('#password-strength-status');
 	element.parent().show();
+	hideError($(this).parent());
 	switch(scoreData.score) {
 		case 7:
 		case 6:
@@ -115,6 +116,7 @@ $('.signup-form').find('#password').keyup(function(ele) {
 			element.progress({percent: 25});
 			element.removeClass().addClass('ui red progress');
 			element.find('.label').html("Password Strength: Very Weak");
+			showError($(this).parent(), 'Minimum 6 characters long');
 			break;
 	}
 });
@@ -197,6 +199,12 @@ $(document).ready(function() {
 			validData = false;
 		} else {
 			hideError(emailElement.parent());
+		}
+		if (password.length < 6) {
+			showError(passwordElement.parent(), 'Minimum 6 characters long');
+			validData = false;
+		} else {
+			hideError(passwordElement.parent());
 		}
 		var elements = {
 			name: {

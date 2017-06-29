@@ -1,0 +1,62 @@
+<div class="article">
+  <div class="ui column center grid flex-align-start mt20 {% if not bottom_button %} h100{% else %} h85 mb10{% endif %} plr60">
+    <div class="sixteen wide column">
+      <div class="ui dividing header tac mb30">{{ title }}</div>
+      <div class="circle-of-trust-page">
+        <div class="circle-of-trust hide">
+          <div><i class="edit icon dark-green fs27"></i></div>
+          <div class="circle">
+            <ul>
+              <li><img class="get-help-button" src="images/help.png" width="64px"></li>
+              <li><img src="images/comrade.png" width="64px"></li>
+              <li><img src="images/comrade.png" width="64px"></li>
+              <li><img src="images/comrade.png" width="64px"></li>
+              <li><img src="images/comrade.png" width="64px"></li>
+              <li><img src="images/comrade.png" width="64px"></li>
+              <li><img src="images/comrade.png" width="64px"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="edit-comrades-section hide">
+          <div><i class="angle left icon dark-green fs30"></i></div>
+          <div class="ui column centered grid">
+            <div class="eight wide column">
+              <form class="ui form comrade-form">
+                {% set count = 1 %}
+                {% for c in comrades %}
+                  <div class="field">
+                    <label>Comrade {{ count }}</label>
+                    <input class="comrade-data" type="text" name="comrade_{{ count }}" id="comrade_{{ count }}" placeholder="Contact details of comrade {{ count }}" {% if c %} value="{{ c }}"{% endif %}>
+                    <div class="ui basic red pointing prompt label transition hide"></div>
+                  </div>
+                  {% set count = count + 1 %}
+                {% endfor %}
+                <div class="tac mt30">
+                  <button class="ui button green-button center m20 submit" disabled>Save</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="comrade-action-section hide">
+          <div class="mb20"><i class="angle left icon dark-green fs30"></i></div>
+          <div class="ui column centered grid mh400">
+            <div class="fourteen wide column flex-align-center flex-justify-center flex-column">
+                <button class="massive ui button green-button w100 mb20">Come Get Me</button>
+                <button class="massive ui button green-button w100 mb20">Call I need an interruption</button>
+                <button class="massive ui button green-button w100 mb20">I need to talk</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui modal">
+    <div class="header"></div>
+    <div class="content"></div>
+    <div class="actions">
+      <div class="ui cancel green button">Close</div>
+    </div>
+  </div>
+</div>
