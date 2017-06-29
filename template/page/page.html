@@ -1,0 +1,20 @@
+<div class="article">
+  <div class="ui column center grid flex-align-start mt20 h100 plr60">
+    <div class="sixteen wide column">
+    {% if card_content.data %}
+      {% include 'partial/' ~ card_content.twig with card_content.data only %}
+    {% else %}
+      {% include 'partial/' ~ card_content.twig %}
+    {% endif %}
+    </div>
+  </div>
+  {% if modal %}
+  <div class="ui modal">
+    <div class="header"></div>
+    <div class="content"></div>
+    <div class="actions">
+      <div class="ui cancel green button">Close</div>
+    </div>
+  </div>
+  {% endif %}
+</div>

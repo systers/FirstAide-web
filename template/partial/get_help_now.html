@@ -1,0 +1,36 @@
+<div class="ui dividing header tac mb10">{{ title }}</div>
+<div class="ui tiny header tac mb30">This information is for {{ country_name }} (current post)</div>
+<div class="get-help-page">
+  <div id="get-help-section">
+    <div class="ui column centered grid mh400">
+      <div class="fourteen wide column flex-align-center flex-justify-center flex-column scrollable">
+        {% for bl in button_list %}
+      	  <h2 class="mb10">{{ bl.title }}</h2>
+          {% for b in bl.buttons %}
+            <button class="contact-button big ui button green-button w100 mb10" id="{{ b.id }}">{{ b.text }}</button>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div id="get-help-action-section" class="hide">
+    <div class="mb20"><i class="remove icon dark-green fs30"></i></div>
+    <div class="flex-align-center flex-justify-center flex-column mh400">
+      <div class="w50">
+        <button class="massive ui button green-button w100 mb20" id="get-help-call">Call Now</button>
+        <button class="massive ui button green-button w100 mb20" id="get-help-sms">Send Message</button>
+      </div>
+      <div id="content-container" class="ui raised cards w50 hide">
+        <div class="card mt20">
+          {% for bl in button_list %}
+            {% for b in bl.buttons %}
+              {% if b.content_container %}
+                <div id="{{ b.id }}-container" class="m20 hide">{{ b.content_container | raw }}</div>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
