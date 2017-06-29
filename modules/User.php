@@ -150,14 +150,12 @@ class User
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $stmt->close();
-                var_dump('1');
             } else {
                 $stmt = $DB_CONNECT->prepare("INSERT INTO `comrades` (`user_id`, `comrade_details`) VALUES (?, ?)");
                 $stmt->bind_param('is', $this->user_id, $comrades_str);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $stmt->close();
-                var_dump('2');
             }
             $return = array(
                 'response' => true,

@@ -38,7 +38,7 @@ $(document).ready(function() {
         //shift start from 0
         start = -90,
         $elements = $('li:not(:first-child)'),
-        //adj for even distro of elements when not full circle
+        //For even distro of elements of comrades
         numberOfElements = (type === 1) ?  $elements.length : $elements.length - 1, 
         slice = 360 * type / numberOfElements;
 
