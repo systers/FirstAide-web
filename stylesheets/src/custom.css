@@ -53,6 +53,9 @@
 .firstaide .win {
 	width: inherit;
 }
+.firstaide .w50 {
+	width: 50%;
+}
 .firstaide .w80 {
 	width: 80%;
 }
@@ -76,6 +79,9 @@
 }
 .firstaide .lh24 {
 	line-height: 24px;
+}
+.firstaide .scrollable {
+	overflow-y: scroll;
 }
 @media only screen and (min-width: 1145px) {
 	.firstaide .ui.fixed.main.menu {
@@ -167,16 +173,27 @@
 	color: #fff;
 	font-size: 35px;
 }
+.firstaide .ui.tiny.header {
+	color: #fff;
+	font-size: 1em;
+}
 .firstaide .ui.cards>.full-page.card.p0,
 .firstaide .ui.cards>.custom.card.p0 {
 	padding: 0px;
+}
+.firstaide .ui.cards#content-container>.card {
+	width: 100%;
+}
+.firstaide .ui.cards>.full-page.card,
+.firstaide .ui.cards>.custom.card,
+.firstaide .ui.cards>.card {
+	background-color: #2DB58F;
 }
 .firstaide .ui.cards>.full-page.card,
 .firstaide .ui.cards>.custom.card {
 	padding: 20px;
 	height: 65%;
     overflow-y: scroll;
-	background-color: #2DB58F;
 }
 .firstaide .ui.cards>.full-page.card {
 	width: 100%;
@@ -209,7 +226,8 @@
 	border-top: 1px solid #fff;
 }
 .firstaide .icon.angle,
-.firstaide .icon.edit {
+.firstaide .icon.edit,
+.firstaide .icon.remove {
 	cursor: pointer
 }
 .firstaide .icon.dark-green {
