@@ -9,7 +9,7 @@ if (Utils::getPageProperty($page['type'], Utils::PROPERTY_MENU)) {
     );
     $menu['items'][] = array(
         'text' => 'Get Help Now',
-        'url' => Router::getPageUrl(Router::HOME, Router::PAGE_ADDED_SOON)
+        'url' => Router::getPageUrl(Router::HOME, Router::PAGE_GET_HELP_NOW)
     );
     $menu['items'][] = array(
         'text' => 'Circle of Trust',

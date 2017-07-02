@@ -164,4 +164,32 @@ class User
         }
         return $return;
     }
+
+     public function getCurrentPostCountry()
+    {
+        global $DB_CONNECT, $APPLICATION_DIR;
+
+        $email = $this->email;
+        $active_post_countries = array('SY','TN','UG');
+
+        $country_list = file_get_contents($APPLICATION_DIR.'/javascripts/country_list.json');
+        $country_list_json = json_decode($country_list, true);
+
+        $stmt = $DB_CONNECT->prepare("SELECT `country` FROM `users` WHERE `email` = ?");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $stmt->close();
+
+        // default is Uganda
+        $country_found = 'UG';
+        if (!empty($row) && isset($row['country'])) {
+            $country_found = strtoupper($row['country']);
+            $country_found = in_array($country_found, $active_post_countries) ?
+                $country_found :
+                'UG';
+        }
+        return $country_list_json[$country_found];
+    }
 }
