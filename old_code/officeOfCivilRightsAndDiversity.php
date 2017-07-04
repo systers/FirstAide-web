@@ -15,6 +15,7 @@
 <head>
   <title>FirstAide</title>
   <link rel="stylesheet" type="text/css" href="css files/gethelpnow-style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 <body>
 <?php
@@ -43,8 +44,8 @@
     <div class="popup-content">
       <span id="close-cnt" class="close"><img src="images/close-button.png" style="height: 15px;width: 15px;"></span>
       <h3 class="text">Contact Office of Civil Rights and Diversity via</h3>
-      <button id="call" class="popup-button" onclick="make_call('2026922915')">Voice Call</button><!--calls twilio-call.js-->
-      <button id="msg" class="popup-button" onclick="send_sms('2026922139')">Send Message</button><!--calls twilio-sms.js-->
+      <button style="text-indent:center; padding-right:3cm;" id="call" class="popup-button" onclick="make_call('2026922915')"><i style="float:left; padding-left:3cm" class="w3-margin-left fa fa-phone fa-lg"></i>Voice Call</button><!--calls twilio-call.js-->
+      <button style="text-indent:center; padding-right:3cm;" id="msg" class="popup-button" onclick="send_sms('2026922139')"><i style="float:left; padding-left:3cm" class="w3-margin-left fa fa-envelope fa-lg"></i>Send Message</button><!--calls twilio-sms.js-->
     </div> 
   </div>
   
