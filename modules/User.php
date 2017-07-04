@@ -4,14 +4,25 @@ class User
 {
     public $email;
     private $user_id;
+    private $name;
+    private $country;
 
     const COUNT_CIRCLE_OF_TRUST = 5;
 
-    public function __construct($email)
+    public function __construct($email = '', $user_id = 0)
     {
         if (Utils::isValidEmail($email)) {
             $this->email = $email;
-            $this->user_id = $this->isValidUser();
+            $found_user_id = $this->isValidUser();
+            if (empty($found_user_id)) {
+                return null;
+            }
+        } elseif ($user_id != 0) {
+            $this->user_id = $user_id;
+            $found_email = $this->getEmail();
+            if (empty($found_email)) {
+                return null;
+            }
         } else {
             return null;
         }
@@ -35,13 +46,39 @@ class User
         return false;
     }
 
+    public function getName() {
+        return $this->name ?? '';
+    }
+
+    public function getEmail() {
+        global $DB_CONNECT;
+
+        $user_id = $this->user_id;
+
+        $stmt = $DB_CONNECT->prepare("SELECT * FROM `users` WHERE `user_id` = ?");
+        $stmt->bind_param('i', $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $stmt->close();
+
+        if (!empty($row) && isset($row['email'])) {
+            $this->name = $row['name'];
+            $this->country = $row['country'];
+            $this->user_id = $row['user_id'];
+            $this->email = $row['email'];
+            return $row['email'];
+        }
+        return false;
+    }
+
     public function isValidUser()
     {
         global $DB_CONNECT;
 
         $email = $this->email;
 
-        $stmt = $DB_CONNECT->prepare("SELECT `user_id` FROM `users` WHERE `email` = ?");
+        $stmt = $DB_CONNECT->prepare("SELECT * FROM `users` WHERE `email` = ?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -49,6 +86,10 @@ class User
         $stmt->close();
 
         if (!empty($row) && isset($row['user_id'])) {
+            $this->name = $row['name'];
+            $this->country = $row['country'];
+            $this->user_id = $row['user_id'];
+            $this->email = $row['email'];
             return $row['user_id'];
         }
         return false;
