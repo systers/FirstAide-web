@@ -14,11 +14,17 @@
                     case 'login':
                         if (!empty($_POST['email']) && !empty($_POST['password'])) {
                             if (Utils::isValidEmail($_POST['email'])) {
-                                $Auth = new Authentication($_POST['email'], $_POST['password']);
-                                if ($Auth->isValid()) {
-                                    $output['response'] = true;
-                                    $output['message'] = 'Logged In. Redirecting...';
-                                    $output['redirect_url'] = Router::LOGIN_SUCCESS_URL;
+                                $Auth = Authentication::withEmailPassword($_POST['email'], $_POST['password']);
+                                if (!empty($Auth) && $Auth->isValid()) {
+                                    $session_token = Authentication::createSession($Auth->getUserId());
+                                    if ($session_token) {
+                                        $_SESSION['session_token'] = $session_token;
+                                        $output['response'] = true;
+                                        $output['message'] = 'Logged In. Redirecting...';
+                                        $output['redirect_url'] = Router::LOGIN_SUCCESS_URL;
+                                    } else {
+                                        $output['message'] = 'Unable to create session';
+                                    }
                                 } else {
                                     $output['message'] = 'Invalid credentials.
                                     It seems that you have not signed up on this platform.';
@@ -29,6 +35,10 @@
                         } else {
                             $output['message'] = 'Invalid credentials';
                         }
+                        break;
+                    case 'logout':
+                        session_unset();
+                        session_destroy();
                         break;
 
                     case 'signup':
