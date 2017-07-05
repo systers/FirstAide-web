@@ -1,0 +1,111 @@
+<div class="flex-align-center flex-justify-center flex-column w100 hin">
+	<div class="preloader ui column stackable center page grid">
+		<div class="three wide column"></div>
+		<div class="ten wide column"><img src="images/logo.png" class="w100"/></div>
+	</div>
+	<div class="content win hide">
+		<div class="login-form-main ui column stackable center page grid">
+			<div class="four wide column"></div>
+			<div class="eight wide column">
+				<img src="images/firstaide_logo.png" class="w100 mb20"/>
+				<div class="subtitle mb30 tac fs17">A Confidentiality Safety Resource for Peace Corps Volunteers</div>
+				<form class="ui form login-form">
+					<div class="field">
+						<label>Email</label>
+						<input type="text" name="email" id="email" placeholder="Email">
+						<div class="ui basic red pointing prompt label transition hide"></div>
+					</div>
+					<div class="field">
+						<label>Password</label>
+						<input type="password" name="password" id="password" placeholder="******">
+						<div class="ui basic red pointing prompt label transition hide"></div>
+					</div>
+					<div class="tac mt30">
+						<button class="ui button center m20 submit">Sign in to Account</button>
+					</div>
+					<div class="tac mt20">
+						<a href="#" id="sign-up-link">New? Sign up here</a>
+					</div>
+				</form>
+				<div class="processing hide">
+					<div class="ui yellow progress" data-percent="30">
+						<div class="bar"></div>
+						<div class="label"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="signup-form-main ui column stackable center page grid hide">
+			<div class="four wide column"></div>
+			<div class="eight wide column">
+				<img src="images/firstaide_logo.png" class="w100 mb20"/>
+				<div class="subtitle mb30 tac fs17">A Confidentiality Safety Resource for Peace Corps Volunteers</div>
+				<form class="ui form signup-form">
+					<div class="two fields">
+						<div class="field">
+							<label>Email</label>
+							<input type="text" name="email" id="email" placeholder="Email">
+							<div class="ui basic red right pointing prompt label transition hide"></div>
+						</div>
+						<div class="field">
+							<label>Name</label>
+							<input type="text" name="name" id="name" placeholder="Your complete name">
+							<div class="ui basic red left pointing prompt label transition hide"></div>
+						</div>
+					</div>
+					<div class="two fields">
+						<div class="field">
+							<label>Password</label>
+							<input type="password" name="password" id="password" placeholder="******">
+							<div class="ui basic red pointing prompt label transition hide"></div>
+						</div>
+						<div class="field">
+							<label>Confirm Password</label>
+							<input type="password" name="confirm_password" id="confirm_password" placeholder="******">
+							<div class="ui basic red pointing prompt label transition hide"></div>
+						</div>
+					</div>
+					<div class="field password-strength hide">
+						<div id="password-strength-status" class="ui red progress" data-percent="30">
+							<div class="bar"></div>
+							<div class="label"></div>
+						</div>
+					</div>
+					<div class="field">
+						<label>Country</label>
+						<div class="ui fluid search selection dropdown">
+							<input type="hidden" name="country" id="country">
+							<i class="dropdown icon"></i>
+							<div class="default text">Select Country</div>
+							<div class="menu">
+							{% for country_code, country_name in page.country_list %}
+								<div class="item" data-value="{{ country_code | lower }}"><i class="{{ country_code | lower }} flag"></i>{{ country_name }}</div>
+							{% endfor %}
+							</div>
+							<div class="ui basic red pointing prompt label transition hide"></div>
+						</div>
+					</div>
+					<div class="tac mt30">
+						<button class="ui button center m20 submit">Sign Up</button>
+					</div>
+					<div class="tac mt20">
+						<a href="#" id="login-link">Already Registered? Login</a>
+					</div>
+				</form>
+				<div class="processing hide">
+					<div class="ui yellow progress" data-percent="30">
+						<div class="bar"></div>
+						<div class="label"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ui modal">
+		<div class="header"></div>
+		<div class="content"></div>
+		<div class="actions">
+			<div class="ui cancel green button">Close</div>
+		</div>
+	</div>
+</div>

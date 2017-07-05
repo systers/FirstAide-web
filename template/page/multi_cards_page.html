@@ -1,0 +1,30 @@
+<div class="article relative">
+  <div class="previous-button hide"><i class="angle left icon"></i></div>
+  <div class="ui column center grid flex-align-center h100 plr60">
+    <div class="sixteen wide column">
+      <div class="ui dividing header tac mb60">{{ title }}</div>
+        <div class="multi-card">
+            {% set count = 0 %}
+            {% set section_count = ((cards_content|length)/show_card_count)|round %}
+            {% for i in 0..section_count-1 %} 
+              <div class="ui raised multi cards{% if count %} hide{% endif %}">
+                {% for j in 0..(show_card_count-1) %}
+                  {% if cards_content[2*i+j].twig %}
+                    {% if not class %}
+                      {% set class = 'p20' %}
+                    {% endif %}
+                    <div class="multi card custom {{ class }}">
+                      {% include 'partial/' ~ cards_content[(show_card_count)*i+j].twig %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              {% set count = count + 1 %}
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+  {% if (cards_content|length) > show_card_count %}
+  <div class="next-button"><i class="angle right icon"></i></div>
+  {% endif %}
+</div>

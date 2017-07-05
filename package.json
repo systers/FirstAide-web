@@ -1,0 +1,34 @@
+{
+  "name": "firstaide-web",
+  "version": "1.4.7",
+  "description": "systers",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-uglify": "^3.0.0"
+  },
+  "devDependencies": {
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/systers/FirstAide-web.git"
+  },
+  "keywords": [
+    "systers",
+    "firstaide",
+    "web"
+  ],
+  "author": "Systers",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/systers/FirstAide-web/issues"
+  },
+  "homepage": "https://github.com/systers/FirstAide-web#readme"
+}

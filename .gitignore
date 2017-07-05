@@ -1,0 +1,5 @@
+.DS_Store
+old_code/
+cache/*
+vendor/*
+node_modules/*

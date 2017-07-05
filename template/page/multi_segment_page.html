@@ -1,0 +1,27 @@
+<div class="article relative">
+  <div class="previous-button hide"><i class="angle left icon"></i></div>
+  <div class="ui column center grid flex-align-center h100 plr60">
+    <div class="sixteen wide column">
+      <div class="ui dividing header tac mb60">{{ title }}</div>
+          {% set count = 0 %}
+          {% set section_count = ((cards_content|length)/2)|round %} 
+          {% for i in 0..section_count-1 %}
+            <div class="ui two column center grid multi-segment{% if count %} hide{% endif %}">
+              {% for j in 0..1 %}
+                {% if cards_content[2*i+j].twig %}
+                <div class="column">
+                  <div class="ui raised segment h65">
+                    {% include 'partial/' ~ cards_content[2*i+j].twig %}
+                  </div>
+                </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+            {% set count = count + 1 %}
+          {% endfor %}
+    </div>
+  </div>
+  {% if (cards_content|length) > 2 %}
+  <div class="next-button"><i class="angle right icon"></i></div>
+  {% endif %}
+</div>
