@@ -1,10 +1,16 @@
 {
-  "require" : {
-    "php": "^7.0.0",
-    "twig/twig": "~2.0",
-    "twilio/sdk": "^5.10"
-  },
-  "require-dev" : {
-    "squizlabs/php_codesniffer": "*"	
-  }
+    "require" : {
+        "php": "^7.0.0",
+            "twig/twig": "~2.0",
+            "twilio/sdk": "^5.10"
+    },
+        "require-dev" : {
+            "squizlabs/php_codesniffer": "*",
+            "phpunit/phpunit": "^6.1"
+        },
+        "autoload" : {
+            "psr-0" : {
+                "" : "modules/"
+            }
+        }
 }
