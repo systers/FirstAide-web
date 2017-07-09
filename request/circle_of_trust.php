@@ -1,5 +1,5 @@
 <?php
-    require_once(dirname(__FILE__).'/../includes/application.php');
+    require_once dirname(__FILE__).'/../includes/application.php';
 
     $output = array(
         'response' => false,

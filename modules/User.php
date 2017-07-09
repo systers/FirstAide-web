@@ -46,11 +46,13 @@ class User
         return false;
     }
 
-    public function getName() {
+    public function getName()
+    {
         return $this->name ?? '';
     }
 
-    public function getEmail() {
+    public function getEmail()
+    {
         global $DB_CONNECT;
 
         $user_id = $this->user_id;
@@ -206,7 +208,7 @@ class User
         return $return;
     }
 
-     public function getCurrentPostCountry()
+    public function getCurrentPostCountry()
     {
         global $DB_CONNECT, $APPLICATION_DIR;
 

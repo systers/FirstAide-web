@@ -58,10 +58,9 @@
     }
 
     // Redirect to correct URL, if already not there
-    if (
-        !empty($redirect) &&
-        $requested_url != $redirect &&
-        strpos($requested_url, HOST.'request') === false
+    if (!empty($redirect)
+        && $requested_url != $redirect
+        && strpos($requested_url, HOST.'request') === false
     ) {
         header("Location: ".$redirect);
         die();

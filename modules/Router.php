@@ -215,22 +215,30 @@ class Router
                                                 0 => array(
                                                     'text' => 'PC Saves Anonymous Helpline',
                                                     'id' => 'anonymous-helpline',
-                                                    'content_container' => Utils::getTwig('partial/get_help_now/anonymous_helpline.html')
+                                                    'content_container' => Utils::getTwig(
+                                                        'partial/get_help_now/anonymous_helpline.html'
+                                                    )
                                                 ),
                                                 1 => array(
                                                     'text' => 'Office of Victim Advocacy',
                                                     'id' => 'victim-advocacy',
-                                                    'content_container' => Utils::getTwig('partial/get_help_now/victim_advocacy.html')
+                                                    'content_container' => Utils::getTwig(
+                                                        'partial/get_help_now/victim_advocacy.html'
+                                                    )
                                                 ),
                                                 2 => array(
                                                     'text' => 'Office of Inspector General',
                                                     'id' => 'inspector-general',
-                                                    'content_container' => Utils::getTwig('partial/get_help_now/inspector_general.html')
+                                                    'content_container' => Utils::getTwig(
+                                                        'partial/get_help_now/inspector_general.html'
+                                                    )
                                                 ),
                                                 3 => array(
                                                     'text' => 'Office of Civil Rights and Diversity',
                                                     'id' => 'civil-rights',
-                                                    'content_container' => Utils::getTwig('partial/get_help_now/civil_rights.html')
+                                                    'content_container' => Utils::getTwig(
+                                                        'partial/get_help_now/civil_rights.html'
+                                                    )
                                                 )
                                             )
                                         )
