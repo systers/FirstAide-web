@@ -122,7 +122,7 @@ class AuthenticationTest extends TestCase
     public function testInvalidSessionToken()
     {
         echo "with invalid session token".PHP_EOL;
-        $Auth = Authentication::withSessionToken('invalid');
+        $Auth = Authentication::withSessionToken('');
         $this->assertNull($Auth);
     }
 
