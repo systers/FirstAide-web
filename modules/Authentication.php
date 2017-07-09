@@ -4,11 +4,13 @@ class Authentication
 {
     private $user;
 
-    public function __construct() {
+    public function __construct()
+    {
     }
 
     // Create instance with session token
-    public static function withSessionToken($session_token) {
+    public static function withSessionToken($session_token)
+    {
         global $DB_CONNECT;
 
         if (empty($session_token)) {
@@ -34,61 +36,68 @@ class Authentication
     // Create instance with email and password
     public static function withEmailPassword($email, $password)
     {
-        if (empty($email) || empty($password)) {
+        if (empty($email) || empty($password) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return null;
         }
         $instance = new self();
 
         $User = new User($email);
-        $validity = $User->validateCredentials($password);
-        if (!$validity) {
-            return null;
+        if ($User != null) {
+            $validity = $User->validateCredentials($password);
+            if (!$validity) {
+                return null;
+            }
+            $instance->user = $User;
+            return $instance;
         }
-        $instance->user = $User;
-        return $instance;
+        return null;
     }
 
     // Create session token and adding log in database for validation
-    public static function createSession($user_id) {
+    public static function createSession($user_id)
+    {
         global $DB_CONNECT;
 
+        if ($user_id > 0) {
+            $session_token = self::generateSessionToken();
 
-        $session_token = self::generateSessionToken();
-
-        $stmt = $DB_CONNECT->prepare("SELECT * FROM `user_session` WHERE `user_id` = ?");
-        $stmt->bind_param('i', $user_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        $stmt->close();
-
-        if (!empty($row) && isset($row['user_id'])) {
-            $stmt = $DB_CONNECT->prepare("UPDATE `user_session` SET `session_token` = ? WHERE `user_id` = ?");
-            $stmt->bind_param('si', $session_token, $user_id);
+            $stmt = $DB_CONNECT->prepare("SELECT * FROM `user_session` WHERE `user_id` = ?");
+            $stmt->bind_param('i', $user_id);
             $stmt->execute();
-            $affected_rows = $stmt->affected_rows;
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
             $stmt->close();
-        } else {
-            $stmt = $DB_CONNECT->prepare("INSERT INTO `user_session` (`session_token`, `user_id`) VALUES (?, ?)");
-            $stmt->bind_param('si', $session_token, $user_id);
-            $stmt->execute();
-            $affected_rows = $stmt->affected_rows;
-            $stmt->close();
-        }
 
-        if ($affected_rows > 0) {
-            return $session_token;
+            if (!empty($row) && isset($row['user_id'])) {
+                $stmt = $DB_CONNECT->prepare("UPDATE `user_session` SET `session_token` = ? WHERE `user_id` = ?");
+                $stmt->bind_param('si', $session_token, $user_id);
+                $stmt->execute();
+                $affected_rows = $stmt->affected_rows;
+                $stmt->close();
+            } else {
+                $stmt = $DB_CONNECT->prepare("INSERT INTO `user_session` (`session_token`, `user_id`) VALUES (?, ?)");
+                $stmt->bind_param('si', $session_token, $user_id);
+                $stmt->execute();
+                $affected_rows = $stmt->affected_rows;
+                $stmt->close();
+            }
+
+            if ($affected_rows > 0) {
+                return $session_token;
+            }
         }
         return false;
     }
 
     // Generate random session token
-    public static function generateSessionToken() {
+    public static function generateSessionToken()
+    {
         return md5(self::generateRandomString());
     }
 
     // Generate random string of length n
-    public function generateRandomString($length = 10) {
+    public function generateRandomString($length = 10)
+    {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -105,9 +114,8 @@ class Authentication
     }
 
     // Get instance User ID
-    public function getUserId() {
-        return $this->user->isValidUser();
+    public function getUserId()
+    {
+        return ($this->user != null) ? $this->user->isValidUser() : 0;
     }
 }
-
-
