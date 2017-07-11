@@ -68,8 +68,6 @@ class AuthenticationTest extends TestCase
         $user_id = 0;
         if (!empty($row) && isset($row['user_id'])) {
             $user_id = $row['user_id'];
-        } else {
-            echo "setUpBeforeClass: UserID not found".PHP_EOL;
         }
 
               $session_token = '';
@@ -84,19 +82,14 @@ class AuthenticationTest extends TestCase
               $affected_rows = $stmt->affected_rows;
               $stmt->close();
 
-              echo $affected_rows > 0 ? '' : 'setUpBeforeClass: unable to insert session token';
-
               self::$email = $temp_mail;
               self::$password = $password;
               self::$session_token = $session_token;
               self::$user_id = $user_id;
-
-              echo "Testing Authentication module".PHP_EOL;
     }
 
     public function testValidEmailAddress()
     {
-        echo "with valid email address".PHP_EOL;
         $Auth = Authentication::withEmailPassword(self::$email, self::$password);
         $this->assertNotNull($Auth);
         $this->assertTrue($Auth->isValid());
@@ -105,14 +98,12 @@ class AuthenticationTest extends TestCase
 
     public function testInvalidEmailAddress()
     {
-        echo "with invalid email address".PHP_EOL;
         $Auth = Authentication::withEmailPassword('invalid', self::$password);
         $this->assertNull($Auth);
     }
 
     public function testValidSessionToken()
     {
-        echo "with valid session token".PHP_EOL;
         $Auth = Authentication::withSessionToken(self::$session_token);
         $this->assertNotNull($Auth);
         $this->assertTrue($Auth->isValid());
@@ -121,14 +112,12 @@ class AuthenticationTest extends TestCase
 
     public function testInvalidSessionToken()
     {
-        echo "with invalid session token".PHP_EOL;
         $Auth = Authentication::withSessionToken('');
         $this->assertNull($Auth);
     }
 
     public function testGenerateSessionToken()
     {
-        echo "generate session token".PHP_EOL;
         $this->assertNotEquals(
             Authentication::generateSessionToken(),
             Authentication::generateSessionToken()
@@ -137,7 +126,6 @@ class AuthenticationTest extends TestCase
 
     public function testCreateSessionWithValidUserId()
     {
-        echo "generate session token".PHP_EOL;
         $this->assertNotEquals(
             Authentication::createSession(self::$user_id),
             self::$session_token
@@ -146,7 +134,6 @@ class AuthenticationTest extends TestCase
 
     public function testCreateSessionWithInvalidUserId()
     {
-        echo "generate session token".PHP_EOL;
         $this->assertFalse(
             Authentication::createSession(0)
         );
@@ -155,8 +142,6 @@ class AuthenticationTest extends TestCase
     public static function tearDownAfterClass()
     {
         global $DB_CONNECT;
-
-        echo 'tearDownAfterClass: destroyed everything'.PHP_EOL;
 
         $stmt = $DB_CONNECT->prepare("DELETE FROM `users` WHERE `user_id` = ?");
         $stmt->bind_param('i', self::$user_id);
