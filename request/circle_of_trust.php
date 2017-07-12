@@ -24,4 +24,4 @@
         $output['message'] = 'Invalid Credentials. Please login before updating details.';
     }
 
-    Utils::jsonify($output);
+    FirstAide\Utils::jsonify($output);

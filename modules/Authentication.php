@@ -1,4 +1,5 @@
 <?php
+namespace FirstAide;
 
 class Authentication
 {

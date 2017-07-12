@@ -1,10 +1,10 @@
 <?php
     require_once $APPLICATION_DIR.'/includes/application.php';
-    $page_request = $_GET['page_request'] ?? \Router::INDEX;
+    $page_request = $_GET['page_request'] ?? \FirstAide\Router::INDEX;
     $query = $_GET['query'] ?? '';
-    $page = Router::getPage($page_request, $query);
+    $page = FirstAide\Router::getPage($page_request, $query);
 
-if ($page['type'] == Router::INDEX) {
+if ($page['type'] == FirstAide\Router::INDEX) {
     $page['javascripts'][] = 'index.js';
 }
 ?>

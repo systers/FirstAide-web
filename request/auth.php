@@ -13,15 +13,15 @@
                 switch ($_POST['type']) {
                     case 'login':
                         if (!empty($_POST['email']) && !empty($_POST['password'])) {
-                            if (Utils::isValidEmail($_POST['email'])) {
-                                $Auth = Authentication::withEmailPassword($_POST['email'], $_POST['password']);
+                            if (FirstAide\Utils::isValidEmail($_POST['email'])) {
+                                $Auth = FirstAide\Authentication::withEmailPassword($_POST['email'], $_POST['password']);
                                 if (!empty($Auth) && $Auth->isValid()) {
-                                    $session_token = Authentication::createSession($Auth->getUserId());
+                                    $session_token = FirstAide\Authentication::createSession($Auth->getUserId());
                                     if ($session_token) {
                                         $_SESSION['session_token'] = $session_token;
                                         $output['response'] = true;
                                         $output['message'] = 'Logged In. Redirecting...';
-                                        $output['redirect_url'] = Router::LOGIN_SUCCESS_URL;
+                                        $output['redirect_url'] = FirstAide\Router::LOGIN_SUCCESS_URL;
                                     } else {
                                         $output['message'] = 'Unable to create session';
                                     }
@@ -49,8 +49,8 @@
                         && !empty($_POST['country'])
                         && $_POST['password'] == $_POST['confirm_password']
                             ) {
-                            if (Utils::isValidEmail($_POST['email'])) {
-                                $User = new User($_POST['email']);
+                            if (FirstAide\Utils::isValidEmail($_POST['email'])) {
+                                $User = new FirstAide\User($_POST['email']);
                                 $newUserStatus = $User->addUser(
                                     array(
                                     'email' => $_POST['email'],
@@ -86,4 +86,4 @@
         $output['message'] = 'Code sober or get pulled over. This is not one of the URLs you should visit.';
     }
     
-    Utils::jsonify($output);
+    FirstAide\Utils::jsonify($output);

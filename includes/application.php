@@ -1,15 +1,18 @@
 <?php
     $APPLICATION_DIR = $APPLICATION_DIR ?? str_replace('includes', '', dirname(__FILE__));
+    require_once $APPLICATION_DIR.'/vendor/autoload.php';
     spl_autoload_register(
         function ($class_name) {
             global $APPLICATION_DIR;
-            include $APPLICATION_DIR.'/modules/'.$class_name . '.php';
+            $filename = $APPLICATION_DIR . '/modules/' . str_replace('\\', '/', $class_name) . '.php';
+            if (file_exists($filename)) {
+                require_once($filename);
+            }
         }
     );
 
     require_once $APPLICATION_DIR.'/includes/settings.php';
     require_once $APPLICATION_DIR.'/includes/db_connection.php';
-    require_once $APPLICATION_DIR.'/vendor/autoload.php';
 
 
     $requested_protocol = ((!empty($_SERVER['HTTPS']) &&
@@ -43,14 +46,14 @@
 
     // Validate session token, if exists
     if (!empty($_SESSION['session_token'])) {
-        $UserAuth = Authentication::withSessionToken($_SESSION['session_token']);
+        $UserAuth = FirstAide\Authentication::withSessionToken($_SESSION['session_token']);
         if (empty($UserAuth)) {
             $redirect = HOST;
         } else {
-            $UserObj = new User('', $UserAuth->getUserId());
+            $UserObj = new FirstAide\User('', $UserAuth->getUserId());
             $user_email = $UserObj->getEmail();
             if ($requested_url == HOST) {
-                $redirect = Router::LOGIN_SUCCESS_URL;
+                $redirect = FirstAide\Router::LOGIN_SUCCESS_URL;
             }
         }
     } else {

@@ -6,11 +6,12 @@
     },
     "require-dev" : {
         "squizlabs/php_codesniffer": "*",
-        "phpunit/phpunit": "^6.1"
+        "phpunit/phpunit": "^6.1",
+        "mockery/mockery": "dev-master"
     },
     "autoload" : {
-        "psr-0" : {
-            "" : "modules/"
+        "psr-4" : {
+            "FirstAide\\":"modules/"
         }
     }
 }

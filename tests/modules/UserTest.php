@@ -1,19 +1,15 @@
 <?php
-namespace FirstAide\Tests;
 
-use FirstAide;
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../includes/settings.php';
 require_once dirname(__FILE__).'/../../includes/db_connection.php';
-require_once dirname(__FILE__).'/../../modules/User.php';
 require_once dirname(__FILE__).'/../../modules/Utils.php';
 
 class AuthenticationTest extends TestCase
 {
     private static $email;
     private static $password;
-    private static $session_token;
     private static $user_id;
 
     public static function setUpBeforeClass()
@@ -72,27 +68,14 @@ class AuthenticationTest extends TestCase
             $user_id = $row['user_id'];
         }
 
-              $session_token = '';
-        for ($i = 0; $i < 10; $i++) {
-             $session_token .= $characters[rand(0, $charactersLength - 1)];
-        }
-
-              $session_token = md5($session_token);
-              $stmt = $DB_CONNECT->prepare("INSERT INTO `user_session` (`session_token`, `user_id`) VALUES (?, ?)");
-              $stmt->bind_param('si', $session_token, $user_id);
-              $stmt->execute();
-              $affected_rows = $stmt->affected_rows;
-              $stmt->close();
-
-              self::$email = $temp_mail;
-              self::$password = $password;
-              self::$session_token = $session_token;
-              self::$user_id = $user_id;
+        self::$email = $temp_mail;
+        self::$password = $password;
+        self::$user_id = $user_id;
     }
 
     public function testValidEmailAddress()
     {
-        $Auth = FirstAide\Authentication::withEmailPassword(self::$email, self::$password);
+        $Auth = Authentication::withEmailPassword(self::$email, self::$password);
         $this->assertNotNull($Auth);
         $this->assertTrue($Auth->isValid());
         $this->assertEquals($Auth->getUserId(), self::$user_id);
@@ -100,13 +83,13 @@ class AuthenticationTest extends TestCase
 
     public function testInvalidEmailAddress()
     {
-        $Auth = FirstAide\Authentication::withEmailPassword('invalid', self::$password);
+        $Auth = Authentication::withEmailPassword('invalid', self::$password);
         $this->assertNull($Auth);
     }
 
     public function testValidSessionToken()
     {
-        $Auth = FirstAide\Authentication::withSessionToken(self::$session_token);
+        $Auth = Authentication::withSessionToken(self::$session_token);
         $this->assertNotNull($Auth);
         $this->assertTrue($Auth->isValid());
         $this->assertEquals($Auth->getUserId(), self::$user_id);
@@ -114,22 +97,22 @@ class AuthenticationTest extends TestCase
 
     public function testInvalidSessionToken()
     {
-        $Auth = FirstAide\Authentication::withSessionToken('');
+        $Auth = Authentication::withSessionToken('');
         $this->assertNull($Auth);
     }
 
     public function testGenerateSessionToken()
     {
         $this->assertNotEquals(
-            FirstAide\Authentication::generateSessionToken(),
-            FirstAide\Authentication::generateSessionToken()
+            Authentication::generateSessionToken(),
+            Authentication::generateSessionToken()
         );
     }
 
     public function testCreateSessionWithValidUserId()
     {
         $this->assertNotEquals(
-            FirstAide\Authentication::createSession(self::$user_id),
+            Authentication::createSession(self::$user_id),
             self::$session_token
         );
     }
@@ -137,7 +120,7 @@ class AuthenticationTest extends TestCase
     public function testCreateSessionWithInvalidUserId()
     {
         $this->assertFalse(
-            FirstAide\Authentication::createSession(0)
+            Authentication::createSession(0)
         );
     }
 
