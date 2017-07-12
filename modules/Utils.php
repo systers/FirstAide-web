@@ -1,5 +1,6 @@
 <?php
 namespace FirstAide;
+
 use Twig;
 
 class Utils

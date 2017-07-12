@@ -3,15 +3,18 @@ namespace FirstAide;
 
 class User
 {
-    public $email;
+    private $db;
     private $user_id;
     private $name;
     private $country;
 
+    public $email;
+
     const COUNT_CIRCLE_OF_TRUST = 5;
 
-    public function __construct($email = '', $user_id = 0)
+    public function __construct($db, $email = '', $user_id = 0)
     {
+        $this->db = $db;
         if (Utils::isValidEmail($email)) {
             $this->email = $email;
             $found_user_id = $this->isValidUser();
@@ -54,11 +57,9 @@ class User
 
     public function getEmail()
     {
-        global $DB_CONNECT;
-
         $user_id = $this->user_id;
-
-        $stmt = $DB_CONNECT->prepare("SELECT * FROM `users` WHERE `user_id` = ?");
+        
+        $stmt = $this->db->prepare("SELECT * FROM `users` WHERE `user_id` = ?");
         $stmt->bind_param('i', $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -77,11 +78,10 @@ class User
 
     public function isValidUser()
     {
-        global $DB_CONNECT;
 
         $email = $this->email;
 
-        $stmt = $DB_CONNECT->prepare("SELECT * FROM `users` WHERE `email` = ?");
+        $stmt = $this->db->prepare("SELECT * FROM `users` WHERE `email` = ?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -100,11 +100,10 @@ class User
 
     public function validateCredentials($password)
     {
-        global $DB_CONNECT;
 
         $email = $this->email;
 
-        $stmt = $DB_CONNECT->prepare("SELECT * FROM `users` WHERE `email` = ?");
+        $stmt = $this->db->prepare("SELECT * FROM `users` WHERE `email` = ?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -120,7 +119,6 @@ class User
 
     public function addUser($userData)
     {
-        global $DB_CONNECT;
         if (isset($userData['email']) &&
             isset($userData['name']) &&
             isset($userData['password']) &&
@@ -130,7 +128,7 @@ class User
             if ($userData['email'] == $this->email) {
                 $username = strtolower(str_replace(' ', '_', $userData['name']));
                 $password = $this->getEncryptedPassword($userData['password']);
-                $stmt = $DB_CONNECT->prepare("
+                $stmt = $this->db->prepare("
 						INSERT INTO `users` (
 							`email`,
 							`name`,
@@ -162,8 +160,7 @@ class User
 
     public function getCircleOfTrust()
     {
-        global $DB_CONNECT;
-        $stmt = $DB_CONNECT->prepare("SELECT * FROM `comrades` WHERE `user_id` = ?");
+        $stmt = $this->db->prepare("SELECT * FROM `comrades` WHERE `user_id` = ?");
         $stmt->bind_param('i', $this->user_id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -178,7 +175,6 @@ class User
     }
     public function updateCircleOfTrust($comrades)
     {
-        global $DB_CONNECT;
 
         $return = array(
             'response' => false,
@@ -189,13 +185,13 @@ class User
             $found_user_id = $this->getCircleOfTrust();
 
             if ($found_user_id) {
-                $stmt = $DB_CONNECT->prepare("UPDATE `comrades` SET `comrade_details` = ? WHERE `user_id` = ?");
+                $stmt = $this->db->prepare("UPDATE `comrades` SET `comrade_details` = ? WHERE `user_id` = ?");
                 $stmt->bind_param('si', $comrades_str, $found_user_id);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $stmt->close();
             } else {
-                $stmt = $DB_CONNECT->prepare("INSERT INTO `comrades` (`user_id`, `comrade_details`) VALUES (?, ?)");
+                $stmt = $this->db->prepare("INSERT INTO `comrades` (`user_id`, `comrade_details`) VALUES (?, ?)");
                 $stmt->bind_param('is', $this->user_id, $comrades_str);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -211,7 +207,7 @@ class User
 
     public function getCurrentPostCountry()
     {
-        global $DB_CONNECT, $APPLICATION_DIR;
+        global $APPLICATION_DIR;
 
         $email = $this->email;
         $active_post_countries = array('SY','TN','UG');
@@ -219,7 +215,7 @@ class User
         $country_list = file_get_contents($APPLICATION_DIR.'/javascripts/country_list.json');
         $country_list_json = json_decode($country_list, true);
 
-        $stmt = $DB_CONNECT->prepare("SELECT `country` FROM `users` WHERE `email` = ?");
+        $stmt = $this->db->prepare("SELECT `country` FROM `users` WHERE `email` = ?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
