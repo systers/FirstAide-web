@@ -51,7 +51,7 @@
             $redirect = HOST;
         } else {
             $UserObj = new FirstAide\User($DB, '', $UserAuth->getUserId());
-            $user_email = $UserObj->getEmail();
+            $user_email = $UserObj->getEmailAddress();
             if ($requested_url == HOST) {
                 $redirect = FirstAide\Router::LOGIN_SUCCESS_URL;
             }
