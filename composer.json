@@ -11,7 +11,8 @@
     },
     "autoload" : {
         "psr-4" : {
-            "FirstAide\\":"modules/"
+            "FirstAide\\":"modules/",
+            "Tests\\": "tests/"
         }
     }
 }
