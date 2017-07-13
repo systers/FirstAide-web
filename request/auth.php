@@ -16,7 +16,7 @@
                             if (FirstAide\Utils::isValidEmail($_POST['email'])) {
                                 $Auth = FirstAide\Authentication::withEmailPassword($DB, $_POST['email'], $_POST['password']);
                                 if (!empty($Auth) && $Auth->isValid()) {
-                                    $session_token = FirstAide\Authentication::createSession($Db, $Auth->getUserId());
+                                    $session_token = FirstAide\Authentication::createSession($DB, $Auth->getUserId());
                                     if ($session_token) {
                                         $_SESSION['session_token'] = $session_token;
                                         $output['response'] = true;
@@ -50,7 +50,7 @@
                         && $_POST['password'] == $_POST['confirm_password']
                             ) {
                             if (FirstAide\Utils::isValidEmail($_POST['email'])) {
-                                $User = new FirstAide\User($_POST['email']);
+                                $User = new FirstAide\User($DB, $_POST['email']);
                                 $newUserStatus = $User->addUser(
                                     array(
                                     'email' => $_POST['email'],
