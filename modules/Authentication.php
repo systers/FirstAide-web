@@ -30,7 +30,7 @@ class Authentication
     }
 
     // Create instance with email and password
-    public static function withEmailPassword($email, $password)
+    public static function withEmailPassword($db, $email, $password)
     {
         if (empty($email) || empty($password) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return null;

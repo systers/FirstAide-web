@@ -55,6 +55,11 @@ class User
         return $this->name ?? '';
     }
 
+    public function getEmailAddress()
+    {
+        return $this->email ?? '';
+    }
+
     public function getEmail()
     {
         $user_id = $this->user_id;
@@ -128,8 +133,7 @@ class User
             if ($userData['email'] == $this->email) {
                 $username = strtolower(str_replace(' ', '_', $userData['name']));
                 $password = $this->getEncryptedPassword($userData['password']);
-                $stmt = $this->db->prepare("
-						INSERT INTO `users` (
+                $stmt = $this->db->prepare("INSERT INTO `users` (
 							`email`,
 							`name`,
 							`password`,
