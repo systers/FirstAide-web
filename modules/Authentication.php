@@ -77,13 +77,13 @@ class Authentication
                 $stmt = $db->prepare("UPDATE `user_session` SET `session_token` = ? WHERE `user_id` = ?");
                 $stmt->bind_param('si', $session_token, $user_id);
                 $stmt->execute();
-                $affected_rows = $stmt->affected_rows;
+                $affected_rows = $stmt->getAffectedRows();
                 $stmt->close();
             } else {
                 $stmt = $db->prepare("INSERT INTO `user_session` (`session_token`, `user_id`) VALUES (?, ?)");
                 $stmt->bind_param('si', $session_token, $user_id);
                 $stmt->execute();
-                $affected_rows = $stmt->affected_rows;
+                $affected_rows = $stmt->getAffectedRows();
                 $stmt->close();
             }
 
