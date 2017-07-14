@@ -9,6 +9,7 @@ class User
     private $country;
 
     public $email;
+    public $valid;
 
     const COUNT_CIRCLE_OF_TRUST = 5;
 
@@ -19,17 +20,25 @@ class User
             $this->email = $email;
             $found_user_id = $this->isValidUser();
             if (empty($found_user_id)) {
+                $this->setEmptyObject();
                 return null;
             }
         } elseif ($user_id != 0) {
             $this->user_id = $user_id;
-            $found_email = $this->getEmail();
+            $found_email = $this->getEmailFromDb();
             if (empty($found_email)) {
+                $this->setEmptyObject();
                 return null;
             }
         } else {
+            $this->setEmptyObject();
             return null;
         }
+    }
+
+    private function setEmptyObject()
+    {
+        $this->valid = false;
     }
 
     private function getEncryptedPassword($password)
@@ -45,11 +54,6 @@ class User
         return false;
     }
 
-    public function getUserDetails($userData)
-    {
-        return false;
-    }
-
     public function getName()
     {
         return $this->name ?? '';
@@ -60,7 +64,7 @@ class User
         return $this->email ?? '';
     }
 
-    public function getEmail()
+    public function getEmailFromDb()
     {
         $user_id = $this->user_id;
         
@@ -83,7 +87,6 @@ class User
 
     public function isValidUser()
     {
-
         $email = $this->email;
 
         $stmt = $this->db->prepare("SELECT * FROM `users` WHERE `email` = ?");
@@ -133,13 +136,9 @@ class User
             if ($userData['email'] == $this->email) {
                 $username = strtolower(str_replace(' ', '_', $userData['name']));
                 $password = $this->getEncryptedPassword($userData['password']);
-                $stmt = $this->db->prepare("INSERT INTO `users` (
-							`email`,
-							`name`,
-							`password`,
-							`username`,
-							`country`
-						) VALUES (?, ?, ?, ?, ?)");
+                $stmt = $this->db->prepare("
+                    INSERT INTO `users` (`email`, `name`, `password`, `username`, `country`)
+                    VALUES (?, ?, ?, ?, ?)");
                 $stmt->bind_param(
                     'sssss',
                     $userData['email'],
@@ -149,16 +148,11 @@ class User
                     $userData['country']
                 );
                 $stmt->execute();
-                $affected = $stmt->affected_rows;
+                $affected = $stmt->getAffectedRows();
                 $stmt->close();
                 return $affected;
             }
         }
-        return false;
-    }
-
-    public function updateUserDetails($userData)
-    {
         return false;
     }
 
@@ -186,7 +180,8 @@ class User
         );
         if (is_array($comrades) && $this->user_id) {
             $comrades_str = implode(', ', $comrades);
-            $found_user_id = $this->getCircleOfTrust();
+            $found_circle_of_trust = $this->getCircleOfTrust();
+            $found_user_id = $found_circle_of_trust['user_id'];
 
             if ($found_user_id) {
                 $stmt = $this->db->prepare("UPDATE `comrades` SET `comrade_details` = ? WHERE `user_id` = ?");
@@ -216,6 +211,9 @@ class User
         $email = $this->email;
         $active_post_countries = array('SY','TN','UG');
 
+        $APPLICATION_DIR = empty($APPLICATION_DIR)
+            ? str_replace('modules', '', dirname(__FILE__))
+            : $APPLICATION_DIR;
         $country_list = file_get_contents($APPLICATION_DIR.'/javascripts/country_list.json');
         $country_list_json = json_decode($country_list, true);
 
@@ -230,10 +228,13 @@ class User
         $country_found = 'UG';
         if (!empty($row) && isset($row['country'])) {
             $country_found = strtoupper($row['country']);
-            $country_found = in_array($country_found, $active_post_countries) ?
+            // Returns country from the given list of countries only
+            /*$country_found = in_array($country_found, $active_post_countries) ?
                 $country_found :
                 'UG';
+            */
         }
+
         return $country_list_json[$country_found];
     }
 }
