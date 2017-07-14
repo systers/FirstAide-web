@@ -24,23 +24,23 @@ trait MysqlWrapperMockTrait
 
         $this->mysqli->expects($this->any())
             ->method('prepare')
-            ->will($this->returnCallback(function($query) {
+            ->will($this->returnCallback(function ($query) {
                 $this->tmp_query = $query;
                 return $this->mysqli;
             }));
 
         $this->mysqli->expects($this->any())
             ->method('execute')
-            ->will($this->returnCallback(function() {
+            ->will($this->returnCallback(function () {
                 return $this->mysqli;
             }));
 
         $this->mysqli->expects($this->any())
             ->method('bind_param')
-            ->will($this->returnCallback(function() use ($mockData) {
+            ->will($this->returnCallback(function () use ($mockData) {
                 $func_args = func_get_args();
                 $types = str_split(array_shift($func_args));
-                foreach($func_args as $v) {
+                foreach ($func_args as $v) {
                     $type = array_shift($types);
                     $string_to_replace = '?';
                     $replace_with = $type == 's' ? ("'".$v."'") : $v;
@@ -59,13 +59,13 @@ trait MysqlWrapperMockTrait
 
         $this->mysqli->expects($this->any())
             ->method('close')
-            ->will($this->returnCallback(function() {
+            ->will($this->returnCallback(function () {
                 return $this->mysqli;
             }));
 
         $this->mysqli->expects($this->any())
             ->method('get_result')
-            ->will($this->returnCallback(function() use ($mockData) {
+            ->will($this->returnCallback(function () use ($mockData) {
 
                 $results = array($mockData[$this->tmp_query]);
 
@@ -98,8 +98,7 @@ trait MysqlWrapperMockTrait
                     }));
 
                 return $mysqliResult;
-            })
-        );
+            }));
 
         return $this->mysqli;
     }

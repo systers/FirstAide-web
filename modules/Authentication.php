@@ -18,7 +18,7 @@ class Authentication
             return null;
         }
         $instance = new self($db);
-        $row = $instance->getUserIdFromSessionToken($session_token);   
+        $row = $instance->getUserIdFromSessionToken($session_token);
         if (!empty($row) && $row['user_id']) {
             $User = new User($db, '', $row['user_id']);
             if (!empty($User)) {
@@ -49,7 +49,8 @@ class Authentication
         return null;
     }
 
-    public function getUserIdFromSessionToken($session_token) {
+    public function getUserIdFromSessionToken($session_token)
+    {
         $stmt = $this->db->prepare("SELECT * FROM `user_session` WHERE `session_token` = ?");
         $stmt->bind_param('i', $session_token);
         $stmt->execute();

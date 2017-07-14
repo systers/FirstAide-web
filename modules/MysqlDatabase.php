@@ -27,7 +27,7 @@ class MysqlDatabase
     {
         $args = func_get_args();
         $refs = array();
-        foreach($args as $key => $value) {
+        foreach ($args as $key => $value) {
             $refs[$key] = &$args[$key];
         }
 
@@ -52,4 +52,3 @@ class MysqlDatabase
         return $this->stmt->close();
     }
 }
- 
