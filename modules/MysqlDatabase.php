@@ -10,8 +10,6 @@ class MysqlDatabase
     private $db;
     private $stmt;
 
-    public $affected_rows;
-
     public function __construct(\mysqli $db)
     {
         $this->db = $db;
@@ -38,8 +36,12 @@ class MysqlDatabase
     public function execute()
     {
         $this->stmt->execute();
-        $this->affected_rows = $this->stmt->affected_rows;
         return $this;
+    }
+
+    public function getAffectedRows()
+    {
+        return $this->stmt->affected_rows ?? 0;
     }
 
     public function get_result()
