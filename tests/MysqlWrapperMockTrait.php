@@ -16,6 +16,7 @@ trait MysqlWrapperMockTrait
                     'bind_param',
                     'execute',
                     'get_result',
+                    'getAffectedRows',
                     'close'
                 )
             )
@@ -25,13 +26,11 @@ trait MysqlWrapperMockTrait
         $this->mysqli->expects($this->any())
             ->method('prepare')
             ->will($this->returnCallback(function ($query) {
-                $this->tmp_query = $query;
-                return $this->mysqli;
-            }));
-
-        $this->mysqli->expects($this->any())
-            ->method('execute')
-            ->will($this->returnCallback(function () {
+                $this->tmp_query = preg_replace(
+                    '/[ \t]+/',
+                    ' ',
+                    preg_replace('/[\r\n]+/', " ", trim($query))
+                );
                 return $this->mysqli;
             }));
 
@@ -58,6 +57,22 @@ trait MysqlWrapperMockTrait
             }));
 
         $this->mysqli->expects($this->any())
+            ->method('execute')
+            ->will($this->returnCallback(function () use ($mockData) {
+                $this->results = isset($mockData[$this->tmp_query])
+                    ? array($mockData[$this->tmp_query])
+                    : array();
+                $this->affected_rows = count($this->results);
+                return $this->mysqli;
+            }));
+
+        $this->mysqli->expects($this->any())
+            ->method('getAffectedRows')
+            ->will($this->returnCallback(function () use ($mockData) {
+                return $this->affected_rows;
+            }));
+
+        $this->mysqli->expects($this->any())
             ->method('close')
             ->will($this->returnCallback(function () {
                 return $this->mysqli;
@@ -67,22 +82,22 @@ trait MysqlWrapperMockTrait
             ->method('get_result')
             ->will($this->returnCallback(function () use ($mockData) {
 
-                $results = array($mockData[$this->tmp_query]);
+                $results = $this->results;
 
-                $mysqliResult = $this->getMockBuilder(MysqlResult::class)
+                $this->mysqliResult = $this->getMockBuilder(MysqlResult::class)
                     ->setMethods(array('fetch_assoc', 'fetchArray', 'getNumRows'))
                     ->disableOriginalConstructor()
                     ->getMock();
 
-                $mysqliResult
+                $this->mysqliResult
                     ->expects($this->any())
                     ->method('fetch_assoc')
                     ->will($this->returnCallback(function () use ($results) {
-                        static $i = 0;
-                        return isset($results[$i]) ? $results[$i++] : false;
+                        static $fetch_assoc_count = 0;
+                        return isset($results[$fetch_assoc_count]) ? $results[$fetch_assoc_count++] : false;
                     }));
 
-                $mysqliResult
+                $this->mysqliResult
                     ->expects($this->any())
                     ->method('fetchArray')
                     ->will($this->returnCallback(function () use ($results) {
@@ -90,14 +105,14 @@ trait MysqlWrapperMockTrait
                         return isset($results[$i]) ? $results[$i++] : false;
                     }));
 
-                $mysqliResult
+                $this->mysqliResult
                     ->expects($this->any())
                     ->method('getNumRows')
                     ->will($this->returnCallback(function () use ($results) {
                         return count($results);
                     }));
 
-                return $mysqliResult;
+                return $this->mysqliResult;
             }));
 
         return $this->mysqli;
