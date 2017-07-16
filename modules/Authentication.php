@@ -52,10 +52,10 @@ class Authentication
     public function getUserIdFromSessionToken($session_token)
     {
         $stmt = $this->db->prepare("SELECT * FROM `user_session` WHERE `session_token` = ?");
-        $stmt->bind_param('i', $session_token);
+        $stmt->bindParams('i', $session_token);
         $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
+        $result = $stmt->getResults();
+        $row = $result->fetchAssoc();
         $stmt->close();
         return $row;
     }
@@ -67,21 +67,21 @@ class Authentication
             $session_token = self::generateSessionToken();
 
             $stmt = $db->prepare("SELECT * FROM `user_session` WHERE `user_id` = ?");
-            $stmt->bind_param('i', $user_id);
+            $stmt->bindParams('i', $user_id);
             $stmt->execute();
-            $result = $stmt->get_result();
-            $row = $result->fetch_assoc();
+            $result = $stmt->getResults();
+            $row = $result->fetchAssoc();
             $stmt->close();
 
             if (!empty($row) && isset($row['user_id'])) {
                 $stmt = $db->prepare("UPDATE `user_session` SET `session_token` = ? WHERE `user_id` = ?");
-                $stmt->bind_param('si', $session_token, $user_id);
+                $stmt->bindParams('si', $session_token, $user_id);
                 $stmt->execute();
                 $affected_rows = $stmt->getAffectedRows();
                 $stmt->close();
             } else {
                 $stmt = $db->prepare("INSERT INTO `user_session` (`session_token`, `user_id`) VALUES (?, ?)");
-                $stmt->bind_param('si', $session_token, $user_id);
+                $stmt->bindParams('si', $session_token, $user_id);
                 $stmt->execute();
                 $affected_rows = $stmt->getAffectedRows();
                 $stmt->close();

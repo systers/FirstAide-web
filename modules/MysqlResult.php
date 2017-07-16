@@ -28,7 +28,7 @@ class MysqlResult
     }
 
     
-    public function fetch_assoc()
+    public function fetchAssoc()
     {
         return $this->result->fetch_assoc();
     }

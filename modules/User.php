@@ -69,10 +69,10 @@ class User
         $user_id = $this->user_id;
         
         $stmt = $this->db->prepare("SELECT * FROM `users` WHERE `user_id` = ?");
-        $stmt->bind_param('i', $user_id);
+        $stmt->bindParams('i', $user_id);
         $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
+        $result = $stmt->getResults();
+        $row = $result->fetchAssoc();
         $stmt->close();
 
         if (!empty($row) && isset($row['email'])) {
@@ -90,10 +90,10 @@ class User
         $email = $this->email;
 
         $stmt = $this->db->prepare("SELECT * FROM `users` WHERE `email` = ?");
-        $stmt->bind_param('s', $email);
+        $stmt->bindParams('s', $email);
         $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
+        $result = $stmt->getResults();
+        $row = $result->fetchAssoc();
         $stmt->close();
 
         if (!empty($row) && isset($row['user_id'])) {
@@ -112,10 +112,10 @@ class User
         $email = $this->email;
 
         $stmt = $this->db->prepare("SELECT * FROM `users` WHERE `email` = ?");
-        $stmt->bind_param('s', $email);
+        $stmt->bindParams('s', $email);
         $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
+        $result = $stmt->getResults();
+        $row = $result->fetchAssoc();
         $stmt->close();
 
         $encryptedPassword = $this->getEncryptedPassword($password);
@@ -139,7 +139,7 @@ class User
                 $stmt = $this->db->prepare("
                     INSERT INTO `users` (`email`, `name`, `password`, `username`, `country`)
                     VALUES (?, ?, ?, ?, ?)");
-                $stmt->bind_param(
+                $stmt->bindParams(
                     'sssss',
                     $userData['email'],
                     $userData['name'],
@@ -159,10 +159,10 @@ class User
     public function getCircleOfTrust()
     {
         $stmt = $this->db->prepare("SELECT * FROM `comrades` WHERE `user_id` = ?");
-        $stmt->bind_param('i', $this->user_id);
+        $stmt->bindParams('i', $this->user_id);
         $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
+        $result = $stmt->getResults();
+        $row = $result->fetchAssoc();
         $stmt->close();
 
         $found_user_id = false;
@@ -185,15 +185,15 @@ class User
 
             if ($found_user_id) {
                 $stmt = $this->db->prepare("UPDATE `comrades` SET `comrade_details` = ? WHERE `user_id` = ?");
-                $stmt->bind_param('si', $comrades_str, $found_user_id);
+                $stmt->bindParams('si', $comrades_str, $found_user_id);
                 $stmt->execute();
-                $result = $stmt->get_result();
+                $result = $stmt->getResults();
                 $stmt->close();
             } else {
                 $stmt = $this->db->prepare("INSERT INTO `comrades` (`user_id`, `comrade_details`) VALUES (?, ?)");
-                $stmt->bind_param('is', $this->user_id, $comrades_str);
+                $stmt->bindParams('is', $this->user_id, $comrades_str);
                 $stmt->execute();
-                $result = $stmt->get_result();
+                $result = $stmt->getResults();
                 $stmt->close();
             }
             $return = array(
@@ -218,10 +218,10 @@ class User
         $country_list_json = json_decode($country_list, true);
 
         $stmt = $this->db->prepare("SELECT `country` FROM `users` WHERE `email` = ?");
-        $stmt->bind_param('s', $email);
+        $stmt->bindParams('s', $email);
         $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
+        $result = $stmt->getResults();
+        $row = $result->fetchAssoc();
         $stmt->close();
 
         // default is Uganda

@@ -14,7 +14,12 @@
                     case 'login':
                         if (!empty($_POST['email']) && !empty($_POST['password'])) {
                             if (FirstAide\Utils::isValidEmail($_POST['email'])) {
-                                $Auth = FirstAide\Authentication::withEmailPassword($DB, $_POST['email'], $_POST['password']);
+                                $Auth = FirstAide\Authentication::withEmailPassword(
+                                    $DB,
+                                    $_POST['email'],
+                                    $_POST['password']
+                                );
+
                                 if (!empty($Auth) && $Auth->isValid()) {
                                     $session_token = FirstAide\Authentication::createSession($DB, $Auth->getUserId());
                                     if ($session_token) {

@@ -21,7 +21,7 @@ class MysqlDatabase
         return $this;
     }
 
-    public function bind_param()
+    public function bindParams()
     {
         $args = func_get_args();
         $refs = array();
@@ -44,7 +44,7 @@ class MysqlDatabase
         return $this->stmt->affected_rows ?? 0;
     }
 
-    public function get_result()
+    public function getResults()
     {
         return new MysqlResult($this->stmt->get_result());
     }
