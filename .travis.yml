@@ -19,13 +19,15 @@ cache:
 # installing dependencies
 install:
   - npm install
+  - gulp
   - composer install --no-interaction --prefer-source
 
 # checks to run before scripts
 before_script:
   # php syntax check (lint)
   - if find . -name "*.php" ! -path "./vendor/*" -exec php -l {} \; | grep "unexpected $end"; then exit 1; fi
+  - ./vendor/bin/phpcs --standard=PSR2 modules/ includes/ index.php  request/
 
 # scripts like phpunit test
 script:
-  - echo 'scripts'
+  - ./vendor/bin/phpunit tests/
