@@ -1,0 +1,18 @@
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.5/phpunit.xsd"
+    stopOnError="true"
+    stopOnFailure="true"
+    bootstrap="bootstrap.php">
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">modules</directory>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log type="coverage-html" target="tests/results/coverage/"/>
+        <log type="testdox-html" target="tests/results/log.html"/>
+    </logging>
+</phpunit>

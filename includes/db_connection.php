@@ -1,6 +1,6 @@
 <?php
     // Note: Always use mysqli object oriented interface
-    $DB_CONNECT = new mysqli(
+    $mysqli_db = new mysqli(
         $_settings['db']['hostname'],
         $_settings['db']['username'],
         $_settings['db']['password'],
@@ -11,3 +11,5 @@
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
     }
+
+    $DB = new FirstAide\MysqlDatabase($mysqli_db);

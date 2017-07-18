@@ -1,4 +1,7 @@
 <?php
+namespace FirstAide;
+
+use Twig;
 
 class Utils
 {
@@ -6,10 +9,10 @@ class Utils
         
     public function getTwig($twigFile, $data = array())
     {
-        $twigLoader = new Twig_Loader_Filesystem('template');
-        $Twig = new Twig_Environment($twigLoader, array(
+        $twigLoader = new \Twig_Loader_Filesystem('template');
+        $Twig = new \Twig_Environment($twigLoader, array(
             'cache' => 'cache',
-            ));
+        ));
         $template = $Twig->loadTemplate($twigFile);
 
         return $template->render($data);

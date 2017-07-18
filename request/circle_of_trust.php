@@ -1,5 +1,5 @@
 <?php
-    require_once(dirname(__FILE__).'/../includes/application.php');
+    require_once dirname(__FILE__).'/../includes/application.php';
 
     $output = array(
         'response' => false,
@@ -24,4 +24,4 @@
         $output['message'] = 'Invalid Credentials. Please login before updating details.';
     }
 
-    Utils::jsonify($output);
+    FirstAide\Utils::jsonify($output);

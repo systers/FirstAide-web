@@ -1,20 +1,44 @@
 <?php
+namespace FirstAide;
 
 class User
 {
-    public $email;
+    private $db;
     private $user_id;
+    private $name;
+    private $country;
+
+    public $email;
+    public $valid;
 
     const COUNT_CIRCLE_OF_TRUST = 5;
 
-    public function __construct($email)
+    public function __construct($db, $email = '', $user_id = 0)
     {
+        $this->db = $db;
         if (Utils::isValidEmail($email)) {
             $this->email = $email;
-            $this->user_id = $this->isValidUser();
+            $found_user_id = $this->isValidUser();
+            if (empty($found_user_id)) {
+                $this->setEmptyObject();
+                return null;
+            }
+        } elseif ($user_id != 0) {
+            $this->user_id = $user_id;
+            $found_email = $this->getEmailFromDb();
+            if (empty($found_email)) {
+                $this->setEmptyObject();
+                return null;
+            }
         } else {
+            $this->setEmptyObject();
             return null;
         }
+    }
+
+    private function setEmptyObject()
+    {
+        $this->valid = false;
     }
 
     private function getEncryptedPassword($password)
@@ -30,25 +54,53 @@ class User
         return false;
     }
 
-    public function getUserDetails($userData)
+    public function getName()
     {
+        return $this->name ?? '';
+    }
+
+    public function getEmailAddress()
+    {
+        return $this->email ?? '';
+    }
+
+    public function getEmailFromDb()
+    {
+        $user_id = $this->user_id;
+        
+        $stmt = $this->db->prepare("SELECT * FROM `users` WHERE `user_id` = ?");
+        $stmt->bindParams('i', $user_id);
+        $stmt->execute();
+        $result = $stmt->getResults();
+        $row = $result->fetchAssoc();
+        $stmt->close();
+
+        if (!empty($row) && isset($row['email'])) {
+            $this->name = $row['name'];
+            $this->country = $row['country'];
+            $this->user_id = $row['user_id'];
+            $this->email = $row['email'];
+            return $row['email'];
+        }
         return false;
     }
 
     public function isValidUser()
     {
-        global $DB_CONNECT;
-
         $email = $this->email;
 
-        $stmt = $DB_CONNECT->prepare("SELECT `user_id` FROM `users` WHERE `email` = ?");
-        $stmt->bind_param('s', $email);
+        $stmt = $this->db->prepare("SELECT * FROM `users` WHERE `email` = ?");
+        $stmt->bindParams('s', $email);
         $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
+        $result = $stmt->getResults();
+        $row = $result->fetchAssoc();
         $stmt->close();
 
         if (!empty($row) && isset($row['user_id'])) {
+            $this->name = $row['name'];
+            $this->country = $row['country'];
+            $this->user_id = $row['user_id'];
+            $this->email = $row['email'];
             return $row['user_id'];
         }
         return false;
@@ -56,15 +108,14 @@ class User
 
     public function validateCredentials($password)
     {
-        global $DB_CONNECT;
 
         $email = $this->email;
 
-        $stmt = $DB_CONNECT->prepare("SELECT * FROM `users` WHERE `email` = ?");
-        $stmt->bind_param('s', $email);
+        $stmt = $this->db->prepare("SELECT * FROM `users` WHERE `email` = ?");
+        $stmt->bindParams('s', $email);
         $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
+        $result = $stmt->getResults();
+        $row = $result->fetchAssoc();
         $stmt->close();
 
         $encryptedPassword = $this->getEncryptedPassword($password);
@@ -76,7 +127,6 @@ class User
 
     public function addUser($userData)
     {
-        global $DB_CONNECT;
         if (isset($userData['email']) &&
             isset($userData['name']) &&
             isset($userData['password']) &&
@@ -86,15 +136,10 @@ class User
             if ($userData['email'] == $this->email) {
                 $username = strtolower(str_replace(' ', '_', $userData['name']));
                 $password = $this->getEncryptedPassword($userData['password']);
-                $stmt = $DB_CONNECT->prepare("
-						INSERT INTO `users` (
-							`email`,
-							`name`,
-							`password`,
-							`username`,
-							`country`
-						) VALUES (?, ?, ?, ?, ?)");
-                $stmt->bind_param(
+                $stmt = $this->db->prepare("
+                    INSERT INTO `users` (`email`, `name`, `password`, `username`, `country`)
+                    VALUES (?, ?, ?, ?, ?)");
+                $stmt->bindParams(
                     'sssss',
                     $userData['email'],
                     $userData['name'],
@@ -103,7 +148,7 @@ class User
                     $userData['country']
                 );
                 $stmt->execute();
-                $affected = $stmt->affected_rows;
+                $affected = $stmt->getAffectedRows();
                 $stmt->close();
                 return $affected;
             }
@@ -111,19 +156,13 @@ class User
         return false;
     }
 
-    public function updateUserDetails($userData)
-    {
-        return false;
-    }
-
     public function getCircleOfTrust()
     {
-        global $DB_CONNECT;
-        $stmt = $DB_CONNECT->prepare("SELECT * FROM `comrades` WHERE `user_id` = ?");
-        $stmt->bind_param('i', $this->user_id);
+        $stmt = $this->db->prepare("SELECT * FROM `comrades` WHERE `user_id` = ?");
+        $stmt->bindParams('i', $this->user_id);
         $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
+        $result = $stmt->getResults();
+        $row = $result->fetchAssoc();
         $stmt->close();
 
         $found_user_id = false;
@@ -134,7 +173,6 @@ class User
     }
     public function updateCircleOfTrust($comrades)
     {
-        global $DB_CONNECT;
 
         $return = array(
             'response' => false,
@@ -142,19 +180,20 @@ class User
         );
         if (is_array($comrades) && $this->user_id) {
             $comrades_str = implode(', ', $comrades);
-            $found_user_id = $this->getCircleOfTrust();
+            $found_circle_of_trust = $this->getCircleOfTrust();
+            $found_user_id = $found_circle_of_trust['user_id'];
 
             if ($found_user_id) {
-                $stmt = $DB_CONNECT->prepare("UPDATE `comrades` SET `comrade_details` = ? WHERE `user_id` = ?");
-                $stmt->bind_param('si', $comrades_str, $found_user_id);
+                $stmt = $this->db->prepare("UPDATE `comrades` SET `comrade_details` = ? WHERE `user_id` = ?");
+                $stmt->bindParams('si', $comrades_str, $found_user_id);
                 $stmt->execute();
-                $result = $stmt->get_result();
+                $result = $stmt->getResults();
                 $stmt->close();
             } else {
-                $stmt = $DB_CONNECT->prepare("INSERT INTO `comrades` (`user_id`, `comrade_details`) VALUES (?, ?)");
-                $stmt->bind_param('is', $this->user_id, $comrades_str);
+                $stmt = $this->db->prepare("INSERT INTO `comrades` (`user_id`, `comrade_details`) VALUES (?, ?)");
+                $stmt->bindParams('is', $this->user_id, $comrades_str);
                 $stmt->execute();
-                $result = $stmt->get_result();
+                $result = $stmt->getResults();
                 $stmt->close();
             }
             $return = array(
@@ -165,31 +204,37 @@ class User
         return $return;
     }
 
-     public function getCurrentPostCountry()
+    public function getCurrentPostCountry()
     {
-        global $DB_CONNECT, $APPLICATION_DIR;
+        global $APPLICATION_DIR;
 
         $email = $this->email;
         $active_post_countries = array('SY','TN','UG');
 
+        $APPLICATION_DIR = empty($APPLICATION_DIR)
+            ? str_replace('modules', '', dirname(__FILE__))
+            : $APPLICATION_DIR;
         $country_list = file_get_contents($APPLICATION_DIR.'/javascripts/country_list.json');
         $country_list_json = json_decode($country_list, true);
 
-        $stmt = $DB_CONNECT->prepare("SELECT `country` FROM `users` WHERE `email` = ?");
-        $stmt->bind_param('s', $email);
+        $stmt = $this->db->prepare("SELECT `country` FROM `users` WHERE `email` = ?");
+        $stmt->bindParams('s', $email);
         $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
+        $result = $stmt->getResults();
+        $row = $result->fetchAssoc();
         $stmt->close();
 
         // default is Uganda
         $country_found = 'UG';
         if (!empty($row) && isset($row['country'])) {
             $country_found = strtoupper($row['country']);
-            $country_found = in_array($country_found, $active_post_countries) ?
+            // Returns country from the given list of countries only
+            /*$country_found = in_array($country_found, $active_post_countries) ?
                 $country_found :
                 'UG';
+            */
         }
+
         return $country_list_json[$country_found];
     }
 }

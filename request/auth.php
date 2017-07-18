@@ -1,5 +1,5 @@
 <?php
-    require_once(dirname(__FILE__).'/../includes/application.php');
+    require_once dirname(__FILE__).'/../includes/application.php';
 
     $output = array(
         'response' => false,
@@ -13,12 +13,23 @@
                 switch ($_POST['type']) {
                     case 'login':
                         if (!empty($_POST['email']) && !empty($_POST['password'])) {
-                            if (Utils::isValidEmail($_POST['email'])) {
-                                $Auth = new Authentication($_POST['email'], $_POST['password']);
-                                if ($Auth->isValid()) {
-                                    $output['response'] = true;
-                                    $output['message'] = 'Logged In. Redirecting...';
-                                    $output['redirect_url'] = Router::LOGIN_SUCCESS_URL;
+                            if (FirstAide\Utils::isValidEmail($_POST['email'])) {
+                                $Auth = FirstAide\Authentication::withEmailPassword(
+                                    $DB,
+                                    $_POST['email'],
+                                    $_POST['password']
+                                );
+
+                                if (!empty($Auth) && $Auth->isValid()) {
+                                    $session_token = FirstAide\Authentication::createSession($DB, $Auth->getUserId());
+                                    if ($session_token) {
+                                        $_SESSION['session_token'] = $session_token;
+                                        $output['response'] = true;
+                                        $output['message'] = 'Logged In. Redirecting...';
+                                        $output['redirect_url'] = FirstAide\Router::LOGIN_SUCCESS_URL;
+                                    } else {
+                                        $output['message'] = 'Unable to create session';
+                                    }
                                 } else {
                                     $output['message'] = 'Invalid credentials.
                                     It seems that you have not signed up on this platform.';
@@ -30,31 +41,35 @@
                             $output['message'] = 'Invalid credentials';
                         }
                         break;
+                    case 'logout':
+                        session_unset();
+                        session_destroy();
+                        break;
 
                     case 'signup':
-                        if (!empty($_POST['email']) &&
-                            !empty($_POST['name']) &&
-                            !empty($_POST['password']) &&
-                            !empty($_POST['confirm_password']) &&
-                            !empty($_POST['country']) &&
-                            $_POST['password'] == $_POST['confirm_password']
-                        ) {
-                            if (Utils::isValidEmail($_POST['email'])) {
-                                $User = new User($_POST['email']);
+                        if (!empty($_POST['email'])
+                        && !empty($_POST['name'])
+                        && !empty($_POST['password'])
+                        && !empty($_POST['confirm_password'])
+                        && !empty($_POST['country'])
+                        && $_POST['password'] == $_POST['confirm_password']
+                            ) {
+                            if (FirstAide\Utils::isValidEmail($_POST['email'])) {
+                                $User = new FirstAide\User($DB, $_POST['email']);
                                 $newUserStatus = $User->addUser(
                                     array(
-                                        'email' => $_POST['email'],
-                                        'password' => $_POST['password'],
-                                        'name' => $_POST['name'],
-                                        'country' => $_POST['country']
+                                    'email' => $_POST['email'],
+                                    'password' => $_POST['password'],
+                                    'name' => $_POST['name'],
+                                    'country' => $_POST['country']
                                     )
                                 );
                                 if ($newUserStatus) {
-                                    $output['response'] = true;
-                                    $output['message'] = 'Account created. Welcome aboard.';
-                                    $output['redirect_url'] = HOST;
+                                        $output['response'] = true;
+                                        $output['message'] = 'Account created. Welcome aboard.';
+                                        $output['redirect_url'] = HOST;
                                 } else {
-                                    $output['message'] = 'Something went wrong.';
+                                        $output['message'] = 'Something went wrong.';
                                 }
                             } else {
                                 $output['message'] = 'Invalid email';
@@ -76,4 +91,4 @@
         $output['message'] = 'Code sober or get pulled over. This is not one of the URLs you should visit.';
     }
     
-    Utils::jsonify($output);
+    FirstAide\Utils::jsonify($output);

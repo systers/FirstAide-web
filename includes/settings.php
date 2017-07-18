@@ -1,4 +1,3 @@
-
 <?php
 /*
  * Date       : 9-03-2017
@@ -7,7 +6,7 @@
  * Note       : Please do not commit your credentials
  */
 
-define("HOST", "http://localhost/");
+require_once $APPLICATION_DIR.'/includes/constants.php';
 
 $_settings = array();
 
