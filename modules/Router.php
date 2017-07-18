@@ -36,9 +36,9 @@ class Router
     const COUNTRY_LIST_FILE = '/javascripts/country_list.json';
     const LOGIN_SUCCESS_URL = HOST.'?page_request='.self::HOME;
         
-    public static function getPage($page, $query = '')
+    public static function getPage($UserObj, $page, $query = '')
     {
-        global $APPLICATION_DIR, $UserObj;
+        global $APPLICATION_DIR;
 
         $out = array(
             'found' => true,
@@ -535,11 +535,13 @@ class Router
                         break;
                 }
                 break;
+
             case self::INDEX:
                 $out['type'] = self::INDEX;
                 $out['title'] = "Home";
                 $out['template'] = "index.html";
                 break;
+
             default:
                 $out['type'] = self::INDEX;
                 $out['title'] = "Home";
