@@ -130,7 +130,7 @@ class Authentication
      * @description : Generate random string of length n
      * @length int : length of the required random string
      */
-    public function generateRandomString($length = 10)
+    public static function generateRandomString($length = 10)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
