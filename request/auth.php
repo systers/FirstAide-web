@@ -14,7 +14,7 @@
                     case 'login':
                         if (!empty($_POST['email']) && !empty($_POST['password'])) {
                             if (FirstAide\Utils::isValidEmail($_POST['email'])) {
-                                $Auth = FirstAide\Authentication::withEmailPassword(
+                                $Auth = FirstAide\Authentication::createInstanceWithEmailPassword(
                                     $DB,
                                     $_POST['email'],
                                     $_POST['password']
