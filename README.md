@@ -1,4 +1,4 @@
-# FirstAide-Web
+# FirstAide-Web [![Build Status](https://travis-ci.org/systers/FirstAide-web.svg?branch=develop)](https://travis-ci.org/systers/FirstAide-web)
 
 ### Abstract
 Sexual assault and rape are serious social and public health issues, being one of the major cause of concern.
@@ -8,15 +8,12 @@ he/she needs in case of a critical situation. The sexually assaulted volunteer c
 
 
 ### Rules for Contributing
-1. Do not fix a new issue and submit a PR without reporting and getting it approved at first.
-2. Do not fix an issue assigned to somebody else and submit a PR before the assignee does. 
-3. Do not report issues which are previously reported by others. (Please check the closed issues too before you report an issue). 
-4. Do not suggest completely new developments in the issue list. (Please use the mailing list for this kind of suggestions. Use issue list to suggest bugs/features in the already implemented sections.)
-5. If an issue is reported by a person, it is automatically assigned to that person
-6. Use meaningful commit messages and squash all your commits into one
-7. Only pick the issues which are labeled as open.
-8. Do not create new issues if unresolved issues created by you are pending
-9. When you create a PR for an issue reference that issue in the comments section of the PR.
+1. To fix a new issue and submit a PR, the first step is to report the issue and get it approved by repo owners.
+2. Before submitting an issue, make sure it is not already reported by someone else. You can check [here](https://github.com/systers/FirstAide-web/issues) in both open and closed categories
+3. Before picking and working on an issue, make sure it is not already assigned to another developer. The protocol followed is that the issue is assigned to the developer who reports it first.
+4. To suggest features that you think will enhance the app, please email us. 
+5. When you submit a PR please ensure that commit messages are meaningful and reflect what the PR fixes.
+6. When you submit a PR for an issue, ensure that there is description of what the PR fixes, a link to the issue that you are fixing and tag the repo owners for review.
 
 
 ### Initial Setup and Installation
@@ -24,7 +21,7 @@ Download XAMPP from here [XAMPP download](https://www.apachefriends.org/download
 
 Go to your terminal and execute this command
 
-    ``` $ git clone https://github.com/systers/FirstAide-web ```
+`$ git clone https://github.com/systers/FirstAide-web`
 
 Or download the ZIP file from above
 
