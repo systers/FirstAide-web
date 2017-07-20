@@ -10,17 +10,39 @@ class Authentication
     {
         $this->db = $db;
     }
-
-    // Create instance with session token
-    public static function withSessionToken($db, $session_token)
+/**
+     * @method : getUserIdFromSessionToken
+     * @description : get user_id for a given session token
+     * @dsession_token string : session token for a user
+     */
+    private function getUserIdFromSessionToken($session_token)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM `user_session` WHERE `session_token` = ?");
+        $stmt->bindParams('s', $session_token);
+        $stmt->execute();
+        $result = $stmt->getResults();
+        $row = $result->fetchAssoc();
+        $stmt->close();
+        if (!empty($row) && $row['user_id']) {
+            return $row['user_id'];
+        }
+        return false;
+    }
+    /**
+     * @method : createInstanceWithSessionToken
+     * @description : Create authentication instance with session token
+     * @db MysqlDatabase : database instance
+     * @session_token string : session token of the user
+     */
+    public static function createInstanceWithSessionToken($db, $session_token)
     {
         if (empty($session_token)) {
             return null;
         }
         $instance = new self($db);
-        $row = $instance->getUserIdFromSessionToken($session_token);
-        if (!empty($row) && $row['user_id']) {
-            $User = new User($db, '', $row['user_id']);
+        $found_user_id = $instance->getUserIdFromSessionToken($session_token);
+        if ($found_user_id) {
+            $User = new User($db, '', $found_user_id);
             if (!empty($User)) {
                 $instance->user = $User;
                 return $instance;
@@ -29,8 +51,14 @@ class Authentication
         return null;
     }
 
-    // Create instance with email and password
-    public static function withEmailPassword($db, $email, $password)
+    /**
+     * @method : createInstanceWithEmailPassword
+     * @description : Create authentication instance with email and password
+     * @db MysqlDatabase : database instance
+     * @email string : email of the user
+     * @password string: password for the corresponding email
+     */
+    public static function createInstanceWithEmailPassword($db, $email, $password)
     {
         if (empty($email) || empty($password) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return null;
@@ -49,18 +77,12 @@ class Authentication
         return null;
     }
 
-    public function getUserIdFromSessionToken($session_token)
-    {
-        $stmt = $this->db->prepare("SELECT * FROM `user_session` WHERE `session_token` = ?");
-        $stmt->bindParams('i', $session_token);
-        $stmt->execute();
-        $result = $stmt->getResults();
-        $row = $result->fetchAssoc();
-        $stmt->close();
-        return $row;
-    }
-
-    // Create session token and adding log in database for validation
+    /**
+     * @method : createSession
+     * @description : Create session token and adding log in database for validation
+     * @db MysqlDatabase: database instance
+     * @user_id int : user_id of the user
+     */
     public static function createSession($db, $user_id)
     {
         if ($user_id > 0) {
@@ -94,13 +116,20 @@ class Authentication
         return false;
     }
 
-    // Generate random session token
+    /**
+     * @method : generateSessionToken
+     * @description : Generate random session token
+     */
     public static function generateSessionToken()
     {
         return md5(self::generateRandomString());
     }
 
-    // Generate random string of length n
+    /**
+     * @method : generateRandomString
+     * @description : Generate random string of length n
+     * @length int : length of the required random string
+     */
     public function generateRandomString($length = 10)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -112,13 +141,19 @@ class Authentication
         return $randomString;
     }
 
-    // Check instance is valid
+    /**
+     * @method : isValid
+     * @description : Check for valid authentication instance
+     */
     public function isValid()
     {
         return ($this->user != null) ? true : false;
     }
 
-    // Get instance User ID
+    /**
+     * @method : getUserId
+     * @description : Check of the user_id is valid
+     */
     public function getUserId()
     {
         return ($this->user != null) ? $this->user->isValidUser() : 0;
