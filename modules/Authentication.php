@@ -10,7 +10,7 @@ class Authentication
     {
         $this->db = $db;
     }
-/**
+    /**
      * @method : getUserIdFromSessionToken
      * @description : get user_id for a given session token
      * @dsession_token string : session token for a user
