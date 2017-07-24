@@ -24,8 +24,8 @@ class AuthenticationTest extends TestCase
     use MysqlWrapperMockTrait;
 
     /**
-     * @method : assertSessionFoundForSessionToken
-     * @description : Method to assert if session was found for session token
+     * Method : assertSessionFoundForSessionToken
+     * Description : Method to assert if session was found for session token
      * @databaseMock MysqlDatabase : mock MysqlDatabase instance
      * @users array : array of expected users
      */
@@ -45,8 +45,8 @@ class AuthenticationTest extends TestCase
     }
 
     /**
-     * @method : assertSessionFoundForEmailAndPassword
-     * @description : Method to assert if session is found for valid user credentials
+     * Method : assertSessionFoundForEmailAndPassword
+     * Description : Method to assert if session is found for valid user credentials
      * @databaseMock MysqlDatabase : mock MysqlDatabase instance
      * @espectedUsers array : array of expected users
      */
@@ -70,8 +70,8 @@ class AuthenticationTest extends TestCase
     }
 
     /**
-     * @method : assertMultipleUniqueSessions
-     * @description : Method to assert multiple unique sessions
+     * Method : assertMultipleUniqueSessions
+     * Description : Method to assert multiple unique sessions
      * @databaseMock MysqlDatabase : mock MysqlDatabase instance
      * @expectedUsers array : array of expected users
      */
@@ -95,8 +95,8 @@ class AuthenticationTest extends TestCase
     }
 
     /**
-     * @method : testMultipleSessionToken
-     * @description : Method to test multiple session tokens
+     * Method : testMultipleSessionToken
+     * Description : Method to test multiple session tokens
      * @databaseMock MysqlDatabase : mock MysqlDatabase instance
      *
      * @dataProvider mysqlMockProvider
@@ -119,8 +119,8 @@ class AuthenticationTest extends TestCase
     }
 
     /**
-     * @method : testMultipleSessionsForEmailAndPassword
-     * @description : Method to test multiple sessions for valid user credentials
+     * Method : testMultipleSessionsForEmailAndPassword
+     * Description : Method to test multiple sessions for valid user credentials
      * @databaseMock MysqlDatabase : mock MysqlDatabase instance
      *
      * @dataProvider mysqlMockProvider
@@ -145,8 +145,8 @@ class AuthenticationTest extends TestCase
     }
 
     /**
-     * @method : testMultipleCreatedSessions
-     * @description : Method to test multiple created session
+     * Method : testMultipleCreatedSessions
+     * Description : Method to test multiple created session
      * @databaseMock MysqlDatabase : mock MysqlDatabase instance
      *
      * @dataProvider mysqlMockProvider
@@ -160,8 +160,8 @@ class AuthenticationTest extends TestCase
     }
 
     /**
-     * @method : mysqlMockProvider
-     * @description : Method to mock MySQL queries
+     * Method : mysqlMockProvider
+     * Description : Method to mock MySQL queries
      *
      * @dataProvider mysqlMockProvider
      */

@@ -11,8 +11,8 @@ class Authentication
         $this->db = $db;
     }
     /**
-     * @method : getUserIdFromSessionToken
-     * @description : get user_id for a given session token
+     * Method : getUserIdFromSessionToken
+     * Description : get user_id for a given session token
      * @dsession_token string : session token for a user
      */
     private function getUserIdFromSessionToken($session_token)
@@ -29,8 +29,8 @@ class Authentication
         return false;
     }
     /**
-     * @method : createInstanceWithSessionToken
-     * @description : Create authentication instance with session token
+     * Method : createInstanceWithSessionToken
+     * Description : Create authentication instance with session token
      * @db MysqlDatabase : database instance
      * @session_token string : session token of the user
      */
@@ -52,8 +52,8 @@ class Authentication
     }
 
     /**
-     * @method : createInstanceWithEmailPassword
-     * @description : Create authentication instance with email and password
+     * Method : createInstanceWithEmailPassword
+     * Description : Create authentication instance with email and password
      * @db MysqlDatabase : database instance
      * @email string : email of the user
      * @password string: password for the corresponding email
@@ -78,8 +78,8 @@ class Authentication
     }
 
     /**
-     * @method : createSession
-     * @description : Create session token and adding log in database for validation
+     * Method : createSession
+     * Description : Create session token and adding log in database for validation
      * @db MysqlDatabase: database instance
      * @user_id int : user_id of the user
      */
@@ -105,7 +105,7 @@ class Authentication
             $stmt->execute();
             $affected_rows = $stmt->getAffectedRows();
             $stmt->close();
-            
+
             if ($affected_rows > 0) {
                 return $session_token;
             }
@@ -114,8 +114,8 @@ class Authentication
     }
 
     /**
-     * @method : generateSessionToken
-     * @description : Generate random session token
+     * Method : generateSessionToken
+     * Description : Generate random session token for session authentication
      */
     public static function generateSessionToken()
     {
@@ -123,8 +123,8 @@ class Authentication
     }
 
     /**
-     * @method : generateRandomString
-     * @description : Generate random string of length n
+     * Method : generateRandomString
+     * Description : Generate random string of length n
      * @length int : length of the required random string
      */
     public static function generateRandomString($length = 10)
@@ -139,8 +139,8 @@ class Authentication
     }
 
     /**
-     * @method : isValid
-     * @description : Check for valid authentication instance
+     * Method : isValid
+     * Description : Check for valid authentication instance
      */
     public function isValid()
     {
@@ -148,8 +148,8 @@ class Authentication
     }
 
     /**
-     * @method : getUserId
-     * @description : Check of the user_id is valid
+     * Method : getUserId
+     * Description : Check of the user_id is valid
      */
     public function getUserId()
     {
