@@ -98,17 +98,14 @@ class Authentication
             if (!empty($row) && isset($row['user_id'])) {
                 $stmt = $db->prepare("UPDATE `user_session` SET `session_token` = ? WHERE `user_id` = ?");
                 $stmt->bindParams('si', $session_token, $user_id);
-                $stmt->execute();
-                $affected_rows = $stmt->getAffectedRows();
-                $stmt->close();
             } else {
                 $stmt = $db->prepare("INSERT INTO `user_session` (`session_token`, `user_id`) VALUES (?, ?)");
                 $stmt->bindParams('si', $session_token, $user_id);
-                $stmt->execute();
-                $affected_rows = $stmt->getAffectedRows();
-                $stmt->close();
             }
-
+            $stmt->execute();
+            $affected_rows = $stmt->getAffectedRows();
+            $stmt->close();
+            
             if ($affected_rows > 0) {
                 return $session_token;
             }
