@@ -1,7 +1,15 @@
 <?php
+/**
+ *
+ * UserTest.php is unit test file for User module (modules/User.php).
+ *
+ */
 
 namespace Tests\FirstAide;
 
+/**
+ * Importing required modules/wrappers
+ */
 use FirstAide\User;
 use FirstAide\MysqlDatabase;
 use PHPUnit\Framework\TestCase;
@@ -9,8 +17,14 @@ use Tests\MysqlWrapperMockTrait;
 
 class UserTest extends TestCase
 {
+    /**
+     * Importing mock MySQL wrapper
+     */
     use MysqlWrapperMockTrait;
 
+    /**
+     * Method to assert if user object was found with valid user emails
+     */
     private function assertUsersFound(
         MysqlDatabase $databaseMock,
         array $expectedUsers
@@ -33,6 +47,9 @@ class UserTest extends TestCase
         $this->assertEquals(count($expectedUsers), $userCounter);
     }
     
+    /**
+     * Method to assert if user object were found with valid User ID
+     */
     private function assertUsersFoundWithUserId(
         MysqlDatabase $databaseMock,
         array $expectedUsers
@@ -54,7 +71,10 @@ class UserTest extends TestCase
 
         $this->assertEquals(count($expectedUsers), $userCounter);
     }
-    
+
+    /**
+     * Method to assert if user object was not found with invalid user_id
+     */
     private function assertUsersNotFoundWithUserId(
         MysqlDatabase $databaseMock,
         array $expectedUsers
@@ -69,6 +89,9 @@ class UserTest extends TestCase
         $this->assertEquals(count($expectedUsers), $userCounter);
     }
 
+    /**
+     * Method to assert if user object was not found with invalid user emails 
+     */
     private function assertUsersNotFound(
         MysqlDatabase $databaseMock,
         array $expectedUsers
@@ -83,6 +106,9 @@ class UserTest extends TestCase
         $this->assertNotEquals(count($expectedUsers), 0);
     }
 
+    /**
+     * Method to assert if users' current country post is found
+     */
     private function assertCountryFound(
         MysqlDatabase $databaseMock,
         array $expectedUsers
@@ -102,6 +128,9 @@ class UserTest extends TestCase
         $this->assertEquals(count($expectedUsers), $userCounter);
     }
 
+    /**
+     * Method to assert if new user is added
+     */
     private function assertNewUserFound(
         MysqlDatabase $databaseMock,
         array $expectedUsers
@@ -117,6 +146,9 @@ class UserTest extends TestCase
         $this->assertEquals(count($expectedUsers), $userCounter);
     }
 
+    /**
+     * Method to assert if new users are not added with invalid data
+     */
     private function assertNewUserNotFound(
         MysqlDatabase $databaseMock,
         array $expectedUsers
@@ -132,6 +164,9 @@ class UserTest extends TestCase
         $this->assertEquals(count($expectedUsers), $userCounter);
     }
 
+    /**
+     * Method to assert if user credentials are valid 
+     */
     private function assertUserValidity(
         MysqlDatabase $databaseMock,
         array $expectedUsers
@@ -147,6 +182,9 @@ class UserTest extends TestCase
         $this->assertEquals(count($expectedUsers), $userCounter);
     }
 
+    /**
+     * Method to assert if valid comrade details for Circle of Trust found
+     */
     private function assertCircleOfTrustFound(
         MysqlDatabase $databaseMock,
         array $expectedUsers
@@ -162,6 +200,9 @@ class UserTest extends TestCase
         $this->assertEquals(count($expectedUsers), $userCounter);
     }
 
+    /**
+     * Method to assert if valid updation of Comrade Details in Circle of Trust
+     */
     private function assertCircleOfTrustUpdated(
         MysqlDatabase $databaseMock,
         array $expectedUsers
@@ -179,6 +220,7 @@ class UserTest extends TestCase
     }
 
     /**
+     * Tests for multiple user objects with email
      * @dataProvider mysqlMockProvider
      */
     public function testMultipleUsersWithEmail($databaseMock)
@@ -199,6 +241,7 @@ class UserTest extends TestCase
     }
 
     /**
+     * Tests for multiple user objects with invalid credentials
      * @dataProvider mysqlMockProvider
      */
     public function testMultipleUsersWithInvalidData($databaseMock)
@@ -223,6 +266,7 @@ class UserTest extends TestCase
     }
 
     /**
+     * Tests for multiple user objects with user_id
      * @dataProvider mysqlMockProvider
      */
     public function testMultipleUsersWithUserId($databaseMock)
@@ -245,6 +289,7 @@ class UserTest extends TestCase
     }
 
     /**
+     * Tests for multiple user objects with invalid user_id
      * @dataProvider mysqlMockProvider
      */
     public function testMultipleUsersWithInvalidUserId($databaseMock)
@@ -265,8 +310,9 @@ class UserTest extends TestCase
     }
 
     /**
+     * Tests for users' post country validity for multiple user objects
      * @dataProvider mysqlMockProvider
-    */
+     */
     public function testCurrentPostCountry($databaseMock)
     {
         $this->assertCountryFound(
@@ -285,8 +331,9 @@ class UserTest extends TestCase
     }
 
     /**
+     * Tests for add user functionality
      * @dataProvider mysqlMockProvider
-    */
+     */
     public function testAddUser($databaseMock)
     {
         $this->assertNewUserFound(
@@ -303,8 +350,9 @@ class UserTest extends TestCase
     }
 
     /**
+     * Tests for add user functionality with invalid data
      * @dataProvider mysqlMockProvider
-    */
+     */
     public function testAddUserWithInvalidData($databaseMock)
     {
         $this->assertNewUserNotFound(
@@ -331,7 +379,7 @@ class UserTest extends TestCase
 
     /**
      * @dataProvider mysqlMockProvider
-    */
+     */
     public function testValidCredentials($databaseMock)
     {
         $this->assertUserValidity(
@@ -350,8 +398,9 @@ class UserTest extends TestCase
     }
 
     /**
+     * Tests for comrade details of circle of Trust functionality
      * @dataProvider mysqlMockProvider
-    */
+     */
     public function testGetCircleOfTrust($databaseMock)
     {
         $this->assertCircleOfTrustFound(
@@ -370,8 +419,9 @@ class UserTest extends TestCase
     }
 
     /**
+     * Tests for Update circle of Trust functionality
      * @dataProvider mysqlMockProvider
-    */
+     */
     public function testUpdateCircleOfTrust($databaseMock)
     {
         $this->assertCircleOfTrustUpdated(
@@ -389,7 +439,9 @@ class UserTest extends TestCase
         );
     }
 
-
+    /**
+     * Mock MySQL Database queries and their responses for user module 
+     */
     public function mysqlMockProvider(): array
     {
         $mockData = array(
