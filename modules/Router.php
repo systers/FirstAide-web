@@ -49,7 +49,7 @@ class Router
 
     /**
      * Method : getPage
-     * Description : Method to render a selected page 
+     * Description : Method to render a selected page
      * @page = parameter for page selection
      * @query = Requested query parameter for the page to be displayed
      */
@@ -830,5 +830,4 @@ class Router
             )
         );
     }
-
 }
