@@ -1,5 +1,7 @@
 # language used in the project
 language: php
+os: linux
+dist: precise
 
 # list any PHP version to test against
 php:
@@ -19,6 +21,7 @@ cache:
 # installing dependencies
 install:
   - npm install
+  - npm install -g gulp-cli
   - gulp
   - composer install --no-interaction --prefer-source
 
