@@ -90,7 +90,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * Method to assert if user object was not found with invalid user emails 
+     * Method to assert if user object was not found with invalid user emails
      */
     private function assertUsersNotFound(
         MysqlDatabase $databaseMock,
@@ -165,7 +165,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * Method to assert if user credentials are valid 
+     * Method to assert if user credentials are valid
      */
     private function assertUserValidity(
         MysqlDatabase $databaseMock,
@@ -440,7 +440,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * Mock MySQL Database queries and their responses for user module 
+     * Mock MySQL Database queries and their responses for user module
      */
     public function mysqlMockProvider(): array
     {
