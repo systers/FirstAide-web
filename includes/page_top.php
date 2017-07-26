@@ -2,7 +2,7 @@
     require_once $APPLICATION_DIR.'/includes/application.php';
     $page_request = $_GET['page_request'] ?? \FirstAide\Router::INDEX;
     $query = $_GET['query'] ?? '';
-    $page = FirstAide\Router::getPage($page_request, $query);
+    $page = FirstAide\Router::getPage($UserObj, $page_request, $query);
 
 if ($page['type'] == FirstAide\Router::INDEX) {
     $page['javascripts'][] = 'index.js';

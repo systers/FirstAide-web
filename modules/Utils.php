@@ -7,7 +7,7 @@ class Utils
 {
     const PROPERTY_MENU = 'menu';
         
-    public function getTwig($twigFile, $data = array())
+    public static function getTwig($twigFile, $data = array())
     {
         $twigLoader = new \Twig_Loader_Filesystem('template');
         $Twig = new \Twig_Environment($twigLoader, array(
