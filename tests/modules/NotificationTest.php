@@ -5,8 +5,8 @@
  *
  */
 namespace Tests\FirstAide;
-$APPLICATION_DIR = str_replace('tests/modules', '', dirname(__FILE__));
-require_once $APPLICATION_DIR.'/includes/settings.php';
+
+require_once str_replace('tests/modules', '', dirname(__FILE__)).'/includes/settings.php';
 
 /**
  * Importing required modules/wrappers
