@@ -1,5 +1,4 @@
 <?php
-namespace FirstAide;
 
 namespace FirstAide;
 
@@ -11,12 +10,20 @@ class Notification
     private $auth_token;
     private $from_number;
 
-    public function __construct()
+    const USE_TEST_CREDENTIALS = 'test';
+
+    public function __construct($credentials = '')
     {
         global $_settings;
-        $this->account_sid = $_settings['twilio']['account_sid'];
-        $this->auth_token = $_settings['twilio']['auth_token'];
-        $this->from_number = $_settings['twilio']['number'];
+        if ($credentials == self::USE_TEST_CREDENTIALS) {
+            $this->account_sid = $_settings['twilio']['test_account_sid'];
+            $this->auth_token = $_settings['twilio']['test_auth_token'];
+            $this->from_number = $_settings['twilio']['test_number'];
+        } else {
+            $this->account_sid = $_settings['twilio']['account_sid'];
+            $this->auth_token = $_settings['twilio']['auth_token'];
+            $this->from_number = $_settings['twilio']['number'];
+        }
     }
 
     public function sendSms($number, $msg)
@@ -32,7 +39,7 @@ class Notification
         } else {
             $client = new Client($this->account_sid, $this->auth_token);
 
-            $var = $client->messages->create(
+            $twilioResponse = $client->messages->create(
                 $number,
                 array(
                     // A Twilio phone number you purchased at twilio.com/console
@@ -41,8 +48,10 @@ class Notification
                     'body' => $msg
                 )
             );
-            $r['response'] = true;
-            $r['message'] = 'The sms has been sent.';
+            if ($twilioResponse->status == 'queued' && empty($twilioResponse->errorCode))
+                $r['response'] = true;
+                $r['message'] = 'The sms has been sent.';
+            }
         }
         return $r;
     }
