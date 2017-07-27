@@ -171,6 +171,22 @@ class User
         }
         return false;
     }
+
+    public function getCircleOfTrustNumbers()
+    {
+        $numbers = array();
+        $comrades_detail = $this->getCircleOfTrust();
+        if ($comrades_detail && is_array($comrades_detail)) {
+            $numbers = !empty($comrades_detail['comrade_details'])
+                ? explode(', ', $comrades_detail['comrade_details'])
+                : array();
+            array_walk($numbers, function(&$v, &$k) {
+                $v = '+' . $v;
+            });
+        }
+        return $numbers;
+    }
+
     public function updateCircleOfTrust($comrades)
     {
 
@@ -186,16 +202,13 @@ class User
             if ($found_user_id) {
                 $stmt = $this->db->prepare("UPDATE `comrades` SET `comrade_details` = ? WHERE `user_id` = ?");
                 $stmt->bindParams('si', $comrades_str, $found_user_id);
-                $stmt->execute();
-                $result = $stmt->getResults();
-                $stmt->close();
             } else {
                 $stmt = $this->db->prepare("INSERT INTO `comrades` (`user_id`, `comrade_details`) VALUES (?, ?)");
                 $stmt->bindParams('is', $this->user_id, $comrades_str);
-                $stmt->execute();
-                $result = $stmt->getResults();
-                $stmt->close();
             }
+            $stmt->execute();
+            $affected = $stmt->getAffectedRows();
+            $stmt->close();
             $return = array(
                 'response' => true,
                 'message' => "Updated comrade's details."
