@@ -24,12 +24,13 @@ $_settings['twilio']['auth_token'] = !empty(getenv('auth_token'))
 $_settings['twilio']['number'] = !empty(getenv('number'))
     ? getenv('number')
     : '';
+// Added my test credentials for unit tests
 $_settings['twilio']['test_account_sid'] = !empty(getenv('test_account_sid'))
     ? getenv('test_account_sid')
-    : '';
+    : 'ACcb7233e2011c2341ab3d2a51bd06aad4';
 $_settings['twilio']['test_auth_token'] = !empty(getenv('test_auth_token'))
     ? getenv('test_auth_token')
-    : '';
+    : '847f234895dff25f287823d43cbe100b';
 // +15005550006 is the test number provided in twilio documentation
 $_settings['twilio']['test_number'] = !empty(getenv('test_number'))
     ? getenv('test_number')
