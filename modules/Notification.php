@@ -48,7 +48,7 @@ class Notification
                     'body' => $msg
                 )
             );
-            if ($twilioResponse->status == 'queued' && empty($twilioResponse->errorCode))
+            if ($twilioResponse->status == 'queued' && empty($twilioResponse->errorCode)) {
                 $r['response'] = true;
                 $r['message'] = 'The sms has been sent.';
             }
