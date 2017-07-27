@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
 class NotificationTest extends TestCase
 {
     /**
-     * Method : testGetFullPage
-     * Description : tests for the full card template content page
+     * Method : testSendSms
+     * Description : test to check of the response for sending a sms is a success
      */
     public function testSendSms()
     {
@@ -28,8 +28,8 @@ class NotificationTest extends TestCase
     }
 
     /**
-     * Method : testGetFullPage
-     * Description : tests for the full card template content page
+     * Method : testSendMultipleSms
+     * Description : tests for checking sms sent to multiple numbers
      */
     public function testSendMultipleSms()
     {

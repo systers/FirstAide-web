@@ -12,10 +12,15 @@ class Notification
 
     const USE_TEST_CREDENTIALS = 'test';
 
-    public function __construct($credentials = '')
+    /**
+     * Method : __construct
+     * Description : constructor for initialising credentials
+     * @useCredentials string : defines which credentials to be used (test or live)
+     */
+    public function __construct($useCredentials = '')
     {
         global $_settings;
-        if ($credentials == self::USE_TEST_CREDENTIALS) {
+        if ($useCredentials == self::USE_TEST_CREDENTIALS) {
             $this->account_sid = $_settings['twilio']['test_account_sid'];
             $this->auth_token = $_settings['twilio']['test_auth_token'];
             $this->from_number = $_settings['twilio']['test_number'];
@@ -26,6 +31,12 @@ class Notification
         }
     }
 
+    /**
+     * Method : sendSms
+     * Description : sends sms to comrade numbers with the desired message
+     * @number string : The numbers to which the message needs to sent
+     * @msg string : The message that needs to be sent in the sms
+     */
     public function sendSms($number, $msg)
     {
         $r = array(
@@ -56,6 +67,12 @@ class Notification
         return $r;
     }
 
+    /**
+     * Method : sendMultipleSms
+     * Description : sends sms to multiple numbers with the desired message
+     * @number string : The numbers to which the message needs to sent
+     * @msg string : The message that needs to be sent in the sms
+     */
     public function sendMultipleSms($numbers, $msg)
     {
         $r = array(
