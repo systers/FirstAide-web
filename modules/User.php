@@ -180,7 +180,7 @@ class User
             $numbers = !empty($comrades_detail['comrade_details'])
                 ? explode(', ', $comrades_detail['comrade_details'])
                 : array();
-            array_walk($numbers, function(&$v, &$k) {
+            array_walk($numbers, function (&$v, &$k) {
                 $v = '+' . $v;
             });
         }
