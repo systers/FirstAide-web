@@ -160,6 +160,28 @@ class AuthenticationTest extends TestCase
     }
 
     /**
+     * Method : testIsValidCsrfWithValidToken
+     * Description : Method to test valid csrf token
+     */
+    public function testIsValidCsrfWithValidToken()
+    {
+        $this->assertTrue(
+            Authentication::isValidCsrf('randomvalidcsrftoken', 'randomvalidcsrftoken')
+        );
+    }
+
+    /**
+     * Method : testIsNotValidCsrfWithInvalidToken
+     * Description : Method to test invalid csrf token
+     */
+    public function testIsNotValidCsrfWithInvalidToken()
+    {
+        $this->assertFalse(
+            Authentication::isValidCsrf('randomvalidcsrftoken', 'randominvalidcsrftoken')
+        );
+    }
+
+    /**
      * Method : mysqlMockProvider
      * Description : Method to mock MySQL queries
      *
