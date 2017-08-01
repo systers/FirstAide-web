@@ -155,4 +155,15 @@ class Authentication
     {
         return ($this->user != null) ? $this->user->isValidUser() : 0;
     }
+
+    /**
+     * Method : isValidCsrf
+     * Description : Check of the csrf token is valid
+     * @validCsrf string : valid csrf token
+     * @testCsrf string :test csrf token, its validity needs to be checked
+     */
+    public static function isValidCsrf($validCsrf, $testCsrf)
+    {
+        return ($validCsrf == $testCsrf);
+    }
 }
