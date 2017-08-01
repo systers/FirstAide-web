@@ -1,14 +1,15 @@
 <?php
     require_once dirname(__FILE__).'/../includes/application.php';
-
+    // variable for storing the response
     $output = array(
         'response' => false,
         'message' => '',
         'redirect_url' => ''
     );
 
+    // Checking if valid post request is made
     if (isset($_POST)) {
-        if (isset($_POST['csrf_token']) && $_POST['csrf_token'] == $csrf_token) {
+        if (isset($_POST['csrf_token']) && FirstAide\Authentication::isValidCsrf($csrf_token, $_POST['csrf_token'])) {
             if (isset($_POST['type'])) {
                 switch ($_POST['type']) {
                     case 'login':
