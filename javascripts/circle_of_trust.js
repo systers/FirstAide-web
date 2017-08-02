@@ -16,7 +16,8 @@ function hideError(ele) {
     ele.find('.ui.red.pointing').hide();
 }
 
-function showResponse(response) {
+function showResponse(response, pageReload) {
+    if (typeof pageReload === 'undefined') { pageReload = true; }
     if (!response.response) {
         $('.ui.modal').find('.header').text('Are you lost?');
     } else {
@@ -24,9 +25,11 @@ function showResponse(response) {
     }
     $('.ui.modal').find('.content').text(response.message);
     $('.ui.modal').modal('show');
-    setTimeout(function() {
-        location.reload();
-    }, 4000);
+    if (pageReload) {
+        setTimeout(function() {
+            location.reload();
+        }, 4000);
+    }
 }
 
 $(document).ready(function() {
@@ -84,7 +87,7 @@ $(document).ready(function() {
                 val = $(eleId).val().trim();
 
             if (val.length > 0) {
-                if (validation.isPhoneNumber(val) && val.length > 5 && val.length < 12) {
+                if (validation.isPhoneNumber(val) && val.length > 5 && val.length < 16) {
                     comradesData.push(val);
                 } else {
                     validData = false;
@@ -117,5 +120,27 @@ $(document).ready(function() {
                 return false;
             }
         }
-    })
+    });
+
+    $('.comrade-action-button').on('click', function() {
+        console.log($(this).attr('id'));
+        var postData = {
+            type: 'send_sms_circle_of_trust',
+            msg_type: $(this).attr('id')
+        }
+        console.log(postData);
+        try {
+            $.ajax({
+                url: 'request/send_notification.php',
+                type: "POST",
+                dataType: 'json',
+                data: postData,
+                success: function(response) {
+                    showResponse(response, false);
+                }
+            });
+        } catch (error) {
+            return false;
+        }
+    });
 });

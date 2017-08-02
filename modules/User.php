@@ -13,6 +13,13 @@ class User
 
     const COUNT_CIRCLE_OF_TRUST = 5;
 
+    /**
+     * Method : __construct
+     * Description : constructor for the user object
+     * @db  string : database instance
+     * @email string : email of user corresponding to user object
+     * @user_id string : unique user_id of a user
+     */
     public function __construct($db, $email = '', $user_id = 0)
     {
         $this->db = $db;
@@ -36,11 +43,20 @@ class User
         }
     }
 
+    /**
+     * Method : setEmptyObject
+     * Description : Method to check if an object is empty
+     */
     private function setEmptyObject()
     {
         $this->valid = false;
     }
 
+    /**
+     * Method : getEncryptedPassword
+     * Description : Method to encrypt password using sha1 encryption algorithm
+     * @password string : password of user that needs to be encrypted
+     */
     private function getEncryptedPassword($password)
     {
         if (isset($this->email)) {
@@ -54,16 +70,28 @@ class User
         return false;
     }
 
+    /**
+     * Method : getName
+     * Description : Method to get user name for a particular user object
+     */
     public function getName()
     {
         return $this->name ?? '';
     }
 
+    /**
+     * Method : getEmailAddress
+     * Description : Method to get email address of a user corresponding to a user object
+     */
     public function getEmailAddress()
     {
         return $this->email ?? '';
     }
 
+    /**
+     * Method : getEmailFromDb
+     * Description : Method to fetch email and user details from database
+     */
     public function getEmailFromDb()
     {
         $user_id = $this->user_id;
@@ -85,6 +113,10 @@ class User
         return false;
     }
 
+    /**
+     * Method : isValidUser
+     * Description : Method to check if a user is valid
+     */
     public function isValidUser()
     {
         $email = $this->email;
@@ -106,6 +138,11 @@ class User
         return false;
     }
 
+    /**
+     * Method : validateCredentials
+     * Description : Method to validate user credentials
+     * @password string : password of user that needs to be encrypted
+     */
     public function validateCredentials($password)
     {
 
@@ -125,6 +162,11 @@ class User
         return false;
     }
 
+    /**
+     * Method : addUser
+     * Description : Method to add user to database
+     * @userData string : User object for the user module having credentials of a unique user
+     */
     public function addUser($userData)
     {
         if (isset($userData['email']) &&
@@ -156,6 +198,10 @@ class User
         return false;
     }
 
+    /**
+     * Method : getCircleOfTrust
+     * Description : Method to get all the comrade details in circle of trust for a particular user
+     */
     public function getCircleOfTrust()
     {
         $stmt = $this->db->prepare("SELECT * FROM `comrades` WHERE `user_id` = ?");
@@ -171,6 +217,31 @@ class User
         }
         return false;
     }
+
+    /**
+     * Method : getCircleOfTrustNumbers
+     * Description : Method to get comrade numbers corresponding to a unique users' circle of trust
+     */
+    public function getCircleOfTrustNumbers()
+    {
+        $numbers = array();
+        $comrades_detail = $this->getCircleOfTrust();
+        if ($comrades_detail && is_array($comrades_detail)) {
+            $numbers = !empty($comrades_detail['comrade_details'])
+                ? explode(', ', $comrades_detail['comrade_details'])
+                : array();
+            array_walk($numbers, function (&$v, &$k) {
+                $v = '+' . $v;
+            });
+        }
+        return $numbers;
+    }
+
+    /**
+     * Method : updateCircleOfTrust
+     * Description : Method to update circle of trust details
+     * @comrades string : Details of circle of trust comrades
+     */
     public function updateCircleOfTrust($comrades)
     {
 
@@ -186,16 +257,13 @@ class User
             if ($found_user_id) {
                 $stmt = $this->db->prepare("UPDATE `comrades` SET `comrade_details` = ? WHERE `user_id` = ?");
                 $stmt->bindParams('si', $comrades_str, $found_user_id);
-                $stmt->execute();
-                $result = $stmt->getResults();
-                $stmt->close();
             } else {
                 $stmt = $this->db->prepare("INSERT INTO `comrades` (`user_id`, `comrade_details`) VALUES (?, ?)");
                 $stmt->bindParams('is', $this->user_id, $comrades_str);
-                $stmt->execute();
-                $result = $stmt->getResults();
-                $stmt->close();
             }
+            $stmt->execute();
+            $affected = $stmt->getAffectedRows();
+            $stmt->close();
             $return = array(
                 'response' => true,
                 'message' => "Updated comrade's details."
@@ -204,6 +272,10 @@ class User
         return $return;
     }
 
+    /**
+     * Method : getCurrentPostCountry
+     * Description : Method to get current country post data
+     */
     public function getCurrentPostCountry()
     {
         global $APPLICATION_DIR;
@@ -228,11 +300,6 @@ class User
         $country_found = 'UG';
         if (!empty($row) && isset($row['country'])) {
             $country_found = strtoupper($row['country']);
-            // Returns country from the given list of countries only
-            /*$country_found = in_array($country_found, $active_post_countries) ?
-                $country_found :
-                'UG';
-            */
         }
 
         return $country_list_json[$country_found];
