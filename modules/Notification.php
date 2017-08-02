@@ -12,6 +12,12 @@ class Notification
 
     const USE_TEST_CREDENTIALS = 'test';
 
+    public static $messages = array(
+        'come_get_me' => 'Come and get me.I need help getting home safely.',
+        'need_interruption' => 'Call and pretend you need me. I need an interruption.',
+        'need_to_talk' => 'I need to talk.'
+    );
+
     /**
      * Method : __construct
      * Description : constructor for initialising credentials
@@ -53,9 +59,9 @@ class Notification
             $twilioResponse = $client->messages->create(
                 $number,
                 array(
-                    // A Twilio phone number you purchased at twilio.com/console
+                    // A Twilio phone number purchased by the user at twilio.com/console
                     'from' => $this->from_number,
-                    // the body of the text message you'd like to send
+                    // The body of the text message, the logged in user would send to other comrades.
                     'body' => $msg
                 )
             );
