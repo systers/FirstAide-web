@@ -241,11 +241,6 @@ class User
         $country_found = 'UG';
         if (!empty($row) && isset($row['country'])) {
             $country_found = strtoupper($row['country']);
-            // Returns country from the given list of countries only
-            /*$country_found = in_array($country_found, $active_post_countries) ?
-                $country_found :
-                'UG';
-            */
         }
 
         return $country_list_json[$country_found];
