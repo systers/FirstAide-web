@@ -1,9 +1,13 @@
 <?php
     require_once(dirname(__FILE__).'/../includes/application.php');
+
+    // display message in case of a false response or a failure
     $output = array(
         'response' => false,
         'message' => 'Something went wrong'
     );
+
+    //handler for sending sms for circle of trust
     if (!empty($UserObj)) {
         if (isset($_POST) && isset($_POST['type'])) {
             switch ($_POST['type']) {
