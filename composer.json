@@ -12,7 +12,7 @@
     "autoload" : {
         "psr-4" : {
             "FirstAide\\":"modules/",
-            "Tests\\": "tests/"
+            "Tests\\": "tests/phpUnitTests/"
         }
     }
 }
