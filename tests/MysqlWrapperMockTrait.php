@@ -7,8 +7,10 @@ use FirstAide\MysqlResult;
 
 trait MysqlWrapperMockTrait
 {
-    private function getMysqlWrapperMock(array $mockData): MysqlDatabase
-    {
+    private function getMysqlWrapperMock(
+        array $mockData,
+        array $replacePatterns = array()
+    ): MysqlDatabase {
         $this->mysqli = $this->getMockBuilder(MysqlDatabase::class)
             ->setMethods(
                 array(
@@ -36,7 +38,7 @@ trait MysqlWrapperMockTrait
 
         $this->mysqli->expects($this->any())
             ->method('bindParams')
-            ->will($this->returnCallback(function () use ($mockData) {
+            ->will($this->returnCallback(function () use ($mockData, $replacePatterns) {
                 $func_args = func_get_args();
                 $types = str_split(array_shift($func_args));
                 foreach ($func_args as $v) {
@@ -51,6 +53,21 @@ trait MysqlWrapperMockTrait
                         $this->tmp_query,
                         1
                     );
+                }
+
+                foreach ($replacePatterns as $p) {
+                    preg_match(
+                        $p['pattern'],
+                        $this->tmp_query,
+                        $output_array
+                    );
+                    if (!empty($output_array) && !empty($output_array[$p['regex_reponse_index']])) {
+                        $this->tmp_query = str_replace(
+                            $output_array[$p['regex_reponse_index']],
+                            $p['replace_with'],
+                            $this->tmp_query
+                        );
+                    }
                 }
 
                 return $this->mysqli;
