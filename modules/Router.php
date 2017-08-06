@@ -44,7 +44,7 @@ class Router
     const TEMPLATE_CIRCLE_OF_TRUST = 'circle_of_trust.html';
     const TEMPLATE_GET_HELP_NOW = 'get_help_now.html';
 
-    const COUNTRY_LIST_FILE = '/javascripts/country_list.json';
+    const COUNTRY_LIST_FILE = '/js/country_list.json';
     const LOGIN_SUCCESS_URL = HOST.'?page_request='.self::HOME;
 
     /**
@@ -101,6 +101,7 @@ class Router
 
                     case self::PAGE_CIRCLE_OF_TRUST:
                         $out['content'] = self::getCircleOfTrust($UserObj);
+                        $out['javascripts'][] = 'validation.js';
                         $out['javascripts'][] = 'circle_of_trust.js';
                         break;
 
