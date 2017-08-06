@@ -34,4 +34,3 @@ before_script:
 # scripts like phpunit test
 script:
   - ./vendor/bin/phpunit tests/phpUnitTests/
-  - ./node_modules/karma/bin/karma start jasmine.config.js --single-run
