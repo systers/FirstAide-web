@@ -11,7 +11,12 @@
   },
   "devDependencies": {
     "gulp-minify-css": "^1.2.4",
-    "gulp-rename": "^1.2.2"
+    "gulp-rename": "^1.2.2",
+    "jasmine-core": "^2.7.0",
+    "karma": "^1.7.0",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-jquery-jasmine": "^0.1.12"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
