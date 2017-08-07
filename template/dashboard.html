@@ -7,7 +7,9 @@
             {% if page.content.template %}
                 {% include 'page/' ~ page.content.template with page.content.data only %}
             {% else %}
-                <a href="/index.php">Home</a>
+                <div class="article">
+                    <a href="/index.php">Home</a>
+                </div>
             {% endif %}
         </div>
     </div>

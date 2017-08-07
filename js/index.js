@@ -29,21 +29,19 @@ function showResponse(thisElement, response) {
 			});
 		}, 100);
 
-		var val = 15;
-		for(count = 0; count < 4; count++) {
-			val = Math.floor((Math.random() * (15 + ((count + 1) * 12)) + val));
-			setTimeout(function() {
-				$('.processing .progress').progress({percent: val});
-			}, 500);
-		}
+		var val = 85;
+		$('.processing .progress').progress({percent: val});
 		setTimeout(function() {
 			$('.ui.modal').find('.header').text('Congrats');
 			$('.ui.modal').find('.content').text(response.message);
 			$('.ui.modal').modal('show');
 		}, 4000);
-		setTimeout(function() {
-			window.location.href = response.redirect_url;
-		}, 5500);
+
+		if (response.redirect_url) {
+			setTimeout(function() {
+				window.location.href = response.redirect_url;
+			}, 5500);
+		}
 	}
 }
 
