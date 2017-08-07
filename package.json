@@ -14,9 +14,10 @@
     "gulp-rename": "^1.2.2",
     "jasmine-core": "^2.7.0",
     "karma": "^1.7.0",
-    "karma-firefox-launcher": "^1.0.1",
+    "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.0",
-    "karma-jquery-jasmine": "^0.1.12"
+    "karma-jasmine-jquery": "^0.1.1",
+    "karma-phantomjs-launcher": "^1.0.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
