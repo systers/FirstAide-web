@@ -6,7 +6,7 @@
  */
 namespace Tests\FirstAide;
 
-require_once str_replace('tests/modules', '', dirname(__FILE__)).'/includes/settings.php';
+require_once str_replace('tests/phpUnitTests/modules', '', dirname(__FILE__)).'/includes/settings.php';
 
 /**
  * Importing required modules/wrappers

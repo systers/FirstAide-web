@@ -286,7 +286,7 @@ class User
         $APPLICATION_DIR = empty($APPLICATION_DIR)
             ? str_replace('modules', '', dirname(__FILE__))
             : $APPLICATION_DIR;
-        $country_list = file_get_contents($APPLICATION_DIR.'/javascripts/country_list.json');
+        $country_list = file_get_contents($APPLICATION_DIR.'/js/country_list.json');
         $country_list_json = json_decode($country_list, true);
 
         $stmt = $this->db->prepare("SELECT `country` FROM `users` WHERE `email` = ?");

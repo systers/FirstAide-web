@@ -5,6 +5,7 @@
     $page = FirstAide\Router::getPage($UserObj, $page_request, $query);
 
 if ($page['type'] == FirstAide\Router::INDEX) {
+    $page['javascripts'][] = 'validation.js';
     $page['javascripts'][] = 'index.js';
 }
 ?>

@@ -21,7 +21,7 @@ cache:
 # installing dependencies
 install:
   - npm install
-  - npm install -g gulp-cli
+  - npm install -g gulp-cli karma-cli
   - gulp
   - composer install --no-interaction --prefer-source
 
@@ -33,4 +33,4 @@ before_script:
 
 # scripts like phpunit test
 script:
-  - ./vendor/bin/phpunit tests/
+  - ./vendor/bin/phpunit tests/phpUnitTests/

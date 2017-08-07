@@ -1,10 +1,3 @@
-const validation = {
-    isPhoneNumber:function(str) {
-        const pattern = /^\d+$/;
-        return pattern.test(str);
-    }
-}
-
 function showError(ele, msg) {
     ele.addClass('error');
     ele.find('.ui.red.pointing').text(msg);
