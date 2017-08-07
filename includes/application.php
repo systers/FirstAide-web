@@ -47,7 +47,7 @@
     $UserObj = new FirstAide\User($DB, '', 0);
     // Validate session token, if exists
     if (!empty($_SESSION['session_token'])) {
-        $UserAuth = FirstAide\Authentication::withSessionToken($DB, $_SESSION['session_token']);
+        $UserAuth = FirstAide\Authentication::createInstanceWithSessionToken($DB, $_SESSION['session_token']);
         if (empty($UserAuth)) {
             $redirect = HOST;
         } else {
