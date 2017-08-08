@@ -80,11 +80,12 @@ function passwordScore(pass) {
     }
     return {score: score, error: error};
 }
-$('.signup-form').find('#password').keyup(function(ele) {
-	var scoreData = passwordScore($(this).val()),
+
+function passwordKeyUp(t) {
+	var scoreData = passwordScore(t.val()),
 		element = $('#password-strength-status');
 	element.parent().show();
-	hideError($(this).parent());
+	hideError(t.parent());
 	switch(scoreData.score) {
 		case 7:
 		case 6:
@@ -108,9 +109,13 @@ $('.signup-form').find('#password').keyup(function(ele) {
 			element.progress({percent: 25});
 			element.removeClass().addClass('ui red progress');
 			element.find('.label').html("Password Strength: Very Weak");
-			showError($(this).parent(), 'Minimum 6 characters long');
+			showError(t.parent(), 'Minimum 6 characters long');
 			break;
 	}
+}
+
+$('.signup-form').find('#password').keyup(function(ele) {
+	passwordKeyUp($(this));
 });
 
 $(document).ready(function() {
