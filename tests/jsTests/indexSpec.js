@@ -1,5 +1,9 @@
-describe("Tests for show error", function() {
-	var msg = 'this is a test message';
+/**
+ * Suite : Tests for showing error on incorrect field entry
+ * Description : This is a test suite for showing error in case of an invalid field entry
+ */
+describe("Tests for showing error on incorrect field entry", function() {
+	var msg = 'This is a test message for showing error';
 	beforeEach(function() {
 		setFixtures('<div class="field"> \
 				<div class="ui red pointing"></div> \
@@ -14,8 +18,12 @@ describe("Tests for show error", function() {
 	});
 });
 
-describe("Tests for hide error", function() {
-	var msg = 'this is a test message';
+/**
+ * Suite : Tests for hiding error on correct field entry
+ * Description : This is a test suite for hiding error in case of an valid field entry
+ */
+describe("Tests for hiding error on correct field entry", function() {
+	var msg = 'This is a test message for not showing error';
 	beforeEach(function() {
 		setFixtures('<div class="field"> \
 				<div class="ui red pointing">' + msg + '</div> \
@@ -29,8 +37,12 @@ describe("Tests for hide error", function() {
 	});
 });
 
+/**
+ * Suite : Tests for not empty field
+ * Description : This is a test suite for checking when field is not empty
+ */
 describe("Tests for not empty field", function() {
-	var msg = 'this is a test message',
+	var msg = 'This is a test message when field is not empty',
 		r = false;
 	beforeEach(function() {
 		setFixtures('<div class="field">\
@@ -48,8 +60,12 @@ describe("Tests for not empty field", function() {
 	});
 });
 
+/**
+ * Suite : Tests for empty field
+ * Description : This is a test suite for checking when feild is empty
+ */
 describe("Tests for empty field", function() {
-	var msg = 'this is a test message',
+	var msg = 'This is a test message when feild is empty',
 		r = false;
 	beforeEach(function() {
 		setFixtures('<div class="field">\
@@ -68,8 +84,13 @@ describe("Tests for empty field", function() {
 	});
 });
 
+/**
+ * Suite : Tests for success response modal
+ * Description : This is a test suite for checking when the response is a success
+ */
+
 describe("Tests for success response modal", function() {
-	var msg = 'this is a test message';
+	var msg = 'This is a test message when the response is a success';
 	beforeEach(function() {
 		jasmine.clock().install();
 		setFixtures('<div class="element"></div>\
@@ -99,8 +120,12 @@ describe("Tests for success response modal", function() {
 	});
 });
 
+/**
+ * Suite : Tests for failed response modal
+ * Description : This is a test suite for a failed response modal
+ */
 describe("Tests for failed response modal", function() {
-	var msg = 'this is a test message';
+	var msg = 'This is a test message for a failed response modal';
 	beforeEach(function() {
 		jasmine.clock().install();
 		setFixtures('<div class="element"></div>\
@@ -130,6 +155,10 @@ describe("Tests for failed response modal", function() {
 	});
 });
 
+/**
+ * Suite : Tests for password score
+ * Description : This is a test suite for checking password score
+ */
 describe("Tests for password score", function() {
 	it("should be visible", function() {
 		var passwords = {
@@ -179,7 +208,10 @@ describe("Tests for password score", function() {
 	});
 });
 
-
+/**
+ * Suite : Tests for password field
+ * Description : Unit test to verify password with varying character limits to analyze strength progress bar percentage based on score
+ */
 describe("Tests for password field", function() {
 	beforeEach(function() {
 		setFixtures('<div class="field">\
