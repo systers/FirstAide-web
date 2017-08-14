@@ -43,20 +43,20 @@ describe("Tests for hiding error on correct field entry", function() {
  */
 describe("Tests for not empty field", function() {
 	var msg = 'This is a test message when field is not empty',
-		r = false;
+		isNotEmpty = false;
 	beforeEach(function() {
 		setFixtures('<div class="field">\
 			<label>Name</label>\
 			<input type="text" name="name" id="name" placeholder="Your complete name" value="Jon Snow">\
 			<div class="ui basic red left pointing prompt label transition hide"></div>\
 		</div>');
-		r = notEmpty({ ele: $('#name'), text: msg});
+		isNotEmpty = notEmpty({ ele: $('#name'), text: msg});
 	});
 
 	it("should be visible", function() {
 		expect($('.field')).not.toHaveClass('error');
 		expect($('.ui.red.pointing')).toBeHidden();
-		expect(r).toBeTruthy();
+		expect(isNotEmpty).toBeTruthy();
 	});
 });
 
@@ -65,22 +65,22 @@ describe("Tests for not empty field", function() {
  * Description : This is a test suite for checking when feild is empty
  */
 describe("Tests for empty field", function() {
-	var msg = 'This is a test message when feild is empty',
-		r = false;
+	var msg = 'This is a test message when input field is empty',
+		isNotEmpty = false;
 	beforeEach(function() {
 		setFixtures('<div class="field">\
 			<label>Name</label>\
 			<input type="text" name="name" id="name" placeholder="Your complete name" value="">\
 			<div class="ui basic red left pointing prompt label transition hide"></div>\
 		</div>');
-		r = notEmpty({ ele: $('#name'), text: msg});
+		isNotEmpty = notEmpty({ ele: $('#name'), text: msg});
 	});
 
 	it("should be visible", function() {
 		expect($('.field')).toHaveClass('error');
 		expect($('.ui.red.pointing')).toContainText(msg);
 		expect($('.ui.red.pointing')).toBeVisible();
-		expect(r).not.toBeTruthy();
+		expect(isNotEmpty).not.toBeTruthy();
 	});
 });
 
@@ -164,45 +164,55 @@ describe("Tests for password score", function() {
 		var passwords = {
 			0: {
 				'text': 'psswd',
+                'errorCount': 4,
 				'score': 0
 			},
 			1: {
 				'text': 'password',
+                'errorCount': 3,
 				'score': 2
 			},
 			2: {
 				'text': 'Password',
+                'errorCount': 2,
 				'score': 3
 			},
 			3: {
 				'text': 'password1',
+                'errorCount': 2,
 				'score': 3
 			},
 			4: {
 				'text': 'password#',
+                'errorCount': 2,
 				'score': 3
 			},
 			5: {
 				'text': 'Password1',
+                'errorCount': 1,
 				'score': 4
 			},
 			6: {
 				'text': 'Password#',
+                'errorCount': 1,
 				'score': 4
 			},
 			7: {
 				'text': 'Password#1',
+                'errorCount': 0,
 				'score': 5
 			},
 			8: {
 				'text': 'Password3#',
+                'errorCount': 0,
 				'score': 5
 			}
 		}
-		for (var k in passwords) {
-			if (passwords.hasOwnProperty(k)) {
-				var s = passwordScore(passwords[k]['text']);
-				expect(s['score']).toBe(passwords[k]['score']);
+		for (var key in passwords) {
+			if (passwords.hasOwnProperty(key)) {
+				var s = passwordScore(passwords[key]['text']);
+				expect(s['score']).toBe(passwords[key]['score']);
+				expect(s['error'].length).toBe(passwords[key]['errorCount']);
 			}
 		}
 	});
@@ -274,7 +284,7 @@ describe("Tests for password field", function() {
 				$('#password').val(passwords[k]['text']);
 
 				expect($('.field.password-strength')).toBeHidden();
-				passwordKeyUp($('#password'));
+				passwordFieldKeyUp($('#password'));
 				expect($('.field.password-strength')).toBeVisible();
 				expect($('#password-strength-status').data('percent')).toBe(passwords[k]['percent']);
 			}

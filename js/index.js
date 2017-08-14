@@ -81,7 +81,7 @@ function passwordScore(pass) {
     return {score: score, error: error};
 }
 
-function passwordKeyUp(t) {
+function passwordFieldKeyUp(t) {
 	var scoreData = passwordScore(t.val()),
 		element = $('#password-strength-status');
 	element.parent().show();
