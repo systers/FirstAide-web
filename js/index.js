@@ -85,7 +85,7 @@ function passwordFieldKeyUp(passwordField) {
 	var scoreData = passwordScore(passwordField.val()),
 		element = $('#password-strength-status');
 	element.parent().show();
-	hideError(t.parent());
+	hideError(passwordField.parent());
 	switch(scoreData.score) {
 		case 7:
 		case 6:
@@ -109,7 +109,7 @@ function passwordFieldKeyUp(passwordField) {
 			element.progress({percent: 25});
 			element.removeClass().addClass('ui red progress');
 			element.find('.label').html("Password Strength: Very Weak");
-			showError(t.parent(), 'Minimum 6 characters long');
+			showError(passwordField.parent(), 'Minimum 6 characters long');
 			break;
 	}
 }
