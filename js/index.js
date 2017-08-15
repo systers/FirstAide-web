@@ -1,21 +1,28 @@
 function showError(element, msg) {
-	element.addClass('error');
-	element.find('.ui.red.pointing').text(msg);
-	element.find('.ui.red.pointing').show();
-	setTimeout(function() {element.find('.ui.red').hide();}, 7000);
+	if (typeof element !== 'undefined') {
+		element.addClass('error');
+		element.find('.ui.red.pointing').text(msg);
+		element.find('.ui.red.pointing').show();
+		setTimeout(function() {element.find('.ui.red').hide();}, 7000);
+	}
 }
 function hideError(element) {
-	element.removeClass('error');
-	element.find('.ui.red.pointing').hide();
+	if (typeof element !== 'undefined') {
+		element.removeClass('error');
+		element.find('.ui.red.pointing').hide();
+	}
 }
 function notEmpty(elementData) {
-	if (elementData.element.val().trim().length <= 0) {
-		showError(elementData.element.parent(), elementData.text);
-		return false;
-	} else {
-		hideError(elementData.element.parent());
-		return true;
+	if (typeof elementData.element !== 'undefined') {
+		if (elementData.element.val().trim().length <= 0) {
+			showError(elementData.element.parent(), elementData.text);
+			return false;
+		} else {
+			hideError(elementData.element.parent());
+			return true;
+		}
 	}
+	return false;
 }
 function showResponse(thisElement, response) {
 	if (!response.response) {
@@ -82,35 +89,37 @@ function passwordScore(pass) {
 }
 
 function passwordFieldKeyUp(passwordField) {
-	var scoreData = passwordScore(passwordField.val()),
-		element = $('#password-strength-status');
-	element.parent().show();
-	hideError(passwordField.parent());
-	switch(scoreData.score) {
-		case 7:
-		case 6:
-		case 5:
-		case 4:
-			element.progress({percent: 95});
-			element.removeClass().addClass('ui green progress');
-			element.find('.label').html("Password Strength: Very Strong");
-			break;
-		case 3:
-			element.progress({percent: 75});
-			element.removeClass().addClass('ui orange progress');
-			element.find('.label').html("Password Strength: Strong");
-			break;
-		case 2:
-			element.progress({percent: 45});
-			element.removeClass().addClass('ui yellow progress');
-			element.find('.label').html("Password Strength: Weak");
-			break;
-		default:
-			element.progress({percent: 25});
-			element.removeClass().addClass('ui red progress');
-			element.find('.label').html("Password Strength: Very Weak");
-			showError(passwordField.parent(), 'Minimum 6 characters long');
-			break;
+	if (typeof passwordField !== 'undefined') {
+		var scoreData = passwordScore(passwordField.val()),
+			element = $('#password-strength-status');
+		element.parent().show();
+		hideError(passwordField.parent());
+		switch(scoreData.score) {
+			case 7:
+			case 6:
+			case 5:
+			case 4:
+				element.progress({percent: 95});
+				element.removeClass().addClass('ui green progress');
+				element.find('.label').html("Password Strength: Very Strong");
+				break;
+			case 3:
+				element.progress({percent: 75});
+				element.removeClass().addClass('ui orange progress');
+				element.find('.label').html("Password Strength: Strong");
+				break;
+			case 2:
+				element.progress({percent: 45});
+				element.removeClass().addClass('ui yellow progress');
+				element.find('.label').html("Password Strength: Weak");
+				break;
+			default:
+				element.progress({percent: 25});
+				element.removeClass().addClass('ui red progress');
+				element.find('.label').html("Password Strength: Very Weak");
+				showError(passwordField.parent(), 'Minimum 6 characters long');
+				break;
+		}
 	}
 }
 
