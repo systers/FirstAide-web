@@ -50,7 +50,7 @@ describe("Tests for not empty field", function() {
 			<input type="text" name="name" id="name" placeholder="Your complete name" value="Jon Snow">\
 			<div class="ui basic red left pointing prompt label transition hide"></div>\
 		</div>');
-		isNotEmpty = notEmpty({ ele: $('#name'), text: msg});
+		isNotEmpty = notEmpty({ element: $('#name'), text: msg});
 	});
 
 	it("should be visible", function() {
@@ -73,7 +73,7 @@ describe("Tests for empty field", function() {
 			<input type="text" name="name" id="name" placeholder="Your complete name" value="">\
 			<div class="ui basic red left pointing prompt label transition hide"></div>\
 		</div>');
-		isNotEmpty = notEmpty({ ele: $('#name'), text: msg});
+		isNotEmpty = notEmpty({ element: $('#name'), text: msg});
 	});
 
 	it("should be visible", function() {

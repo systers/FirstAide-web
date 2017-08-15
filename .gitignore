@@ -2,4 +2,5 @@
 old_code/*
 cache/*
 vendor/*
+coverage/*
 node_modules/*
