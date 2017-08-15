@@ -1,19 +1,19 @@
-function showError(ele, msg) {
-	ele.addClass('error');
-	ele.find('.ui.red.pointing').text(msg);
-	ele.find('.ui.red.pointing').show();
-	setTimeout(function() {ele.find('.ui.red').hide();}, 7000);
+function showError(element, msg) {
+	element.addClass('error');
+	element.find('.ui.red.pointing').text(msg);
+	element.find('.ui.red.pointing').show();
+	setTimeout(function() {element.find('.ui.red').hide();}, 7000);
 }
-function hideError(ele) {
-	ele.removeClass('error');
-	ele.find('.ui.red.pointing').hide();
+function hideError(element) {
+	element.removeClass('error');
+	element.find('.ui.red.pointing').hide();
 }
-function notEmpty(ele) {
-	if (ele.ele.val().trim().length <= 0) {
-		showError(ele.ele.parent(), ele.text);
+function notEmpty(elementData) {
+	if (elementData.element.val().trim().length <= 0) {
+		showError(elementData.element.parent(), elementData.text);
 		return false;
 	} else {
-		hideError(ele.ele.parent());
+		hideError(elementData.element.parent());
 		return true;
 	}
 }
@@ -81,8 +81,8 @@ function passwordScore(pass) {
     return {score: score, error: error};
 }
 
-function passwordFieldKeyUp(t) {
-	var scoreData = passwordScore(t.val()),
+function passwordFieldKeyUp(passwordField) {
+	var scoreData = passwordScore(passwordField.val()),
 		element = $('#password-strength-status');
 	element.parent().show();
 	hideError(t.parent());
@@ -114,7 +114,7 @@ function passwordFieldKeyUp(t) {
 	}
 }
 
-$('.signup-form').find('#password').keyup(function(ele) {
+$('.signup-form').find('#password').keyup(function() {
 	passwordKeyUp($(this));
 });
 
@@ -152,7 +152,7 @@ $(document).ready(function() {
 		} else {
 			hideError(emailElement.parent());
 		}
-		validData = notEmpty({ ele: passwordElement, text: 'Please enter your password'});
+		validData = notEmpty({ element: passwordElement, text: 'Please enter your password'});
 
 		if (validData) {
 			var postData = {
@@ -205,28 +205,28 @@ $(document).ready(function() {
 		}
 		var elements = {
 			name: {
-				ele: nameElement,
+				element: nameElement,
 				text: 'Please enter your name'
 			},
 			password: {
-				ele: passwordElement,
+				element: passwordElement,
 				text: 'Please enter your password'
 			},
 			confirmPassword: {
-				ele: confirmPasswordElement,
+				element: confirmPasswordElement,
 				text: 'Please retype your password'
 			},
 			country: {
-				ele: countryElement,
+				element: countryElement,
 				text: 'Please select your country'
 			}
 		}
-		for (var k in elements) {
-			validData = validData ? notEmpty(elements[k]) : validData;
+		for (var key in elements) {
+			validData = validData ? notEmpty(elements[key]) : validData;
 		}
 		if (password !== confirm_password) {
 			confirmPasswordElement.val('');
-			notEmpty({ele: confirmPasswordElement, text: 'Password did not match'});
+			notEmpty({element: confirmPasswordElement, text: 'Password did not match'});
 			validData = false;
 		}
 		if (validData) {
