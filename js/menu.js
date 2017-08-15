@@ -1,16 +1,29 @@
+/**
+ * showMenu() displays menu in smaller screens
+ */
 function showMenu() {
 	$('.ui.vertical.sidebar').addClass('overlay visible');
 }
 
+/**
+ * hideMenu() hides menu in smaller screens
+ */
 function hideMenu() {
 	$('.ui.vertical.sidebar.overlay.visible').removeClass('overlay visible');
 }
 
-function toggleSubMenuVisibility(ele) {
-	if (ele.is(':hidden')) {
-		ele.slideDown( "slow");
-	} else {
-		ele.slideUp( "slow");
+/**
+ * toggleSubMenuVisibility() displays/hides sub menu
+ *
+ * @element {DOM element} element for sub menu
+ */
+function toggleSubMenuVisibility(element) {
+	if (typeof element !== 'undefined') {
+		if (element.is(':hidden')) {
+			element.slideDown( "slow");
+		} else {
+			element.slideUp( "slow");
+		}
 	}
 }
 
@@ -18,8 +31,8 @@ $('.show-menu-button').on('click', function() {
 	showMenu();
 });
 
-$('body').on('click', function(e) {
-    if ($(e.target).closest('.article').length > 0) {
+$('body').on('click', function(thisElement) {
+    if ($(thisElement.target).closest('.article').length > 0) {
 		hideMenu();
     }
 });

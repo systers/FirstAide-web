@@ -1,3 +1,7 @@
+/**
+ * Suite : Tests for showing and hiding of menu
+ * Description : This is a test suite for showing and hiding menu for smaller screens.
+ */
 describe("Tests for show and hide menu", function() {
 	beforeEach(function() {
 		setFixtures('<body> \
@@ -21,6 +25,10 @@ describe("Tests for show and hide menu", function() {
 	});
 });
 
+/**
+ * Suite : Tests for showing sub menu items
+ * Description : This is a test suite for showing sub menu items inside menu.
+ */
 describe("Tests to show sub menu", function() {
 	beforeEach(function() {
 		setFixtures('<div class="sub-menu-item"> \
@@ -38,6 +46,10 @@ describe("Tests to show sub menu", function() {
 	});
 });
 
+/**
+ * Suite : Tests for hiding sub menu items
+ * Description : This is a test suite for hiding sub menu items inside menu.
+ */
 describe("Tests to hide sub menu", function() {
 	beforeEach(function() {
 		jasmine.clock().install();
@@ -49,7 +61,7 @@ describe("Tests to hide sub menu", function() {
 		</div>');
 
 
-		// mock modal show call
+		// mock slideUp function
 		spyOn($.fn, "slideUp").and.callFake(function(arguments) {
 			$('.menu').hide();
     	});
