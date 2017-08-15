@@ -1,22 +1,59 @@
-function showError(ele, msg) {
-	ele.addClass('error');
-	ele.find('.ui.red.pointing').text(msg);
-	ele.find('.ui.red.pointing').show();
-	setTimeout(function() {ele.find('.ui.red').hide();}, 7000);
-}
-function hideError(ele) {
-	ele.removeClass('error');
-	ele.find('.ui.red.pointing').hide();
-}
-function notEmpty(ele) {
-	if (ele.ele.val().trim().length <= 0) {
-		showError(ele.ele.parent(), ele.text);
-		return false;
-	} else {
-		hideError(ele.ele.parent());
-		return true;
+/**
+ * showError() displays error divisions
+ * with given message(msg)
+ * for a short span of time inside given element
+ *
+ * @element {DOM element} element in which error will be shown
+ * @msg {string} The message to be displayed for the error
+ */
+function showError(element, msg) {
+	if (typeof element !== 'undefined') {
+		element.addClass('error');
+		element.find('.ui.red.pointing').text(msg);
+		element.find('.ui.red.pointing').show();
+		setTimeout(function() {element.find('.ui.red').hide();}, 7000);
 	}
 }
+
+/**
+ * hideError() hides error divisions
+ * inside given element
+ *
+ * @element {DOM element} element where the error will be hidden
+ */
+function hideError(element) {
+	if (typeof element !== 'undefined') {
+		element.removeClass('error');
+		element.find('.ui.red.pointing').hide();
+	}
+}
+
+/**
+ * notEmpty() checks if the given input field is empty
+ *
+ * @elementData {dictionary} contains field element to check
+ * an error message to show
+ */
+function notEmpty(elementData) {
+	if (typeof elementData.element !== 'undefined') {
+		if (elementData.element.val().trim().length <= 0) {
+			showError(elementData.element.parent(), elementData.text);
+			return false;
+		} else {
+			hideError(elementData.element.parent());
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * showResponse() displays modal on receiving response
+ *
+ * @thisElement {DOM element} The element to fadeOut
+ * on receiving successfull  response
+ * @response {dictionary} contains ajax call response
+ */
 function showResponse(thisElement, response) {
 	if (!response.response) {
 		$('.ui.modal').find('.header').text('Are you lost?');
@@ -29,28 +66,27 @@ function showResponse(thisElement, response) {
 			});
 		}, 100);
 
-		var val = 15;
-		for(count = 0; count < 4; count++) {
-			val = Math.floor((Math.random() * (15 + ((count + 1) * 12)) + val));
-			setTimeout(function() {
-				$('.processing .progress').progress({percent: val});
-			}, 500);
-		}
+		var val = 85;
+		$('.processing .progress').progress({percent: val});
 		setTimeout(function() {
 			$('.ui.modal').find('.header').text('Congrats');
 			$('.ui.modal').find('.content').text(response.message);
 			$('.ui.modal').modal('show');
 		}, 4000);
-		setTimeout(function() {
-			window.location.href = response.redirect_url;
-		}, 5500);
+
+		if (response.redirect_url) {
+			setTimeout(function() {
+				window.location.href = response.redirect_url;
+			}, 5500);
+		}
 	}
 }
 
-$(function() {
-	$('.ui.dropdown').dropdown();
-	$('#example1').progress();
-});
+/**
+ * passwordScore() calculates the password score
+ *
+ * @pass {string} The password string
+ */
 function passwordScore(pass) {
 	var score = 1,
 		error = [];
@@ -82,40 +118,57 @@ function passwordScore(pass) {
     }
     return {score: score, error: error};
 }
-$('.signup-form').find('#password').keyup(function(ele) {
-	var scoreData = passwordScore($(this).val()),
-		element = $('#password-strength-status');
-	element.parent().show();
-	hideError($(this).parent());
-	switch(scoreData.score) {
-		case 7:
-		case 6:
-		case 5:
-		case 4:
-			element.progress({percent: 95});
-			element.removeClass().addClass('ui green progress');
-			element.find('.label').html("Password Strength: Very Strong");
-			break;
-		case 3:
-			element.progress({percent: 75});
-			element.removeClass().addClass('ui orange progress');
-			element.find('.label').html("Password Strength: Strong");
-			break;
-		case 2:
-			element.progress({percent: 45});
-			element.removeClass().addClass('ui yellow progress');
-			element.find('.label').html("Password Strength: Weak");
-			break;
-		default:
-			element.progress({percent: 25});
-			element.removeClass().addClass('ui red progress');
-			element.find('.label').html("Password Strength: Very Weak");
-			showError($(this).parent(), 'Minimum 6 characters long');
-			break;
+
+/**
+ * passwordFieldKeyUp() displays error messages for password field
+ * on keyUp event
+ *
+ * @passwordField {DOM element} The password input field
+ */
+function passwordFieldKeyUp(passwordField) {
+	if (typeof passwordField !== 'undefined') {
+		var scoreData = passwordScore(passwordField.val()),
+			element = $('#password-strength-status');
+		element.parent().show();
+		hideError(passwordField.parent());
+		switch(scoreData.score) {
+			case 7:
+			case 6:
+			case 5:
+			case 4:
+				element.progress({percent: 95});
+				element.removeClass().addClass('ui green progress');
+				element.find('.label').html("Password Strength: Very Strong");
+				break;
+			case 3:
+				element.progress({percent: 75});
+				element.removeClass().addClass('ui orange progress');
+				element.find('.label').html("Password Strength: Strong");
+				break;
+			case 2:
+				element.progress({percent: 45});
+				element.removeClass().addClass('ui yellow progress');
+				element.find('.label').html("Password Strength: Weak");
+				break;
+			default:
+				element.progress({percent: 25});
+				element.removeClass().addClass('ui red progress');
+				element.find('.label').html("Password Strength: Very Weak");
+				showError(passwordField.parent(), 'Minimum 6 characters long');
+				break;
+		}
 	}
+}
+
+$('.signup-form').find('#password').keyup(function() {
+	passwordFieldKeyUp($(this));
 });
 
 $(document).ready(function() {
+	$(function() {
+		$('.ui.dropdown').dropdown();
+		$('#example1').progress();
+	});
 	setTimeout(function() {
 		$('.preloader').fadeOut('slow', function() {
 			$('.content').fadeIn('slow');
@@ -149,7 +202,7 @@ $(document).ready(function() {
 		} else {
 			hideError(emailElement.parent());
 		}
-		validData = notEmpty({ ele: passwordElement, text: 'Please enter your password'});
+		validData = notEmpty({ element: passwordElement, text: 'Please enter your password'});
 
 		if (validData) {
 			var postData = {
@@ -202,28 +255,28 @@ $(document).ready(function() {
 		}
 		var elements = {
 			name: {
-				ele: nameElement,
+				element: nameElement,
 				text: 'Please enter your name'
 			},
 			password: {
-				ele: passwordElement,
+				element: passwordElement,
 				text: 'Please enter your password'
 			},
 			confirmPassword: {
-				ele: confirmPasswordElement,
+				element: confirmPasswordElement,
 				text: 'Please retype your password'
 			},
 			country: {
-				ele: countryElement,
+				element: countryElement,
 				text: 'Please select your country'
 			}
 		}
-		for (var k in elements) {
-			validData = validData ? notEmpty(elements[k]) : validData;
+		for (var key in elements) {
+			validData = validData ? notEmpty(elements[key]) : validData;
 		}
 		if (password !== confirm_password) {
 			confirmPasswordElement.val('');
-			notEmpty({ele: confirmPasswordElement, text: 'Password did not match'});
+			notEmpty({element: confirmPasswordElement, text: 'Password did not match'});
 			validData = false;
 		}
 		if (validData) {
