@@ -1,3 +1,11 @@
+/**
+ * showError() displays error divisions
+ * with given message(msg)
+ * for a short span of time inside given element
+ *
+ * @element {DOM element} element in which error will be shown
+ * @msg {string} The message to be displayed for the error
+ */
 function showError(element, msg) {
 	if (typeof element !== 'undefined') {
 		element.addClass('error');
@@ -6,12 +14,26 @@ function showError(element, msg) {
 		setTimeout(function() {element.find('.ui.red').hide();}, 7000);
 	}
 }
+
+/**
+ * hideError() hides error divisions
+ * inside given element
+ *
+ * @element {DOM element} element where the error will be hidden
+ */
 function hideError(element) {
 	if (typeof element !== 'undefined') {
 		element.removeClass('error');
 		element.find('.ui.red.pointing').hide();
 	}
 }
+
+/**
+ * notEmpty() checks if the given input field is empty
+ *
+ * @elementData {dictionary} contains field element to check
+ * an error message to show
+ */
 function notEmpty(elementData) {
 	if (typeof elementData.element !== 'undefined') {
 		if (elementData.element.val().trim().length <= 0) {
@@ -24,6 +46,14 @@ function notEmpty(elementData) {
 	}
 	return false;
 }
+
+/**
+ * showResponse() displays modal on receiving response
+ *
+ * @thisElement {DOM element} The element to fadeOut
+ * on receiving successfull  response
+ * @response {dictionary} contains ajax call response
+ */
 function showResponse(thisElement, response) {
 	if (!response.response) {
 		$('.ui.modal').find('.header').text('Are you lost?');
@@ -52,10 +82,11 @@ function showResponse(thisElement, response) {
 	}
 }
 
-$(function() {
-	$('.ui.dropdown').dropdown();
-	$('#example1').progress();
-});
+/**
+ * passwordScore() calculates the password score
+ *
+ * @pass {string} The password string
+ */
 function passwordScore(pass) {
 	var score = 1,
 		error = [];
@@ -88,6 +119,12 @@ function passwordScore(pass) {
     return {score: score, error: error};
 }
 
+/**
+ * passwordFieldKeyUp() displays error messages for password field
+ * on keyUp event
+ *
+ * @passwordField {DOM element} The password input field
+ */
 function passwordFieldKeyUp(passwordField) {
 	if (typeof passwordField !== 'undefined') {
 		var scoreData = passwordScore(passwordField.val()),
@@ -124,10 +161,14 @@ function passwordFieldKeyUp(passwordField) {
 }
 
 $('.signup-form').find('#password').keyup(function() {
-	passwordKeyUp($(this));
+	passwordFieldKeyUp($(this));
 });
 
 $(document).ready(function() {
+	$(function() {
+		$('.ui.dropdown').dropdown();
+		$('#example1').progress();
+	});
 	setTimeout(function() {
 		$('.preloader').fadeOut('slow', function() {
 			$('.content').fadeIn('slow');
