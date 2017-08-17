@@ -1,12 +1,12 @@
 /**
- * showMenu() displays menu in smaller screens
+ * showMenu() displays menu in smaller screens (max-width 932px)
  */
 function showMenu() {
 	$('.ui.vertical.sidebar').addClass('overlay visible');
 }
 
 /**
- * hideMenu() hides menu in smaller screens
+ * hideMenu() hides menu in smaller screens (max-width 932px)
  */
 function hideMenu() {
 	$('.ui.vertical.sidebar.overlay.visible').removeClass('overlay visible');
