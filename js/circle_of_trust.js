@@ -1,3 +1,9 @@
+/**
+ * showResponse() displays a modal on receiving response
+ *
+ * @response{dictionary} contains ajax call response
+ * @pageReload{bool value} used to determine if the page needs to be loaded or not based on the response
+ */
 function showResponse(response, pageReload) {
     if (typeof pageReload === 'undefined') { pageReload = true; }
     if (!response.response) {
@@ -14,6 +20,10 @@ function showResponse(response, pageReload) {
     }
 }
 
+/**
+ * placeCircleOfTrustIcons() used to place all the comrade icons in a circle
+ *
+ */
 function placeCircleOfTrustIcons() {
     //circle type - 1 whole, 0.5 half, 0.25 quarter
     var type = 1,
@@ -37,6 +47,11 @@ function placeCircleOfTrustIcons() {
     });
 }
 
+/**
+ * toggleCircleOfTrustSections() used to toggle views between circle of trust section, edit comrades details section and get help via sms section
+ *
+ * @action{string} determines the action based on which the view is rendered
+ */
 function toggleCircleOfTrustSections(action) {
     var circleOfTrust = $('.circle-of-trust-page .circle-of-trust'),
         editComrades = $('.circle-of-trust-page .edit-comrades-section'),
@@ -57,6 +72,7 @@ function toggleCircleOfTrustSections(action) {
         comradeAction.delay(500).fadeIn('slow');
     }
 }
+
 
 $(document).ready(function() {
     $('button').attr("disabled", false);

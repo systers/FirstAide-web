@@ -1,6 +1,7 @@
 /**
  * Suite : Tests for success response modal
- * Description : This is a test suite for checking when the response is a success
+ * Description : This is a test suite for checking for a modal (a prompt)
+ * when the response is a success
  */
 describe("Tests for success response modal", function() {
 	var msg = 'This is a test message when the response is a success';
@@ -36,6 +37,7 @@ describe("Tests for success response modal", function() {
 /**
  * Suite : Tests for failed response modal
  * Description : This is a test suite for a failed response modal
+ * in case of a failure
  */
 describe("Tests for failed response modal", function() {
 	var msg = 'This is a test message for a failed response modal';
@@ -69,8 +71,8 @@ describe("Tests for failed response modal", function() {
 });
 
 /**
- * Suite : Tests for showing error on incorrect field entry
- * Description : This is a test suite for showing error in case of an invalid field entry
+ * Suite : Tests to place circle of trust icons in circle
+ * Description : This is a test suite for checking if all the icons in the circle of trust are placed in a circle
  */
 describe("Tests to place circle of trust icons in circle", function() {
 	beforeEach(function() {
@@ -105,8 +107,8 @@ describe("Tests to place circle of trust icons in circle", function() {
 });
 
 /**
- * Suite : Tests for showing error on incorrect field entry
- * Description : This is a test suite for showing error in case of an invalid field entry
+ * Suite : Tests to show circle of trust icons
+ * Description : This is a validating if all the icons of circle of trust are placed in a circle
  */
 describe("Tests to show circle of trust icons", function() {
 	var msg = 'This is a test message for showing error';
