@@ -1,14 +1,3 @@
-function showError(ele, msg) {
-    ele.addClass('error');
-    ele.find('.ui.red.pointing').text(msg);
-    ele.find('.ui.red.pointing').show();
-    setTimeout(function() {ele.find('.ui.red').hide();}, 7000);
-}
-function hideError(ele) {
-    ele.removeClass('error');
-    ele.find('.ui.red.pointing').hide();
-}
-
 function showResponse(response, pageReload) {
     if (typeof pageReload === 'undefined') { pageReload = true; }
     if (!response.response) {
@@ -25,15 +14,14 @@ function showResponse(response, pageReload) {
     }
 }
 
-$(document).ready(function() {
-    $('button').attr("disabled", false);
+function placeCircleOfTrustIcons() {
     //circle type - 1 whole, 0.5 half, 0.25 quarter
     var type = 1,
         //distance from center
         radius = '200%',
         //shift start from 0
         start = -90,
-        $elements = $('li:not(:first-child)'),
+        $elements = $('.circle li:not(:first-child)'),
         //For even distro of elements of comrades
         numberOfElements = (type === 1) ?  $elements.length : $elements.length - 1, 
         slice = 360 * type / numberOfElements;
@@ -47,28 +35,46 @@ $(document).ready(function() {
             'transform': 'rotate(' + rotate + 'deg) translate(' + radius + ') rotate(' + rotateReverse + 'deg)'
         });
     });
+}
 
+function toggleCircleOfTrustSections(action) {
     var circleOfTrust = $('.circle-of-trust-page .circle-of-trust'),
         editComrades = $('.circle-of-trust-page .edit-comrades-section'),
         comradeAction = $('.circle-of-trust-page .comrade-action-section');
 
 
-    circleOfTrust.fadeIn();
-    $('.icon.angle.left').on('click', function() {
+    if (action === 'back') {
         editComrades.fadeOut('slow');
         comradeAction.fadeOut('slow');
         circleOfTrust.delay(500).fadeIn('slow');
-    })
-    $('.icon.edit').on('click', function() {
+    } else if (action === 'edit') {
         comradeAction.fadeOut('slow');
         circleOfTrust.fadeOut('slow');
         editComrades.delay(500).fadeIn('slow');
-    });
-    $('.get-help-button').on('click', function() {
+    } else if (action === 'help') {
         circleOfTrust.fadeOut('slow');
         editComrades.fadeOut('slow');
         comradeAction.delay(500).fadeIn('slow');
+    }
+}
+
+$(document).ready(function() {
+    $('button').attr("disabled", false);
+
+    placeCircleOfTrustIcons();
+    $('.circle-of-trust-page .circle-of-trust').fadeIn();
+    $('.icon.angle.left').on('click', function() {
+        toggleCircleOfTrustSections('back');
     });
+
+    $('.icon.edit').on('click', function() {
+        toggleCircleOfTrustSections('edit');
+    });
+
+    $('.get-help-button').on('click', function() {
+        toggleCircleOfTrustSections('help');
+    });
+
     $('.comrade-form .submit').on('click', function(e) {
         e.preventDefault();
         var comradesData = [],
@@ -116,12 +122,10 @@ $(document).ready(function() {
     });
 
     $('.comrade-action-button').on('click', function() {
-        console.log($(this).attr('id'));
         var postData = {
             type: 'send_sms_circle_of_trust',
             msg_type: $(this).attr('id')
         }
-        console.log(postData);
         try {
             $.ajax({
                 url: 'request/send_notification.php',
