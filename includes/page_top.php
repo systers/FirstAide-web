@@ -3,6 +3,8 @@
     $page_request = $_GET['page_request'] ?? \FirstAide\Router::INDEX;
     $query = $_GET['query'] ?? '';
     $page = FirstAide\Router::getPage($UserObj, $page_request, $query);
+    
+    $page['javascripts'][] = 'error.js';
 
 if ($page['type'] == FirstAide\Router::INDEX) {
     $page['javascripts'][] = 'validation.js';
