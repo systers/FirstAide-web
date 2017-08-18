@@ -1,18 +1,44 @@
-$('.show-menu-button').on('click', function() {
+/**
+ * showMenu() displays menu in smaller screens (max-width 932px)
+ */
+function showMenu() {
 	$('.ui.vertical.sidebar').addClass('overlay visible');
+}
+
+/**
+ * hideMenu() hides menu in smaller screens (max-width 932px)
+ */
+function hideMenu() {
+	$('.ui.vertical.sidebar.overlay.visible').removeClass('overlay visible');
+}
+
+/**
+ * toggleSubMenuVisibility() displays/hides sub menu
+ *
+ * @element {DOM element} element for sub menu
+ */
+function toggleSubMenuVisibility(element) {
+	if (typeof element !== 'undefined') {
+		if (element.is(':hidden')) {
+			element.slideDown( "slow");
+		} else {
+			element.slideUp( "slow");
+		}
+	}
+}
+
+$('.show-menu-button').on('click', function() {
+	showMenu();
 });
-$('body').on('click', function(e) {
-    if ($(e.target).closest('.article').length > 0) {
-		$('.ui.vertical.sidebar.overlay.visible').removeClass('overlay visible');
+
+$('body').on('click', function(thisElement) {
+    if ($(thisElement.target).closest('.article').length > 0) {
+		hideMenu();
     }
 });
 
 $('.sub-menu-header').on('click', function() {
 	var thisParent = $(this).parent();
 	var thisMenu = thisParent.find('.menu');
-	if (thisMenu.is(':hidden')) {
-		thisMenu.slideDown( "slow");
-	} else {
-		thisMenu.slideUp( "slow");
-	}
+	toggleSubMenuVisibility(thisMenu);
 });

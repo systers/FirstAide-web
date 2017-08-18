@@ -10,7 +10,7 @@ php -r "unlink('composer-setup.php');"
 sudo apt-get install nodejs npm
 
 # install npm gulp cli globally for css minification
-npm install -g gulp-cli
+sudo npm install -g gulp-cli
 
 # installing packages using composer
 composer update
