@@ -21,6 +21,7 @@ describe("Tests for success response modal", function() {
 		// mock modal show call
 		spyOn($.fn, "modal").and.returnValue($('.ui.modal').show());
 		showResponse($('element'), { response: true, message: msg });
+		// creating delay of 400ms
 		jasmine.clock().tick(4000);
 	});
 
@@ -56,6 +57,7 @@ describe("Tests for failed response modal", function() {
 		// mock modal show call
 		spyOn($.fn, "modal").and.returnValue($('.ui.modal').show());
 		showResponse($('element'), { response: false, message: msg });
+		// creating delay of 400ms
 		jasmine.clock().tick(4000);
 	});
 
@@ -89,10 +91,11 @@ describe("Tests to place circle of trust icons in circle", function() {
 				</ul> \
 			</div>');
 		placeCircleOfTrustIcons();
+		// creating delay of 400ms
 		jasmine.clock().tick(4000);
 	});
 
-	it("b", function() {
+	it("should transform elements", function() {
 		expect($('.circle li')[1].style.webkitTransform).toBe('rotate(-90deg) translate(200%) rotate(90deg)');
 		expect($('.circle li')[2].style.webkitTransform).toBe('rotate(-30deg) translate(200%) rotate(30deg)');
 		expect($('.circle li')[3].style.webkitTransform).toBe('rotate(30deg) translate(200%) rotate(-30deg)');
@@ -160,6 +163,7 @@ describe("Tests to show edit circle of trust section", function() {
 			$(this).show();
 		});
         toggleCircleOfTrustSections('edit');
+		// creating delay of 400ms
 		jasmine.clock().tick(4000);
 	});
 
@@ -194,6 +198,7 @@ describe("Tests to show get help section", function() {
 			$(this).show();
 		});
         toggleCircleOfTrustSections('help');
+		// creating delay of 400ms
 		jasmine.clock().tick(4000);
 	});
 
