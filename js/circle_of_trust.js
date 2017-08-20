@@ -4,19 +4,21 @@
  * @response{dictionary} contains ajax call response
  * @pageReload{bool value} used to determine if the page needs to be loaded or not based on the response
  */
-function showResponse(response, pageReload) {
-    if (typeof pageReload === 'undefined') { pageReload = true; }
-    if (!response.response) {
-        $('.ui.modal').find('.header').text('Are you lost?');
-    } else {
-        $('.ui.modal').find('.header').text('Reloading');
-    }
-    $('.ui.modal').find('.content').text(response.message);
-    $('.ui.modal').modal('show');
-    if (pageReload) {
-        setTimeout(function() {
-            location.reload();
-        }, 4000);
+function showResponseModal(response, pageReload) {
+    if (typeof response !== 'undefined') {
+        if (typeof pageReload === 'undefined') { pageReload = true; }
+        if (!response.response) {
+            $('.ui.modal').find('.header').text('Are you lost?');
+        } else {
+            $('.ui.modal').find('.header').text('Reloading');
+        }
+        $('.ui.modal').find('.content').text(response.message);
+        $('.ui.modal').modal('show');
+        if (pageReload) {
+            setTimeout(function() {
+                location.reload();
+            }, 4000);
+        }
     }
 }
 

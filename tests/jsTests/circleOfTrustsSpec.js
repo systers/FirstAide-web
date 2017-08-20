@@ -20,7 +20,8 @@ describe("Tests for success response modal", function() {
 
 		// mock modal show call
 		spyOn($.fn, "modal").and.returnValue($('.ui.modal').show());
-		showResponse($('element'), { response: true, message: msg });
+		showResponseModal({ response: true, message: msg }, false);
+
 		// creating delay of 400ms
 		jasmine.clock().tick(4000);
 	});
@@ -56,7 +57,8 @@ describe("Tests for failed response modal", function() {
 
 		// mock modal show call
 		spyOn($.fn, "modal").and.returnValue($('.ui.modal').show());
-		showResponse($('element'), { response: false, message: msg });
+		showResponseModal({ response: false, message: msg }, false);
+
 		// creating delay of 400ms
 		jasmine.clock().tick(4000);
 	});
@@ -69,6 +71,38 @@ describe("Tests for failed response modal", function() {
 		expect($('.content')).toContainText(msg);
 		expect($('.header')).toContainText('Are you lost?');
 		expect($('.ui.modal')).toBeVisible();
+	});
+});
+
+/**
+ * Suite : Tests for undefined response
+ * Description : This is a test suite for a undefined response
+ * in case of a failure
+ */
+describe("Tests for undefined response", function() {
+	var msg = 'This is a test message for a failed response modal';
+	beforeEach(function() {
+		jasmine.clock().install();
+		setFixtures('<div class="element"></div>\
+		<div class="ui modal">\
+			<div class="header"></div>\
+			<div class="content"></div>\
+			<div class="actions">\
+				<div class="ui cancel green button">Close</div>\
+			</div>\
+		</div>');
+		$('.ui.modal').hide();
+
+		showResponseModal();
+		jasmine.clock().tick(4000);
+	});
+
+	afterEach(function() {
+		jasmine.clock().uninstall();
+	});
+
+	it("should be visible", function() {
+		expect($('.ui.modal')).toBeHidden();
 	});
 });
 
