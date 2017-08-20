@@ -198,7 +198,9 @@ class Router
             $countries = file_get_contents($APPLICATION_DIR.self::COUNTRY_LIST_FILE);
             $out['country_list'] = json_decode($countries, true);
         }
-        if (isset($out['content']['data']['title']) || isset($out['content']['data']['card_content']['data']['title'])) {
+        if (isset($out['content']['data']['title'])
+            || isset($out['content']['data']['card_content']['data']['title'])
+        ) {
             $out['title'] = $out['content']['data']['title']
                 ?? ($out['content']['data']['card_content']['data']['title']
                     ?? $out['title']
