@@ -236,7 +236,7 @@ describe("Tests to show get help section", function() {
 		jasmine.clock().tick(4000);
 	});
 
-	it("get help button clicked", function() {
+	it("get help button clicked and update comrades detail section made visible", function() {
 		expect($('.circle-of-trust-page .edit-comrades-section')).toBeHidden();
 		expect($('.circle-of-trust-page .comrade-action-section')).toBeVisible();
 		expect($('.circle-of-trust-page .circle-of-trust')).toBeHidden();
