@@ -4,7 +4,11 @@
       <div class="ui dividing header tac mb60">{{ title }}</div>
         <div class="ui raised cards">
           <div class="card full-page {% if card_content.class %}{{ card_content.class }}{% endif %}">
-            {% include 'partial/' ~ card_content.twig %}
+            {% if card_content.twig_data %}
+              {% include 'partial/' ~ card_content.twig with card_content.twig_data only %}
+            {% else %}
+              {% include 'partial/' ~ card_content.twig %}
+            {% endif %}
           </div>
         </div>
       </div>
