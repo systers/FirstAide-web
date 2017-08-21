@@ -1,0 +1,49 @@
+<form class="ui form signup-form">
+	<div class="two fields">
+		<div class="field">
+			<label>Email</label>
+			<input type="text" name="email" id="email" placeholder="Email">
+			<div class="ui basic red right pointing prompt label transition hide"></div>
+		</div>
+		<div class="field">
+			<label>Name</label>
+			<input type="text" name="name" id="name" placeholder="Your complete name">
+			<div class="ui basic red left pointing prompt label transition hide"></div>
+		</div>
+	</div>
+	<div class="two fields">
+		<div class="field">
+			<label>Password</label>
+			<input type="password" name="password" id="password" placeholder="******">
+			<div class="ui basic red pointing prompt label transition hide"></div>
+		</div>
+		<div class="field">
+			<label>Confirm Password</label>
+			<input type="password" name="confirm_password" id="confirm_password" placeholder="******">
+			<div class="ui basic red pointing prompt label transition hide"></div>
+		</div>
+	</div>
+	<div class="field password-strength hide">
+		<div id="password-strength-status" class="ui red progress" data-percent="30">
+			<div class="bar"></div>
+			<div class="label"></div>
+		</div>
+	</div>
+	<div class="field">
+		<label>Country</label>
+		<div class="ui fluid search selection dropdown">
+			<input type="hidden" name="country" id="country">
+			<i class="dropdown icon"></i>
+			<div class="default text">Select Country</div>
+			<div class="menu">
+			{% for country_code, country_name in country_list %}
+				<div class="item" data-value="{{ country_code | lower }}"><i class="{{ country_code | lower }} flag"></i>{{ country_name }}</div>
+			{% endfor %}
+			</div>
+			<div class="ui basic red pointing prompt label transition hide"></div>
+		</div>
+	</div>
+	<div class="tac mt30">
+		<button class="ui button center m20 submit">Save</button>
+	</div>
+</form>
