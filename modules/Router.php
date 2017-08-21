@@ -181,6 +181,7 @@ class Router
                     case self::PAGE_SETTINGS:
                         $out['content'] = self::getSettings($UserObj);
                         $out['javascripts'][] = 'index.js';
+                        break;
 
                     default:
                         break;
