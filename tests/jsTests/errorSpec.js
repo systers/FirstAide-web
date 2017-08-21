@@ -25,7 +25,7 @@ describe("Tests for showing error on incorrect field entry", function() {
 describe("Tests for hiding error on correct field entry", function() {
 	var msg = 'This is a test message for not showing error';
 	beforeEach(function() {
-		setFixtures('<div class="field"> \
+		setFixtures('<div class="field error"> \
 				<div class="ui red pointing">' + msg + '</div> \
 			</div>');
 		hideError($('.field'));
