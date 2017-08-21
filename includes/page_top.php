@@ -3,6 +3,8 @@
     $page_request = $_GET['page_request'] ?? \FirstAide\Router::INDEX;
     $query = $_GET['query'] ?? '';
     $page = FirstAide\Router::getPage($UserObj, $page_request, $query);
+    
+    $page['javascripts'][] = 'error.js';
 
 if ($page['type'] == FirstAide\Router::INDEX) {
     $page['javascripts'][] = 'validation.js';
@@ -17,14 +19,14 @@ if ($page['type'] == FirstAide\Router::INDEX) {
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
         <!-- Site Properities -->
-        <title><?php echo isset($_page['title']) ? $_page['title'].' | ' : ''  ?>FirstAide, Peacecorps</title>
+        <title><?php echo (isset($page['title']) ? $page['title'].' | ' : '');  ?>FirstAide, Peacecorps</title>
         <?php
-        echo isset($_page['description']) ?
-            '<meta name="description" content="'.$_page['description'].'" />' :
+        echo isset($page['description']) ?
+            '<meta name="description" content="'.$page['description'].'" />' :
             '' ?>
         <?php
-        echo isset($_page['keywords']) ?
-        '<meta name="keywords" content="'.$_page['keywords'].'"
+        echo isset($page['keywords']) ?
+        '<meta name="keywords" content="'.$page['keywords'].'"
         />' : '' ?>
 
         <link rel="stylesheet" type="text/css" class="ui" href="stylesheets/min/semantic.min.css">
