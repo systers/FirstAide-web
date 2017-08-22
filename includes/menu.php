@@ -199,7 +199,7 @@ if (FirstAide\Utils::getPageProperty($page['type'], FirstAide\Utils::PROPERTY_ME
         'text' => 'Settings',
         'url' => FirstAide\Router::getPageUrl(
             FirstAide\Router::HOME,
-            FirstAide\Router::PAGE_ADDED_SOON
+            FirstAide\Router::PAGE_SETTINGS
         )
     );
     $menu['items'][] = array(

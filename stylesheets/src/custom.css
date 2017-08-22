@@ -273,7 +273,7 @@
 .firstaide.index .subtitle,
 .firstaide.index .field > label,
 .firstaide.index .ui.progress>.label,
-.firstaide .edit-comrades-section .form .field > label {
+.firstaide .form .field > label {
 	color: #fff;
 }
 .firstaide.index .ui.basic.red.label {
@@ -285,7 +285,7 @@
 }
 .firstaide.index button:hover,
 .firstaide.index button:focus {
-	color: #ffffff;
+	color: #fff;
 	background-color: #15775c;
 }
 .firstaide.index .ui.pointing.label {

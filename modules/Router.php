@@ -32,6 +32,7 @@ class Router
     const PAGE_SEXUAL_HARASSMENT = 'sexual-harassment';
     const PAGE_CIRCLE_OF_TRUST = 'circle-of-trust';
     const PAGE_GET_HELP_NOW = 'get-help-now';
+    const PAGE_SETTINGS = 'settings';
 
     const TEMPLATE_INDEX = 'index.html';
     const TEMPLATE_HOME = 'dashboard.html';
@@ -177,6 +178,11 @@ class Router
                         $out['content'] = self::getAddedSoon();
                         break;
 
+                    case self::PAGE_SETTINGS:
+                        $out['content'] = self::getSettings($UserObj);
+                        $out['javascripts'][] = 'index.js';
+                        break;
+
                     default:
                         break;
                 }
@@ -230,11 +236,28 @@ class Router
     }
 
     /**
+     * Method : getSettings
+     * Description : Returns array of template and data for settings page
+     * @UserObj string : User class instance
+     */
+    public static function getSettings($UserObj)
+    {
+        return array(
+            'template' => self::TEMPLATE_FULL_PAGE_CARD,
+            'data' => array(
+                'title' => 'Account Settings',
+                'card_content' => array(
+                    'twig' => 'settings.html'
+                )
+            )
+        );
+    }
+
+    /**
      * Method : getCircleOfTrust
      * Description : Returns array of template and data for circle of trust page
      * @UserObj string : User class instance
      */
-
     public static function getCircleOfTrust($UserObj)
     {
         $comradesData = $UserObj->getCircleOfTrust() ?? array();
@@ -257,7 +280,6 @@ class Router
      * Description : Returns array of template and data for get help now page
      * @UserObj string : User class instance
      */
-
     public static function getGetHelpNow($UserObj)
     {
         return array(

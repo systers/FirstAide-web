@@ -5,7 +5,8 @@
                 {% include 'menu.html' with page.menu only %}
             {% endif %}
             {% if page.content.template %}
-                {% include 'page/' ~ page.content.template with page.content.data only %}
+                {% set page_template_data = { 'country_list': page.country_list }|merge(page.content.data) %}
+                {% include 'page/' ~ page.content.template with page_template_data only %}
             {% else %}
                 <div class="article">
                     <a href="/index.php">Home</a>
