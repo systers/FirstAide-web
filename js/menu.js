@@ -27,18 +27,40 @@ function toggleSubMenuVisibility(element) {
 	}
 }
 
-$('.show-menu-button').on('click', function() {
-	showMenu();
-});
+$(document).ready(function() {
+	$('.show-menu-button').on('click', function() {
+		showMenu();
+	});
 
-$('body').on('click', function(thisElement) {
-    if ($(thisElement.target).closest('.article').length > 0) {
-		hideMenu();
-    }
-});
+	$('body').on('click', function(thisElement) {
+	    if ($(thisElement.target).closest('.article').length > 0) {
+			hideMenu();
+	    }
+	});
 
-$('.sub-menu-header').on('click', function() {
-	var thisParent = $(this).parent();
-	var thisMenu = thisParent.find('.menu');
-	toggleSubMenuVisibility(thisMenu);
+	$('.sub-menu-header').on('click', function() {
+		var thisParent = $(this).parent();
+		var thisMenu = thisParent.find('.menu');
+		toggleSubMenuVisibility(thisMenu);
+	});
+
+	$('#logout').on('click', function() {
+		var postData = {
+				type: 'logout',
+				csrf_token: CSRF_TOKEN
+			}
+			try {
+				$.ajax({
+					url: 'request/auth.php',
+					type: "POST",
+					dataType: 'json',
+					data: postData,
+					success: function(response) {
+						location.reload();
+					}
+				});
+			} catch (error) {
+                location.reload();
+			}
+	});
 });
