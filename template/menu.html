@@ -25,7 +25,7 @@
           </div>
         </div>
       {% else %}
-        <a class="item" href="{{ i.url }}">
+        <a class="item" {% if i.elementId %}id="{{i.elementId}}"{% endif %} href="{{ i.url }}">
           {{ i.text }}
         </a>
       {% endif %}
