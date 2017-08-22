@@ -29,8 +29,9 @@ install:
 before_script:
   # php syntax check (lint)
   - if find . -name "*.php" ! -path "./vendor/*" -exec php -l {} \; | grep "unexpected $end"; then exit 1; fi
-  - ./vendor/bin/phpcs --standard=PSR2 modules/ includes/ index.php  request/
+  - ./vendor/bin/phpcs --standard=PSR2 includes/ modules/ request/ index.php
 
 # scripts like phpunit test
 script:
   - ./vendor/bin/phpunit tests/phpUnitTests/
+  - ./node_modules/karma/bin/karma start jasmine.config.js --single-run
