@@ -8,8 +8,14 @@
                 {% set page_template_data = { 'country_list': page.country_list }|merge(page.content.data) %}
                 {% include 'page/' ~ page.content.template with page_template_data only %}
             {% else %}
-                <div class="article">
-                    <a href="/index.php">Home</a>
+                <div class="article flex flex-justify-center h100">
+                    <div class="ui column stackable center page grid">
+                        <div class="three wide column"></div>
+                        <div class="ten wide column flex flex-align-center flex-column flex-justify-center">
+                            <div class="fs17">Welcome to</div>
+                            <div><img src="images/firstaide_logo.png" class="w100"/></div>
+                        </div>
+                    </div>
                 </div>
             {% endif %}
         </div>
