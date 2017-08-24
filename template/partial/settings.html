@@ -1,13 +1,13 @@
 <form class="ui form signup-form">
 	<div class="two fields">
 		<div class="field">
-			<label>Email</label>
-			<input type="text" name="email" id="email" placeholder="Email">
+			<label>Email (Uneditable)</label>
+			<input type="text" name="email" id="email" placeholder="Email" value="{{ email }}" disabled>
 			<div class="ui basic red right pointing prompt label transition hide"></div>
 		</div>
 		<div class="field">
 			<label>Name</label>
-			<input type="text" name="name" id="name" placeholder="Your complete name">
+			<input type="text" name="name" id="name" placeholder="Your complete name" value="{{ name }}">
 			<div class="ui basic red left pointing prompt label transition hide"></div>
 		</div>
 	</div>
@@ -34,16 +34,33 @@
 		<div class="ui fluid search selection dropdown">
 			<input type="hidden" name="country" id="country">
 			<i class="dropdown icon"></i>
-			<div class="default text">Select Country</div>
+				<div class="default text">Select Country</div>
 			<div class="menu">
+			{% set country_found_code = '' %}
 			{% for country_code, country_name in country_list %}
 				<div class="item" data-value="{{ country_code | lower }}"><i class="{{ country_code | lower }} flag"></i>{{ country_name }}</div>
+				{% if country_name == country %}
+					{% set country_found_code = country_code | lower %}
+				{% endif %}
 			{% endfor %}
 			</div>
 			<div class="ui basic red pointing prompt label transition hide"></div>
 		</div>
 	</div>
+	<div class="field hide"><input type="hidden" name="request_type" id="request_type" value="update_user_info"></div>
 	<div class="tac mt30">
 		<button class="ui button center m20 submit">Save</button>
 	</div>
 </form>
+<div class="processing hide">
+	<div class="ui yellow progress" data-percent="30">
+		<div class="bar"></div>
+		<div class="label">Updating your information in our database. Thank you for your patience.</div>
+	</div>
+</div>
+{% if country_found_code is not empty %}
+<script>
+	window.USERS_COUNTRY = '{{country_found_code}}';
+</script>
+{% endif %}
+
