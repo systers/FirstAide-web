@@ -479,7 +479,7 @@ class UserTest extends TestCase
             "SELECT `country` FROM `users` WHERE `email` = 'ken@domain.com'" => array(
                 'country' => 'ug'
             ),
-            "INSERT INTO `users` (`email`, `name`, `password`, `username`, `country`) VALUES ('r@domain.com', 'Ragina', '7cc573c138bf8f6e731d39b14b8b0aa31ec161bb', 'ragina', 'in')" => array(
+            "INSERT INTO `users` (`email`, `name`, `password`, `country`) VALUES ('r@domain.com', 'Ragina', '7cc573c138bf8f6e731d39b14b8b0aa31ec161bb', 'in')" => array(
                 'user_id' => 3
             ),
             "SELECT * FROM `comrades` WHERE `user_id` = 1" => array(

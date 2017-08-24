@@ -179,7 +179,7 @@ class User
                 $password = $this->getEncryptedPassword($userData['password']);
                 $stmt = $this->db->prepare("
                     INSERT INTO `users` (`email`, `name`, `password`, `country`)
-                    VALUES (?, ?, ?, ?, ?)");
+                    VALUES (?, ?, ?, ?)");
                 $stmt->bindParams(
                     'sssss',
                     $userData['email'],
