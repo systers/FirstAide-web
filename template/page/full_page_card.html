@@ -5,7 +5,7 @@
         <div class="ui raised cards">
           <div class="card full-page {% if card_content.class %}{{ card_content.class }}{% endif %}">
             {% if card_content.twig_data %}
-              {% include 'partial/' ~ card_content.twig with card_content.twig_data only %}
+              {% include 'partial/' ~ card_content.twig with card_content.twig_data %}
             {% else %}
               {% include 'partial/' ~ card_content.twig %}
             {% endif %}
