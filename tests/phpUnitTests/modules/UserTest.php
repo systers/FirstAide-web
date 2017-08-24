@@ -219,6 +219,46 @@ class UserTest extends TestCase
         $this->assertEquals(count($expectedUsers), $userCounter);
     }
 
+
+    /**
+     * 
+     */
+    private function assertUserInfoUpdatedWithValidData(
+        MysqlDatabase $databaseMock,
+        array $expectedUsers
+    ) {
+        $userCounter = 0;
+        foreach ($expectedUsers as $user) {
+            $userObj = new User($databaseMock, $user['email']);
+            $this->assertInstanceOf(User::class, $userObj);
+            $updatedResponse = $userObj->updateUserInfo($user);
+            $this->assertTrue($updatedResponse['response']);
+            $userCounter += 1;
+        }
+
+        $this->assertEquals(count($expectedUsers), $userCounter);
+    }
+
+
+    /**
+     * 
+     */
+    private function assertUserInfoUpdatedWithInvalidData(
+        MysqlDatabase $databaseMock,
+        array $expectedUsers
+    ) {
+        $userCounter = 0;
+        foreach ($expectedUsers as $user) {
+            $userObj = new User($databaseMock, $user['email']);
+            $this->assertInstanceOf(User::class, $userObj);
+            $updatedResponse = $userObj->updateUserInfo($user);
+            $this->assertFalse($updatedResponse['response']);
+            $userCounter += 1;
+        }
+
+        $this->assertEquals(count($expectedUsers), $userCounter);
+    }
+
     /**
      * Tests for multiple user objects with email
      * @dataProvider mysqlMockProvider
@@ -439,6 +479,61 @@ class UserTest extends TestCase
         );
     }
 
+
+    /**
+     * 
+     * @dataProvider mysqlMockProvider
+     */
+    public function testUpdatedUserInfoWithValidData($databaseMock)
+    {
+        $this->assertUserInfoUpdatedWithValidData(
+            $databaseMock,
+            array(
+                array(
+                    'email' => 'r@domain.com',
+                    'name' => 'ragina',
+                    'password' => 'newdummypassword',
+                    'country' => 'ug'
+                ),
+                array(
+                    'email' => 'ken@domain.com',
+                    'name' => 'KenAdams',
+                    'password' => 'newdummypassword',
+                    'country' => 'in'
+                )
+            )
+        );
+    }
+
+    /**
+     * 
+     * @dataProvider mysqlMockProvider
+     */
+    public function testUpdatedUserInfoWithInvalidData($databaseMock)
+    {
+        $this->assertUserInfoUpdatedWithInvalidData(
+            $databaseMock,
+            array(
+                array(
+                    'email' => 'ken@domain.com',
+                    'password' => 'newdummypassword',
+                    'country' => 'in'
+                ),
+
+                array(
+                    'email' => 'r@domain.com',
+                    'name' => 'ragina',
+                    'country' => 'ug'
+                ),
+                array(
+                    'email' => 'ken@domain.com',
+                    'name' => 'KenAdams',
+                    'password' => 'newdummypassword'
+                )
+            )
+        );
+    }
+
     /**
      * Mock MySQL Database queries and their responses for user module
      */
@@ -489,6 +584,12 @@ class UserTest extends TestCase
             "SELECT * FROM `comrades` WHERE `user_id` = 2" => array(
                 'user_id' => 1,
                 'comrade_details' => '917999999999, 918899999999'
+            ),
+            "UPDATE `users` SET `name` = 'ragina', `country` = 'al', `password` = '7cc573c138bf8f6e731d39b14b8b0aa31ec161bb' WHERE `user_id` = 1" => array(
+                'user_id' => 1
+            ),
+            "UPDATE `users` SET `name` = 'KenAdams', `country` = 'in', `password` = '7cc573c138bf8f6e731d39b14b8b0aa31ec161bb' WHERE `user_id` = 2" => array(
+                'user_id' => 2
             )
         );
 
