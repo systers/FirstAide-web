@@ -220,8 +220,11 @@ class UserTest extends TestCase
     }
 
 
-    /**
-     * 
+     /**
+     * Method : assertUserInfoUpdatedWithValidData
+     * Description : asserts for testing user data if it gets updated or not with valid data
+     * @databaseMock MysqlDatabase : mock MysqlDatabase instance
+     * @dataProvider mysqlMockProvider
      */
     private function assertUserInfoUpdatedWithValidData(
         MysqlDatabase $databaseMock,
@@ -242,7 +245,10 @@ class UserTest extends TestCase
 
 
     /**
-     * 
+     * Method : assertUserInfoUpdatedWithInvalidData
+     * Description : asserts for testing user data if it gets updated or not with invalid data
+     * @databaseMock MysqlDatabase : mock MysqlDatabase instance
+     * @dataProvider mysqlMockProvider
      */
     private function assertUserInfoUpdatedWithInvalidData(
         MysqlDatabase $databaseMock,
@@ -481,9 +487,10 @@ class UserTest extends TestCase
         );
     }
 
-
     /**
-     * 
+     * Method : testUpdatedUserInfoWithValidData
+     * Description : Method to test user information with valid credentials
+     * @databaseMock MysqlDatabase : mock MysqlDatabase instance
      * @dataProvider mysqlMockProvider
      */
     public function testUpdatedUserInfoWithValidData($databaseMock)
@@ -508,7 +515,9 @@ class UserTest extends TestCase
     }
 
     /**
-     * 
+     * Method : testUpdatedUserInfoWithInalidData
+     * Description : Method to test user information with invalid credentials
+     * @databaseMock MysqlDatabase : mock MysqlDatabase instance
      * @dataProvider mysqlMockProvider
      */
     public function testUpdatedUserInfoWithInvalidData($databaseMock)

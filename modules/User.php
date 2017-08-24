@@ -303,8 +303,10 @@ class User
     }
 
     /**
-     * Method :
-     * Description :
+     * Method : updateUserInfo
+     * Description : Method to update user information such as email and password 
+     * through account settings section
+     * @userInfo array : array of user info containing email, password and country
      */
     public function updateUserInfo($userInfo)
     {
