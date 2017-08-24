@@ -233,6 +233,7 @@ class UserTest extends TestCase
             $this->assertInstanceOf(User::class, $userObj);
             $updatedResponse = $userObj->updateUserInfo($user);
             $this->assertTrue($updatedResponse['response']);
+            $this->assertTrue($updatedResponse['reload']);
             $userCounter += 1;
         }
 
@@ -253,6 +254,7 @@ class UserTest extends TestCase
             $this->assertInstanceOf(User::class, $userObj);
             $updatedResponse = $userObj->updateUserInfo($user);
             $this->assertFalse($updatedResponse['response']);
+            $this->assertTrue($updatedResponse['reload']);
             $userCounter += 1;
         }
 
