@@ -181,7 +181,7 @@ class User
                     INSERT INTO `users` (`email`, `name`, `password`, `country`)
                     VALUES (?, ?, ?, ?)");
                 $stmt->bindParams(
-                    'sssss',
+                    'ssss',
                     $userData['email'],
                     $userData['name'],
                     $password,
