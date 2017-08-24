@@ -303,7 +303,7 @@ class User
     }
 
     /**
-     * Method : 
+     * Method :
      * Description :
      */
     public function updateUserInfo($userInfo)

@@ -74,7 +74,7 @@
                                     } else {
                                             $output['message'] = 'Something went wrong.';
                                     }
-                                } else if ($_POST['type'] == 'update') {
+                                } elseif ($_POST['type'] == 'update') {
                                     $output = $UserObj->updateUserInfo(
                                         array(
                                         'email' => $_POST['email'],
