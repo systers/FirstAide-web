@@ -304,7 +304,7 @@ class User
 
     /**
      * Method : updateUserInfo
-     * Description : Method to update user information such as email and password 
+     * Description : Method to update user information such as email and password
      * through account settings section
      * @userInfo array : array of user info containing email, password and country
      */
