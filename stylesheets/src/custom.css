@@ -273,6 +273,7 @@
 .firstaide.index .subtitle,
 .firstaide.index .field > label,
 .firstaide.index .ui.progress>.label,
+.firstaide .ui.progress>.label,
 .firstaide .form .field > label {
 	color: #fff;
 }

@@ -39,15 +39,19 @@ function showResponse(thisElement, response) {
 		var val = 85;
 		$('.processing .progress').progress({percent: val});
 		setTimeout(function() {
-			$('.ui.modal').find('.header').text('Congrats');
+			$('.ui.modal').find('.header').text('Yippee');
 			$('.ui.modal').find('.content').text(response.message);
 			$('.ui.modal').modal('show');
-		}, 4000);
+		}, 2000);
 
 		if (response.redirect_url) {
 			setTimeout(function() {
 				window.location.href = response.redirect_url;
 			}, 5500);
+		} else if(typeof response.reload !== 'undefined' && response.reload) {
+			setTimeout(function() {
+				location.reload();
+			}, 4000);
 		}
 	}
 }
@@ -138,6 +142,9 @@ $(document).ready(function() {
 	$(function() {
 		$('.ui.dropdown').dropdown();
 		$('#example1').progress();
+		if (typeof window.USERS_COUNTRY !== 'undefined') {
+			$('.item[data-value~="' + window.USERS_COUNTRY +'"]').trigger( "click" );
+		}
 	});
 	setTimeout(function() {
 		$('.preloader').fadeOut('slow', function() {
@@ -208,7 +215,8 @@ $(document).ready(function() {
 			name = nameElement.val().trim(),
 			password = passwordElement.val().trim(),
 			confirm_password = confirmPasswordElement.val().trim(),
-			country = countryElement.val().trim();
+			country = countryElement.val().trim(),
+			type = 'signup';
 
 		var validData = true;
 		if (!validation.isEmailAddress(email)) {
@@ -249,9 +257,12 @@ $(document).ready(function() {
 			notEmpty({element: confirmPasswordElement, text: 'Password did not match'});
 			validData = false;
 		}
+		if ($('#request_type').length && $('#request_type').val() == 'update_user_info') {
+			type = 'update';
+		}
 		if (validData) {
 			var postData = {
-				type: 'signup',
+				type: type,
 				email: email,
 				name: name,
 				password: password,

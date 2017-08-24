@@ -48,6 +48,7 @@
                         break;
 
                     case 'signup':
+                    case 'update':
                         if (!empty($_POST['email'])
                         && !empty($_POST['name'])
                         && !empty($_POST['password'])
@@ -56,21 +57,32 @@
                         && $_POST['password'] == $_POST['confirm_password']
                             ) {
                             if (FirstAide\Utils::isValidEmail($_POST['email'])) {
-                                $User = new FirstAide\User($DB, $_POST['email']);
-                                $newUserStatus = $User->addUser(
-                                    array(
-                                    'email' => $_POST['email'],
-                                    'password' => $_POST['password'],
-                                    'name' => $_POST['name'],
-                                    'country' => $_POST['country']
-                                    )
-                                );
-                                if ($newUserStatus) {
-                                        $output['response'] = true;
-                                        $output['message'] = 'Account created. Welcome aboard.';
-                                        $output['redirect_url'] = HOST;
-                                } else {
-                                        $output['message'] = 'Something went wrong.';
+                                if ($_POST['type'] == 'signup') {
+                                    $User = new FirstAide\User($DB, $_POST['email']);
+                                    $newUserStatus = $User->addUser(
+                                        array(
+                                        'email' => $_POST['email'],
+                                        'password' => $_POST['password'],
+                                        'name' => $_POST['name'],
+                                        'country' => $_POST['country']
+                                        )
+                                    );
+                                    if ($newUserStatus) {
+                                            $output['response'] = true;
+                                            $output['message'] = 'Account created. Welcome aboard.';
+                                            $output['redirect_url'] = HOST;
+                                    } else {
+                                            $output['message'] = 'Something went wrong.';
+                                    }
+                                } elseif ($_POST['type'] == 'update') {
+                                    $output = $UserObj->updateUserInfo(
+                                        array(
+                                        'email' => $_POST['email'],
+                                        'password' => $_POST['password'],
+                                        'name' => $_POST['name'],
+                                        'country' => $_POST['country']
+                                        )
+                                    );
                                 }
                             } else {
                                 $output['message'] = 'Invalid email';

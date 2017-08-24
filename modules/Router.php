@@ -180,6 +180,7 @@ class Router
 
                     case self::PAGE_SETTINGS:
                         $out['content'] = self::getSettings($UserObj);
+                        $out['javascripts'][] = 'validation.js';
                         $out['javascripts'][] = 'index.js';
                         break;
 
@@ -242,12 +243,22 @@ class Router
      */
     public static function getSettings($UserObj)
     {
+        if (!empty($UserObj) && $UserObj->isValidUser()) {
+            $email = $UserObj->getEmailAddress();
+            $name = $UserObj->getName();
+            $country = $UserObj->getCurrentPostCountry();
+        }
         return array(
             'template' => self::TEMPLATE_FULL_PAGE_CARD,
             'data' => array(
                 'title' => 'Account Settings',
                 'card_content' => array(
-                    'twig' => 'settings.html'
+                    'twig' => 'settings.html',
+                    'twig_data' => array(
+                        'email' => $email ?? '',
+                        'name' => $name ?? '',
+                        'country' => $country ?? ''
+                    )
                 )
             )
         );

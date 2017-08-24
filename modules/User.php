@@ -176,17 +176,15 @@ class User
             isset($this->email)
         ) {
             if ($userData['email'] == $this->email) {
-                $username = strtolower(str_replace(' ', '_', $userData['name']));
                 $password = $this->getEncryptedPassword($userData['password']);
                 $stmt = $this->db->prepare("
-                    INSERT INTO `users` (`email`, `name`, `password`, `username`, `country`)
-                    VALUES (?, ?, ?, ?, ?)");
+                    INSERT INTO `users` (`email`, `name`, `password`, `country`)
+                    VALUES (?, ?, ?, ?)");
                 $stmt->bindParams(
-                    'sssss',
+                    'ssss',
                     $userData['email'],
                     $userData['name'],
                     $password,
-                    $username,
                     $userData['country']
                 );
                 $stmt->execute();
@@ -244,7 +242,6 @@ class User
      */
     public function updateCircleOfTrust($comrades)
     {
-
         $return = array(
             'response' => false,
             'message' => 'Something went wrong.'
@@ -303,5 +300,51 @@ class User
         }
 
         return $country_list_json[$country_found];
+    }
+
+    /**
+     * Method : updateUserInfo
+     * Description : Method to update user information such as email and password
+     * through account settings section
+     * @userInfo array : array of user info containing email, password and country
+     */
+    public function updateUserInfo($userInfo)
+    {
+        $return = array(
+            'response' => false,
+            'reload' => true,
+            'message' => 'Something went wrong.'
+        );
+        if (!is_array($userInfo)
+            || !(isset($userInfo['email']))
+            || !isset($userInfo['name'])
+            || !isset($userInfo['country'])
+            || !isset($userInfo['password'])
+        ) {
+            $return['response'] = false;
+            $return['message'] = "Please fill up all the fields.";
+            return $return;
+        }
+        if ($userInfo['email'] != $this->email) {
+            $return['response'] = false;
+            $return['message'] = "Unauthorised access.";
+            return $return;
+        }
+        $user_id = $this->user_id;
+        $name = $userInfo['name'];
+        $country = $userInfo['country'];
+        $password = $userInfo['password'];
+        $encryptedPassword = $this->getEncryptedPassword($password);
+
+        $stmt = $this->db->prepare(
+            "UPDATE `users` SET `name` = ?, `country` = ?, `password` = ? WHERE `user_id` = ?"
+        );
+        $stmt->bindParams('sssi', $name, $country, $encryptedPassword, $user_id);
+        $stmt->execute();
+        $affected = $stmt->getAffectedRows();
+        $stmt->close();
+        $return['response'] = true;
+        $return['message'] = "Updated user's details.";
+        return $return;
     }
 }
