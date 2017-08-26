@@ -1,5 +1,6 @@
 /**
- * 
+ * nextSegment() shows the next page containing more cards
+ * and hides the current segment
  */
 function nextSegment(current) {
     if (typeof current === 'undefined') { current = 0; }
@@ -17,7 +18,8 @@ function nextSegment(current) {
 }
 
 /**
- * 
+ * previousSegment() shows the previous page containing more cards
+ * and hides the current segment
  */
 function previousSegment(current) {
     if (typeof current === 'undefined') { current = 0; }

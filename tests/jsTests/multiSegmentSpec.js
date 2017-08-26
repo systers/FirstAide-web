@@ -1,6 +1,7 @@
 /**
- * Suite : Tests for showing error on incorrect field entry
- * Description : This is a test suite for showing error in case of an invalid field entry
+ * Suite : Tests for showing next segment
+ * Description : This is a test suite for testing if the next segment of the page
+ * with different cards is visible
  */
 describe("Tests for showing next segment", function() {
 	var current = 0;
@@ -31,7 +32,11 @@ describe("Tests for showing next segment", function() {
 	});
 });
 
-
+/**
+ * Suite : Tests for showing previous segment
+ * Description : This is a test suite for testing if the previous segment of the page
+ * with different cards is visible
+ */
 describe("Tests for showing previous segment", function() {
 	var current = 3;
 	beforeEach(function() {
