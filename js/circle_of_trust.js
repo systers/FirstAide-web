@@ -1,5 +1,5 @@
 /**
- * showResponse() displays a modal on receiving response
+ * showResponseModal() displays a modal on receiving response
  *
  * @response{dictionary} contains ajax call response
  * @pageReload{bool value} used to determine if the page needs to be loaded or not based on the response
@@ -130,7 +130,7 @@ $(document).ready(function() {
                     dataType: 'json',
                     data: postData,
                     success: function(response) {
-                        showResponse(response);
+                        showResponseModal(response);
                     }
                 });
             } catch (error) {
@@ -151,7 +151,7 @@ $(document).ready(function() {
                 dataType: 'json',
                 data: postData,
                 success: function(response) {
-                    showResponse(response, false);
+                    showResponseModal(response, false);
                 }
             });
         } catch (error) {
