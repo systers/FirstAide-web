@@ -5,10 +5,7 @@ if (FirstAide\Utils::getPageProperty($page['type'], FirstAide\Utils::PROPERTY_ME
         'type' => 'logo',
         'img_src' => 'images/logo.png',
         'text' => 'Home',
-        'url' => FirstAide\Router::getPageUrl(
-            FirstAide\Router::HOME,
-            FirstAide\Router::PAGE_ADDED_SOON
-        )
+        'url' => HOST
     );
     $menu['items'][] = array(
         'text' => 'Get Help Now',
